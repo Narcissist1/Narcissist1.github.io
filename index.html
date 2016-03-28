@@ -226,8 +226,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/03/28/biu/" itemprop="url">
-                  测试文
+                <a class="post-title-link" href="/2016/03/28/Hexo-GitHub-搭建博客备忘/" itemprop="url">
+                  Hexo + GitHub 搭建博客备忘(Mac)
                 </a>
               
             
@@ -240,7 +240,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-28T16:17:38+08:00" content="2016-03-28">
+            <time itemprop="dateCreated" datetime="2016-03-28T22:11:00+08:00" content="2016-03-28">
               2016-03-28
             </time>
           </span>
@@ -254,8 +254,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/test/" itemprop="url" rel="index">
-                    <span itemprop="name">test</span>
+                  <a href="/categories/技术相关/" itemprop="url" rel="index">
+                    <span itemprop="name">技术相关</span>
                   </a>
                 </span>
 
@@ -270,8 +270,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/28/biu/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/28/biu/" itemprop="commentsCount"></span>
+                <a href="/2016/03/28/Hexo-GitHub-搭建博客备忘/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/28/Hexo-GitHub-搭建博客备忘/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -295,7 +295,59 @@
       
         
           
-            <h1 id="test"><a href="#test" class="headerlink" title="test"></a>test</h1><p>这是一个测试，不久之后会被删除</p>
+            <h2 id="Hexo-安装"><a href="#Hexo-安装" class="headerlink" title="Hexo 安装"></a>Hexo 安装</h2><hr>
+<p>hexo 依赖 <a href="https://nodejs.org/en/" target="_blank" rel="external">node.js</a>, 首先下载安装node.js。然后运行以下命令：</p>
+<pre><code>npm install hexo-cli -g
+hexo init blog
+cd blog
+npm install
+hexo server
+</code></pre><p>之后就可以在<br><a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a>查看效果了。</p>
+<p>Hexo 的实用<a href="https://hexo.io/plugins/" target="_blank" rel="external">插件</a></p>
+<pre><code>npm install hexo-generator-index --save
+npm install hexo-generator-archive --save
+npm install hexo-generator-category --save
+npm install hexo-generator-tag --save
+npm install hexo-server --save
+npm install hexo-deployer-git --save
+npm install hexo-deployer-heroku --save
+npm install hexo-deployer-rsync --save
+npm install hexo-deployer-openshift --save
+npm install hexo-renderer-marked@0.2 --save
+npm install hexo-renderer-stylus@0.2 --save
+npm install hexo-generator-feed@1 --save
+npm install hexo-generator-sitemap@1 --save
+npm install --save hexo-admin
+</code></pre><p>其中 hexo-admin 无法在线上使用，可以在本地编辑完之后部署即可，地址为根目录＋/admin/，具体配置在<a href="https://github.com/jaredly/hexo-admin" target="_blank" rel="external">这里</a></p>
+<h2 id="GitHub-账号申请和新建项目"><a href="#GitHub-账号申请和新建项目" class="headerlink" title="GitHub 账号申请和新建项目"></a>GitHub 账号申请和新建项目</h2><p>———————————-* 登录到你的<a href="http://github.com/" target="_blank" rel="external">GitHub</a>账号</p>
+<ul>
+<li>选择新建醒目，项目名称需要设置为<code>your_username.github.io</code></li>
+<li>首次创建需要10分钟左右的审核时间，之后就可以访问了<code>http://your_username.github.io</code> (现在访问可能会导致404，因为项目还是空的)</li>
+</ul>
+<h2 id="部署到线上"><a href="#部署到线上" class="headerlink" title="部署到线上"></a>部署到线上</h2><hr>
+<p>修改 hexo 项目根目录下的站点配置文件<code>_config.yml</code>，如果安装了<code>hexo-deployer-git</code>插件，这里之接修改如下配置：</p>
+<pre><code>deploy:
+    type: git
+    repo: your-repository.git
+    branch: master
+</code></pre><p>Hexo 生成命令：</p>
+<pre><code>hexo generate
+</code></pre><p>用于将目前项目生成静态文件</p>
+<p>Hexo 部署命令</p>
+<pre><code>hexo deploy
+</code></pre><p>这条命令会根据你在<code>_config.yml</code>里面的配置将生成的静态文件部署到线上，之后就可以通过之前的链接进行访问了。</p>
+<p>这两条命令可以简写为: <code>hexo g -b</code> 或者 <code>hexo b -g</code> 效果相同。</p>
+<h2 id="Hexo主题"><a href="#Hexo主题" class="headerlink" title="Hexo主题"></a>Hexo主题</h2><hr>
+<ul>
+<li>Hexo Themes - <a href="http://hexo.io/themes/" target="_blank" rel="external">http://hexo.io/themes/</a></li>
+<li>Jacman - <a href="http://wsgzao.github.io/post/hexo-jacman/" target="_blank" rel="external">http://wsgzao.github.io/post/hexo-jacman/</a></li>
+<li>iissnan - <a href="http://notes.iissnan.com" target="_blank" rel="external">http://notes.iissnan.com</a></li>
+</ul>
+<h2 id="Markdown-教程及编写工具"><a href="#Markdown-教程及编写工具" class="headerlink" title="Markdown 教程及编写工具"></a>Markdown 教程及编写工具</h2><hr>
+<ul>
+<li>Markdown语法 - <a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="external">http://wowubuntu.com/markdown/</a></li>
+<li>在线工具 - <a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="external">https://www.zybuluo.com/mdeditor</a></li>
+</ul>
 
           
         
@@ -473,7 +525,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -482,7 +534,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
