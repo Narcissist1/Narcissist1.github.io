@@ -294,62 +294,19 @@
 
       
         
-          
-            <h2 id="Hexo-安装"><a href="#Hexo-安装" class="headerlink" title="Hexo 安装"></a>Hexo 安装</h2><hr>
-<p>hexo 依赖 <a href="https://nodejs.org/en/" target="_blank" rel="external">node.js</a>, 首先下载安装node.js。然后运行以下命令：</p>
+          <h2 id="Hexo-安装"><a href="#Hexo-安装" class="headerlink" title="Hexo 安装"></a>Hexo 安装</h2><hr>
+<p>hexo 依赖 <a href="https://nodejs.org/en/">node.js</a>, 首先下载安装node.js。然后运行以下命令：</p>
 <pre><code>npm install hexo-cli -g
 hexo init blog
 cd blog
 npm install
 hexo server
-</code></pre><p>之后就可以在<br><a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a>查看效果了。</p>
-<p>Hexo 的实用<a href="https://hexo.io/plugins/" target="_blank" rel="external">插件</a></p>
-<pre><code>npm install hexo-generator-index --save
-npm install hexo-generator-archive --save
-npm install hexo-generator-category --save
-npm install hexo-generator-tag --save
-npm install hexo-server --save
-npm install hexo-deployer-git --save
-npm install hexo-deployer-heroku --save
-npm install hexo-deployer-rsync --save
-npm install hexo-deployer-openshift --save
-npm install hexo-renderer-marked@0.2 --save
-npm install hexo-renderer-stylus@0.2 --save
-npm install hexo-generator-feed@1 --save
-npm install hexo-generator-sitemap@1 --save
-npm install --save hexo-admin
-</code></pre><p>其中 hexo-admin 无法在线上使用，可以在本地编辑完之后部署即可，地址为根目录＋/admin/，具体配置在<a href="https://github.com/jaredly/hexo-admin" target="_blank" rel="external">这里</a></p>
-<h2 id="GitHub-账号申请和新建项目"><a href="#GitHub-账号申请和新建项目" class="headerlink" title="GitHub 账号申请和新建项目"></a>GitHub 账号申请和新建项目</h2><p>———————————-* 登录到你的<a href="http://github.com/" target="_blank" rel="external">GitHub</a>账号</p>
-<ul>
-<li>选择新建醒目，项目名称需要设置为<code>your_username.github.io</code></li>
-<li>首次创建需要10分钟左右的审核时间，之后就可以访问了<code>http://your_username.github.io</code> (现在访问可能会导致404，因为项目还是空的)</li>
-</ul>
-<h2 id="部署到线上"><a href="#部署到线上" class="headerlink" title="部署到线上"></a>部署到线上</h2><hr>
-<p>修改 hexo 项目根目录下的站点配置文件<code>_config.yml</code>，如果安装了<code>hexo-deployer-git</code>插件，这里之接修改如下配置：</p>
-<pre><code>deploy:
-    type: git
-    repo: your-repository.git
-    branch: master
-</code></pre><p>Hexo 生成命令：</p>
-<pre><code>hexo generate
-</code></pre><p>用于将目前项目生成静态文件</p>
-<p>Hexo 部署命令</p>
-<pre><code>hexo deploy
-</code></pre><p>这条命令会根据你在<code>_config.yml</code>里面的配置将生成的静态文件部署到线上，之后就可以通过之前的链接进行访问了。</p>
-<p>这两条命令可以简写为: <code>hexo g -b</code> 或者 <code>hexo b -g</code> 效果相同。</p>
-<h2 id="Hexo主题"><a href="#Hexo主题" class="headerlink" title="Hexo主题"></a>Hexo主题</h2><hr>
-<ul>
-<li>Hexo Themes - <a href="http://hexo.io/themes/" target="_blank" rel="external">http://hexo.io/themes/</a></li>
-<li>Jacman - <a href="http://wsgzao.github.io/post/hexo-jacman/" target="_blank" rel="external">http://wsgzao.github.io/post/hexo-jacman/</a></li>
-<li>iissnan - <a href="http://notes.iissnan.com" target="_blank" rel="external">http://notes.iissnan.com</a></li>
-</ul>
-<h2 id="Markdown-教程及编写工具"><a href="#Markdown-教程及编写工具" class="headerlink" title="Markdown 教程及编写工具"></a>Markdown 教程及编写工具</h2><hr>
-<ul>
-<li>Markdown语法 - <a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="external">http://wowubuntu.com/markdown/</a></li>
-<li>在线工具 - <a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="external">https://www.zybuluo.com/mdeditor</a></li>
-</ul>
-
-          
+</code></pre><p>之后就可以在<br><a href="http://localhost:4000/">http://localhost:4000/</a>查看效果了。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/28/Hexo-GitHub-搭建博客备忘/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -442,18 +399,15 @@ npm install --save hexo-admin
 
       
         
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+          <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/28/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
