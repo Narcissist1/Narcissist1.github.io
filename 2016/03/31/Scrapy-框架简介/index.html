@@ -57,16 +57,31 @@
 
 
 
-<meta name="description" content="长路漫漫，砥砺前行">
+<meta name="description" content="Scrapy 是？Scrapy 是一个用于爬取网络内容的应用框架，可以提取结构化数据由于数据挖掘或者信息处理。
+Scrapy 安装以下是 Scrapy 的一些依赖，安装 Scrapy 之前首先完成它们的安装配置：
+Python2.7
+pip 和 setuptools 包
+lxml. 
+OpenSSL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Scrapy 框架简介">
 <meta property="og:url" content="narcissist1.github.io/2016/03/31/Scrapy-框架简介/index.html">
-<meta property="og:site_name" content="Zack's blog">
-<meta property="og:description" content="长路漫漫，砥砺前行">
-<meta property="og:updated_time" content="2016-03-31T07:32:19.000Z">
+<meta property="og:site_name" content="Zack's Notebook">
+<meta property="og:description" content="Scrapy 是？Scrapy 是一个用于爬取网络内容的应用框架，可以提取结构化数据由于数据挖掘或者信息处理。
+Scrapy 安装以下是 Scrapy 的一些依赖，安装 Scrapy 之前首先完成它们的安装配置：
+Python2.7
+pip 和 setuptools 包
+lxml. 
+OpenSSL">
+<meta property="og:updated_time" content="2016-03-31T10:37:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Scrapy 框架简介">
-<meta name="twitter:description" content="长路漫漫，砥砺前行">
+<meta name="twitter:description" content="Scrapy 是？Scrapy 是一个用于爬取网络内容的应用框架，可以提取结构化数据由于数据挖掘或者信息处理。
+Scrapy 安装以下是 Scrapy 的一些依赖，安装 Scrapy 之前首先完成它们的安装配置：
+Python2.7
+pip 和 setuptools 包
+lxml. 
+OpenSSL">
 
 
 
@@ -84,7 +99,7 @@
   };
 </script>
 
-  <title> Scrapy 框架简介 | Zack's blog </title>
+  <title> Scrapy 框架简介 | Zack's Notebook </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -115,7 +130,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Zack's blog</span>
+      <span class="site-title">Zack's Notebook</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -157,12 +172,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
             
-            关于
+            标签
           </a>
         </li>
       
@@ -177,12 +192,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
             
-            标签
+            关于
           </a>
         </li>
       
@@ -289,7 +304,190 @@
       
 
       
-        
+        <h1 id="Scrapy-是？"><a href="#Scrapy-是？" class="headerlink" title="Scrapy 是？"></a>Scrapy 是？</h1><p>Scrapy 是一个用于爬取网络内容的应用框架，可以提取结构化数据由于数据挖掘或者信息处理。</p>
+<h1 id="Scrapy-安装"><a href="#Scrapy-安装" class="headerlink" title="Scrapy 安装"></a>Scrapy 安装</h1><p>以下是 Scrapy 的一些依赖，安装 Scrapy 之前首先完成它们的安装配置：</p>
+<pre><code>Python2.7
+pip 和 setuptools 包
+lxml. 
+OpenSSL
+</code></pre><a id="more"></a>
+<p>你可以通过 pip 来进行安装。</p>
+<pre><code>pip install scrapy
+</code></pre><p>PS: Mac OS X上需要安装 Xcode development tools.</p>
+<pre><code>xcode-select --install
+</code></pre><h1 id="Scrapy-Tutorial"><a href="#Scrapy-Tutorial" class="headerlink" title="Scrapy Tutorial"></a>Scrapy Tutorial</h1><p>这个教程将会涵盖以下内容：</p>
+<ol>
+<li>创建一个 Scrapy 项目</li>
+<li>定义你需要抓去的 Item</li>
+<li>写一个爬虫去爬取一个网站并且提取出你的 Item</li>
+<li>写一个 Item Pipeline 去存取数据</li>
+</ol>
+<p>我们爬取的目标是这个网站<a href="http://www.dmoz.org/" target="_blank" rel="external">Open directory project (dmoz)</a></p>
+<h2 id="创建-Scrapy-项目"><a href="#创建-Scrapy-项目" class="headerlink" title="创建 Scrapy 项目"></a>创建 Scrapy 项目</h2><p>运行以下命令：</p>
+<pre><code>scrapy startproject tutorial
+</code></pre><p>这个命令用于创建 scrapy 项目，它会生成一个名为 tutorial 的目录包含以下内容：</p>
+<pre><code>tutorial/
+scrapy.cfg            # deploy configuration file
+
+tutorial/             # project&apos;s Python module, you&apos;ll import your code from here
+    __init__.py
+
+    items.py          # project items file
+
+    pipelines.py      # project pipelines file
+
+    settings.py       # project settings file
+
+    spiders/          # a directory where you&apos;ll later put your spiders
+        __init__.py
+        ...
+</code></pre><h2 id="定义-Item"><a href="#定义-Item" class="headerlink" title="定义 Item"></a>定义 Item</h2><p>Item 相当于一个包含抓取来的数据的一个容器，它们和 Python 中的字典很像，你可以像操作 Python 字典一样使用它。</p>
+<p>通过创建 <code>scrapy.Item</code> 类和相应的 <code>srapy.Field</code> 属性来定义它， 这有点像一个 ORM，（django ORM 或者 SQLAlchemy）。</p>
+<p>在本教程中我们希望抓取 title, 链接和描述，所以，修改 tutorial 目录下的  item.py 文件：</p>
+<pre><code>import scrapy
+
+class DmozItem(scrapy.Item):
+    title = scrapy.Field()
+    link = scrapy.Field()
+    desc = scrapy.Field()
+</code></pre><h2 id="第一个-Spider"><a href="#第一个-Spider" class="headerlink" title="第一个 Spider"></a>第一个 Spider</h2><p>Spider 是一些你定义的类。用于让 Scrapy 去从一个 domain 或者 URL 来爬取你需要的数据。</p>
+<p>创建一个 Spider 需要继承 <code>scrapy.Spider</code> 类，以下是类中定义的属性：</p>
+<ul>
+<li><code>name</code>: Spider 的名字，每个 Spider 的名字都是不同的，你不能定义两个拥有同样名字的 Spider</li>
+<li><code>start_urls</code>: 一个包含开始爬取 URL 的列表</li>
+<li><code>parse()</code>: spider 的一个方法，每一个 response 都会调用这个方法，它负责解析 response 中的数据，提取更多的 URL</li>
+</ul>
+<p>本教程中，在<code>tutorial/spiders</code>目录下保存<code>dmoz_spider.py</code> 作为第一个 spider 内容如下：</p>
+<pre><code>import scrapy
+
+class DmozSpider(scrapy.Spider):
+    name = &quot;dmoz&quot;
+    allowed_domains = [&quot;dmoz.org&quot;]
+    start_urls = [
+        &quot;http://www.dmoz.org/Computers/Programming/Languages/Python/Books/&quot;,
+           &quot;http://www.dmoz.org/Computers/Programming/Languages/Python/Resources/&quot;
+    ]
+
+def parse(self, response):
+    filename = response.url.split(&quot;/&quot;)[-2] + &apos;.html&apos;
+    with open(filename, &apos;wb&apos;) as f:
+        f.write(response.body)
+</code></pre><h3 id="爬取"><a href="#爬取" class="headerlink" title="爬取"></a>爬取</h3><p>返回项目跟目录，运行：</p>
+<pre><code>scrapy crawl dmoz
+</code></pre><p>这个命令会启动名字为<code>dmoz</code>的爬虫，就是我们刚刚写的。会有如下输出</p>
+<pre><code>2014-01-23 18:13:07-0400 [scrapy] INFO: Scrapy started (bot: tutorial)
+2014-01-23 18:13:07-0400 [scrapy] INFO: Optional features available: ...
+2014-01-23 18:13:07-0400 [scrapy] INFO: Overridden settings: {}
+2014-01-23 18:13:07-0400 [scrapy] INFO: Enabled extensions: ...
+2014-01-23 18:13:07-0400 [scrapy] INFO: Enabled downloader middlewares: ...
+2014-01-23 18:13:07-0400 [scrapy] INFO: Enabled spider middlewares: ...
+2014-01-23 18:13:07-0400 [scrapy] INFO: Enabled item pipelines: ...
+2014-01-23 18:13:07-0400 [scrapy] INFO: Spider opened
+2014-01-23 18:13:08-0400 [scrapy] DEBUG: Crawled (200) &lt;GET http://www.dmoz.org/Computers/Programming/Languages/Python/Resources/&gt; (referer: None)    
+2014-01-23 18:13:09-0400 [scrapy] DEBUG: Crawled (200) &lt;GET http://www.dmoz.org/Computers/Programming/Languages/Python/Books/&gt; (referer: None)
+2014-01-23 18:13:09-0400 [scrapy] INFO: Closing spider (finished)
+</code></pre><h3 id="提取Items"><a href="#提取Items" class="headerlink" title="提取Items"></a>提取Items</h3><h4 id="Selector"><a href="#Selector" class="headerlink" title="Selector"></a>Selector</h4><p>Scrapy Selector 使用两种机制 <a href="https://www.w3.org/TR/selectors/" target="_blank" rel="external">CSS</a> 和 <a href="https://www.w3.org/TR/xpath/" target="_blank" rel="external">XPath</a> 进行数据解析。<br>更多信息参考 <a href="http://doc.scrapy.org/en/1.0/topics/selectors.html#topics-selectors" target="_blank" rel="external">]Selector documentation</a></p>
+<h4 id="在-Shell-里面尝试-Selector"><a href="#在-Shell-里面尝试-Selector" class="headerlink" title="在 Shell 里面尝试 Selector"></a>在 Shell 里面尝试 Selector</h4><p>运行以下命令：</p>
+<pre><code>scrapy shell &quot;http://www.dmoz.org/Computers/Programming/Languages/Python/Books/&quot;
+</code></pre><p>然后就可以尝试查看 response 的各种属性了</p>
+<pre><code>In [1]: response.xpath(&apos;//title&apos;)
+Out[1]: [&lt;Selector xpath=&apos;//title&apos; data=u&apos;&lt;title&gt;Open Directory - Computers: Progr&apos;&gt;]
+
+In [2]: response.xpath(&apos;//title&apos;).extract()
+Out[2]: [u&apos;&lt;title&gt;Open Directory - Computers: Programming: Languages: Python: Books&lt;/title&gt;&apos;]
+
+In [3]: response.xpath(&apos;//title/text()&apos;)
+Out[3]: [&lt;Selector xpath=&apos;//title/text()&apos; data=u&apos;Open Directory - Computers: Programming:&apos;&gt;]
+
+In [4]: response.xpath(&apos;//title/text()&apos;).extract()
+Out[4]: [u&apos;Open Directory - Computers: Programming: Languages: Python: Books&apos;]
+
+In [5]: response.xpath(&apos;//title/text()&apos;).re(&apos;(\w+):&apos;)
+Out[5]: [u&apos;Computers&apos;, u&apos;Programming&apos;, u&apos;Languages&apos;, u&apos;Python&apos;]
+</code></pre><h4 id="提取数据"><a href="#提取数据" class="headerlink" title="提取数据"></a>提取数据</h4><p>现在我们来提取一些真正的信息吧</p>
+<p>通过查看<code>response.body</code> 我们发现需要的信息在<ul>标签里面，</ul></p>
+<p>在我们的 spider 里面加入以下代码：</p>
+<pre><code>import scrapy
+
+class DmozSpider(scrapy.Spider):
+name = &quot;dmoz&quot;
+allowed_domains = [&quot;dmoz.org&quot;]
+start_urls = [
+    &quot;http://www.dmoz.org/Computers/Programming/Languages/Python/Books/&quot;,
+    &quot;http://www.dmoz.org/Computers/Programming/Languages/Python/Resources/&quot;
+]
+
+def parse(self, response):
+    for sel in response.xpath(&apos;//ul/li&apos;):
+        title = sel.xpath(&apos;a/text()&apos;).extract()
+        link = sel.xpath(&apos;a/@href&apos;).extract()
+        desc = sel.xpath(&apos;text()&apos;).extract()
+        print title, link, desc
+</code></pre><h3 id="使用我们的Item"><a href="#使用我们的Item" class="headerlink" title="使用我们的Item"></a>使用我们的Item</h3><p>Item objects 是一个 Python 字典，你可以像使用字典那样使用它。</p>
+<pre><code>&gt;&gt;&gt; item = DmozItem()
+&gt;&gt;&gt; item[&apos;title&apos;] = &apos;Example title&apos;
+&gt;&gt;&gt; item[&apos;title&apos;]
+&apos;Example title&apos;
+</code></pre><p>我们修改 spider 的代码：</p>
+<pre><code>import scrapy
+
+from tutorial.items import DmozItem
+
+class DmozSpider(scrapy.Spider):
+name = &quot;dmoz&quot;
+allowed_domains = [&quot;dmoz.org&quot;]
+start_urls = [
+    &quot;http://www.dmoz.org/Computers/Programming/Languages/Python/Books/&quot;,
+    &quot;http://www.dmoz.org/Computers/Programming/Languages/Python/Resources/&quot;
+]
+
+def parse(self, response):
+    for sel in response.xpath(&apos;//ul/li&apos;):
+        item = DmozItem()
+        item[&apos;title&apos;] = sel.xpath(&apos;a/text()&apos;).extract()
+        item[&apos;link&apos;] = sel.xpath(&apos;a/@href&apos;).extract()
+        item[&apos;desc&apos;] = sel.xpath(&apos;text()&apos;).extract()
+        yield item
+</code></pre><p>现在运行代码会得到<code>DmozItem</code> objects:</p>
+<pre><code>[scrapy] DEBUG: Scraped from &lt;200 http://www.dmoz.org/Computers/Programming/Languages/Python/Books/&gt;
+ {&apos;desc&apos;: [u&apos; - By David Mertz; Addison Wesley. Book in progress, full text, ASCII format. Asks for feedback. [author website, Gnosis Software, Inc.\n],
+  &apos;link&apos;: [u&apos;http://gnosis.cx/TPiP/&apos;],
+  &apos;title&apos;: [u&apos;Text Processing in Python&apos;]}
+[scrapy] DEBUG: Scraped from &lt;200 http://www.dmoz.org/Computers/Programming/Languages/Python/Books/&gt;
+ {&apos;desc&apos;: [u&apos; - By Sean McGrath; Prentice Hall PTR, 2000, ISBN 0130211192, has CD-ROM. Methods to build XML applications fast, Python tutorial, DOM and SAX, new Pyxie open source XML processing library. [Prentice Hall PTR]\n&apos;],
+  &apos;link&apos;: [u&apos;http://www.informit.com/store/product.aspx?isbn=0130211192&apos;],
+  &apos;title&apos;: [u&apos;XML Processing with Python&apos;]}
+</code></pre><h2 id="Following-links"><a href="#Following-links" class="headerlink" title="Following links"></a>Following links</h2><p>仅仅提取两个页面的内容显然是不够的，如果我们需要提取链接在这两个页面上的链接以及它们的全部内容呢。<br>这里修改我们的代码：</p>
+<pre><code>import scrapy
+
+from tutorial.items import DmozItem
+
+class DmozSpider(scrapy.Spider):
+name = &quot;dmoz&quot;
+allowed_domains = [&quot;dmoz.org&quot;]
+start_urls = [
+    &quot;http://www.dmoz.org/Computers/Programming/Languages/Python/&quot;,
+]
+
+def parse(self, response):
+    for href in response.css(&quot;ul.directory.dir-col &gt; li &gt; a::attr(&apos;href&apos;)&quot;):
+        url = response.urljoin(href.extract())
+        yield scrapy.Request(url, callback=self.parse_dir_contents)
+
+def parse_dir_contents(self, response):
+    for sel in response.xpath(&apos;//ul/li&apos;):
+        item = DmozItem()
+        item[&apos;title&apos;] = sel.xpath(&apos;a/text()&apos;).extract()
+        item[&apos;link&apos;] = sel.xpath(&apos;a/@href&apos;).extract()
+        item[&apos;desc&apos;] = sel.xpath(&apos;text()&apos;).extract()
+        yield item
+</code></pre><p>现在 <em>parse()</em> 方法仅仅提取我们需要的URL，再用 <em>response.urljoin</em> 方法合成全局路径用以之后请求。在请求这些 URL 时，注册了一个 <em>parse_dir_contents()</em> callback 函数， 作为实际的内容提取。</p>
+<p>Scrapy 的 following links 机制：当你在一个 callback 函数中 yield 一个 Request 请求时，Scrapy 会安排发送 request 并且注册另一个 callback 函数用于当前 request 结束时执行。</p>
+<p>通过这个机制我们可以编写更为复杂的爬虫。</p>
+<h2 id="存储爬取的数据"><a href="#存储爬取的数据" class="headerlink" title="存储爬取的数据"></a>存储爬取的数据</h2><p>最简单的方式是用 <a href="http://doc.scrapy.org/en/1.0/topics/feed-exports.html#topics-feed-exports" target="_blank" rel="external">Feed exports</a>，通过下面的命令：</p>
+<pre><code>scrapy crawl dmoz -o items.json
+</code></pre><p>这会生成一个名为<code>item.json</code>的文件，存储了我们抓取的数据，存储格式为JSON。<br>小的项目可以使用这种存储方式，如果需要处理更加复杂的情况，则可以编写一个 <a href="http://doc.scrapy.org/en/1.0/topics/item-pipeline.html#topics-item-pipeline" target="_blank" rel="external">Item Pipeline</a></p>
+
       
     </div>
 
@@ -497,7 +695,7 @@ var jiathis_config={
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Scrapy-是？"><span class="nav-number">1.</span> <span class="nav-text">Scrapy 是？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Scrapy-安装"><span class="nav-number">2.</span> <span class="nav-text">Scrapy 安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Scrapy-Tutorial"><span class="nav-number">3.</span> <span class="nav-text">Scrapy Tutorial</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建-Scrapy-项目"><span class="nav-number">3.1.</span> <span class="nav-text">创建 Scrapy 项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-Item"><span class="nav-number">3.2.</span> <span class="nav-text">定义 Item</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个-Spider"><span class="nav-number">3.3.</span> <span class="nav-text">第一个 Spider</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#爬取"><span class="nav-number">3.3.1.</span> <span class="nav-text">爬取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提取Items"><span class="nav-number">3.3.2.</span> <span class="nav-text">提取Items</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Selector"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">Selector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在-Shell-里面尝试-Selector"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">在 Shell 里面尝试 Selector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提取数据"><span class="nav-number">3.3.2.3.</span> <span class="nav-text">提取数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用我们的Item"><span class="nav-number">3.3.3.</span> <span class="nav-text">使用我们的Item</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Following-links"><span class="nav-number">3.4.</span> <span class="nav-text">Following links</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储爬取的数据"><span class="nav-number">3.5.</span> <span class="nav-text">存储爬取的数据</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
