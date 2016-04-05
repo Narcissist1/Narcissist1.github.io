@@ -63,7 +63,7 @@
 <meta property="og:url" content="narcissist1.github.io/2016/04/05/what-is-WSGI/index.html">
 <meta property="og:site_name" content="Zack's Notebook">
 <meta property="og:description" content="Web Server Gateway InterfaceWeb Server Gateway Interface(WSGI) 是一个简单通用的接口规范，介于 web 服务器和 Python web 应用或者框架之间。最初由 Phillip J. Eby 在2003.12.7 提出，编于 PEP 333。之后被接受作为 Pythonweb 应用开发的标准。最近一个版本是 v1.0.1，也就是 PEP">
-<meta property="og:updated_time" content="2016-04-05T05:01:34.000Z">
+<meta property="og:updated_time" content="2016-04-05T07:56:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="what is WSGI">
 <meta name="twitter:description" content="Web Server Gateway InterfaceWeb Server Gateway Interface(WSGI) 是一个简单通用的接口规范，介于 web 服务器和 Python web 应用或者框架之间。最初由 Phillip J. Eby 在2003.12.7 提出，编于 PEP 333。之后被接受作为 Pythonweb 应用开发的标准。最近一个版本是 v1.0.1，也就是 PEP">
@@ -290,7 +290,7 @@
 
       
         <h1 id="Web-Server-Gateway-Interface"><a href="#Web-Server-Gateway-Interface" class="headerlink" title="Web Server Gateway Interface"></a>Web Server Gateway Interface</h1><p>Web Server Gateway Interface(WSGI) 是一个简单通用的接口规范，介于 web 服务器和 Python web 应用或者框架之间。最初由 Phillip J. Eby 在2003.12.7 提出，编于 PEP 333。之后被接受作为 Python<br>web 应用开发的标准。最近一个版本是 v1.0.1，也就是 PEP 3333，发布于 2010.12.26.</p>
-<a id="more"></a>
+<!--moregit -->
 <h2 id="Idea"><a href="#Idea" class="headerlink" title="Idea"></a>Idea</h2><p>Python web 框架对于 Python 新手来说一直是一个问题，因为 web 框架的选择被 web 服务器的选择所限制。Python 应用程序通常被设计适配 CGI， FastCGI，mod_python等 web 服务器中的一种。</p>
 <p>WSGI 作为一个底层接口被创建于 web 服务器和 web 应用程序或者框架之间，提升 web 应用程序开发的共性和可移植性。WSGI是基于现存的CGI标准而设计的。</p>
 <h2 id="规范概览"><a href="#规范概览" class="headerlink" title="规范概览"></a>规范概览</h2><p>WSGI区分为两个部分：一为“服务器”或“网关”，另一为“应用程序”或“应用框架”。在处理一个WSGI请求时，服务器会为应用程序提供环境资讯及一个回呼函数（Callback Function）。当应用程序完成处理请求后，透过前述的回呼函数，将结果回传给服务器。</p>
