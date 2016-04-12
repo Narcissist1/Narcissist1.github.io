@@ -226,6 +226,135 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/12/Python-property-decorator/" itemprop="url">
+                  Python property decorator
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-12T14:12:23+08:00" content="2016-04-12">
+              2016-04-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术相关/" itemprop="url" rel="index">
+                    <span itemprop="name">技术相关</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/12/Python-property-decorator/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/Python-property-decorator/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="property-方法"><a href="#property-方法" class="headerlink" title="property() 方法"></a>property() 方法</h1><p>property() 方法返回了一个特殊的 <a href="https://docs.python.org/2/howto/descriptor.html">descriptor object</a>， 它的目的就是创建一个类的属性，这个属性看起来用起来就像普通的属性一样，但是你可以提供自己的方法去控制它（设置它的值，获取它的值）。看起来就像一个操作定制化的属性。</p>
+<p>操作这个属性的方法有三种 read, write, delete。当你创建一个属性时，你可以提供任意个或者全部的方法。</p>
+<p>创建一个新式类 C，以及一个 p 属性：</p>
+<pre><code>class C(...):
+    def R(self):
+        ...read method...
+    def W(self, value):
+        ...write method...
+    def D(self):
+        ...delete method...
+    p = property(R, W, D, doc)
+    ...
+</code></pre>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/12/Python-property-decorator/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/05/what-is-WSGI/" itemprop="url">
                   what is WSGI
                 </a>
@@ -846,7 +975,7 @@ hexo server
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -863,7 +992,7 @@ hexo server
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
