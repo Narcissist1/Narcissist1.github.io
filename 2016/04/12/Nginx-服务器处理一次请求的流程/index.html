@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="Nginx," />
 
 
 
@@ -57,22 +57,43 @@
 
 
 
-<meta name="description" content="property() 方法property() 方法返回了一个特殊的 descriptor object， 它的目的就是创建一个类的属性，这个属性看起来用起来就像普通的属性一样，但是你可以提供自己的方法去控制它（设置它的值，获取它的值）。看起来就像一个操作定制化的属性。
-操作这个属性的方法有三种 read, write, delete。当你创建一个属性时，你可以提供任意个或者全部的方法。
-创建一个">
+<meta name="description" content="基于名字的虚拟主机Nginx首先选定由哪一个虚拟主机来处理请求。让我们从一个简单的配置（其中全部3个虚拟主机都在端口*：80上监听）开始：
+server {
+    listen      80;
+    server_name example.org www.example.org;
+    ...
+}
+
+server {
+    listen      80;
+    server_name">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python property decorator">
-<meta property="og:url" content="narcissist1.github.io/2016/04/12/Python-property-decorator/index.html">
+<meta property="og:title" content="Nginx 服务器处理一次请求的流程">
+<meta property="og:url" content="narcissist1.github.io/2016/04/12/Nginx-服务器处理一次请求的流程/index.html">
 <meta property="og:site_name" content="Zack's Notebook">
-<meta property="og:description" content="property() 方法property() 方法返回了一个特殊的 descriptor object， 它的目的就是创建一个类的属性，这个属性看起来用起来就像普通的属性一样，但是你可以提供自己的方法去控制它（设置它的值，获取它的值）。看起来就像一个操作定制化的属性。
-操作这个属性的方法有三种 read, write, delete。当你创建一个属性时，你可以提供任意个或者全部的方法。
-创建一个">
-<meta property="og:updated_time" content="2016-04-12T07:27:51.000Z">
+<meta property="og:description" content="基于名字的虚拟主机Nginx首先选定由哪一个虚拟主机来处理请求。让我们从一个简单的配置（其中全部3个虚拟主机都在端口*：80上监听）开始：
+server {
+    listen      80;
+    server_name example.org www.example.org;
+    ...
+}
+
+server {
+    listen      80;
+    server_name">
+<meta property="og:updated_time" content="2016-04-12T10:21:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python property decorator">
-<meta name="twitter:description" content="property() 方法property() 方法返回了一个特殊的 descriptor object， 它的目的就是创建一个类的属性，这个属性看起来用起来就像普通的属性一样，但是你可以提供自己的方法去控制它（设置它的值，获取它的值）。看起来就像一个操作定制化的属性。
-操作这个属性的方法有三种 read, write, delete。当你创建一个属性时，你可以提供任意个或者全部的方法。
-创建一个">
+<meta name="twitter:title" content="Nginx 服务器处理一次请求的流程">
+<meta name="twitter:description" content="基于名字的虚拟主机Nginx首先选定由哪一个虚拟主机来处理请求。让我们从一个简单的配置（其中全部3个虚拟主机都在端口*：80上监听）开始：
+server {
+    listen      80;
+    server_name example.org www.example.org;
+    ...
+}
+
+server {
+    listen      80;
+    server_name">
 
 
 
@@ -90,7 +111,7 @@
   };
 </script>
 
-  <title> Python property decorator | Zack's Notebook </title>
+  <title> Nginx 服务器处理一次请求的流程 | Zack's Notebook </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -230,7 +251,7 @@
             
             
               
-                Python property decorator
+                Nginx 服务器处理一次请求的流程
               
             
           </h1>
@@ -242,7 +263,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-12T14:12:23+08:00" content="2016-04-12">
+            <time itemprop="dateCreated" datetime="2016-04-12T17:51:04+08:00" content="2016-04-12">
               2016-04-12
             </time>
           </span>
@@ -272,8 +293,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/12/Python-property-decorator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/Python-property-decorator/" itemprop="commentsCount"></span>
+                <a href="/2016/04/12/Nginx-服务器处理一次请求的流程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/Nginx-服务器处理一次请求的流程/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -295,80 +316,114 @@
       
 
       
-        <h1 id="property-方法"><a href="#property-方法" class="headerlink" title="property() 方法"></a>property() 方法</h1><p>property() 方法返回了一个特殊的 <a href="https://docs.python.org/2/howto/descriptor.html" target="_blank" rel="external">descriptor object</a>， 它的目的就是创建一个类的属性，这个属性看起来用起来就像普通的属性一样，但是你可以提供自己的方法去控制它（设置它的值，获取它的值）。看起来就像一个操作定制化的属性。</p>
-<p>操作这个属性的方法有三种 read, write, delete。当你创建一个属性时，你可以提供任意个或者全部的方法。</p>
-<p>创建一个新式类 C，以及一个 p 属性：</p>
-<pre><code>class C(...):
-    def R(self):
-        ...read method...
-    def W(self, value):
-        ...write method...
-    def D(self):
-        ...delete method...
-    p = property(R, W, D, doc)
+        <h1 id="基于名字的虚拟主机"><a href="#基于名字的虚拟主机" class="headerlink" title="基于名字的虚拟主机"></a>基于名字的虚拟主机</h1><p>Nginx首先选定由哪一个虚拟主机来处理请求。让我们从一个简单的配置（其中全部3个虚拟主机都在端口*：80上监听）开始：</p>
+<pre><code>server {
+    listen      80;
+    server_name example.org www.example.org;
     ...
-</code></pre><a id="more"></a>
-<ul>
-<li>R 是一个不带参数的 <code>getter</code> 方法，返回属性的值，如果不提供此方法，任何读操作都会引起<code>AttributeError</code></li>
-<li>W 是一个接受一个参数的 <code>setter</code> 方法，设置这个属性为这个参数的值，如果不提供此方法，任何写操作都会引起<code>AttributeError</code></li>
-<li>D 是一个 <code>deleter</code> 方法，会删除这个属性，如果不提供此方法，删除操作会引起<code>AttributeError</code></li>
-<li><p>doc 是一个文档字符串用来描述这个属性，调用方法</p>
-<pre><code>C.p.__doc__
-</code></pre></li>
-</ul>
-<p>以下是一个小的类带有属性 x:</p>
-<pre><code>class C(object):
-    def __init__(self):
-        self.__x=None
-    def getx(self):
-        print &quot;+++ getx()&quot;
-        return self.__x
-    def setx(self, v):
-        print &quot;+++ setx({0})&quot;.format(v)
-        self.__x  =  v
-    def delx(self):
-        print &quot;+++ delx()&quot;
-        del self.__x
-    x=property(getx, setx, delx, &quot;Me property &apos;x&apos;.&quot;)
-</code></pre><p>在 python 解释器中执行：</p>
-<pre><code>&gt;&gt;&gt; c=C()
-&gt;&gt;&gt; print c.x
-+++ getx()
-None
-&gt;&gt;&gt; print C.x.__doc__
-Me property &apos;x&apos;.
-&gt;&gt;&gt; c.x=15
-+++ setx(15)
-&gt;&gt;&gt; c.x
-+++ getx()
-15
-&gt;&gt;&gt; del c.x
-+++ delx()
-&gt;&gt;&gt; c.x
-+++ getx()
-Traceback (most recent call last):
-  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-  File &quot;&lt;stdin&gt;&quot;, line 6, in getx
-AttributeError: &apos;C&apos; object has no attribute &apos;_C__x&apos;
-</code></pre><h1 id="property-decorator"><a href="#property-decorator" class="headerlink" title="property decorator"></a>property decorator</h1><p>从 Python 2.6 开始这个方法支持装饰器用法 <code>@property</code> ，使用这个装饰器装饰一个函数，和用 <code>getter</code> 装饰它效果是一样的。另外这个装饰器本身又带有 <code>deleter</code> 和 <code>setter</code> 两个装饰器。可以使用被 <code>@property</code> 装饰过的函数去定义自己的 <code>setter</code> 和 <code>deleter</code> 方法。</p>
-<p>比如你需要给你的类提供一个 state 属性，而你的 getter 方法返回一个私有的属性 ._state。你可以这样定义：</p>
-<pre><code>@property
-def state(self):
-    &apos;&apos;&apos;The internal state property.&apos;&apos;&apos;
-    return self._state
-</code></pre><p>这样 .state 将会是这个属性的 getter 方法，而且 文档字符串’’’The internal state property.’’’ 也会被存储在属性中。</p>
-<p>如果你需要 setter 和 deleter 方法：</p>
-<pre><code>@state.setter
-def state(self, k):
-    if not (0 &lt;= k &lt;= 2):
-        raise ValueError(&quot;Must be 0 through 2 inclusive!&quot;)
-    else:
-        self._state = k
+}
 
-@state.deleter
-def state(self):
-    del self._state
-</code></pre>
+server {
+    listen      80;
+    server_name example.net www.example.net;
+    ...
+}
+
+server {
+    listen      80;
+    server_name example.com www.example.com;
+    ...
+}
+</code></pre><a id="more"></a>
+<p>在这个配置中，nginx仅仅检查请求的“Host”头以决定该请求应由哪个虚拟主机来处理。如果Host头没有匹配任意一个虚拟主机，或者请求中根本没有包含Host头，那nginx会将请求分发到定义在此端口上的默认虚拟主机。在以上配置中，第一个被列出的虚拟主机即nginx的默认虚拟主机——这是nginx的默认行为。而且，可以显式地设置某个主机为默认虚拟主机，即在”listen”指令中设置”default_server”参数：</p>
+<pre><code>server {
+    listen      80 default_server;
+    server_name example.net www.example.net;
+    ...
+}
+</code></pre><p>“default_server”参数从0.8.21版开始可用。在之前的版本中，应该使用”default”参数代替。<br>请注意”default_server”是监听端口的属性，而不是主机名的属性。后面会对此有更多介绍。</p>
+<h1 id="如何防止处理未定义主机名的请求"><a href="#如何防止处理未定义主机名的请求" class="headerlink" title="如何防止处理未定义主机名的请求"></a>如何防止处理未定义主机名的请求</h1><p>如果不允许请求中缺少“Host”头，可以定义如下主机，丢弃这些请求：</p>
+<pre><code>server {
+    listen       80;
+    server_name  &quot;&quot;;
+    return       444;
+}
+</code></pre><p>在这里，我们设置主机名为空字符串以匹配未定义“Host”头的请求，而且返回了一个nginx特有的，非http标准的返回码444，它可以用来关闭连接。</p>
+<blockquote>
+<p>从0.8.48版本开始，这已成为主机名的默认设置，所以可以省略server_name<br>“”。而之前的版本使用机器的hostname作为主机名的默认值。</p>
+</blockquote>
+<p>＃ 基于域名和IP混合的虚拟主机</p>
+<p>下面让我们来看一个复杂点的配置，在这个配置里，有几个虚拟主机在不同的地址上监听：</p>
+<pre><code>server {
+    listen      192.168.1.1:80;
+    server_name example.org www.example.org;
+    ...
+}
+
+server {
+    listen      192.168.1.1:80;
+    server_name example.net www.example.net;
+    ...
+}
+
+server {
+    listen      192.168.1.2:80;
+    server_name example.com www.example.com;
+    ...
+}
+</code></pre><p>这个配置中，nginx首先测试请求的IP地址和端口是否匹配某个server配置块中的listen指令配置。接着nginx继续测试请求的Host头是否匹配这个server块中的某个server_name的值。如果主机名没有找到，nginx将把这个请求交给默认虚拟主机处理。例如，一个从192.168.1.1:80端口收到的访问www.example.com的请求将被监听192.168.1.1:80端口的默认虚拟主机处理，本例中就是第一个服务器，因为这个端口上没有定义名为www.example.com的虚拟主机。</p>
+<p>默认服务器是监听端口的属性，所以不同的监听端口可以设置不同的默认服务器：</p>
+<pre><code>server {
+    listen      192.168.1.1:80;
+    server_name example.org www.example.org;
+    ...
+}
+
+server {
+    listen      192.168.1.1:80 default_server;
+    server_name example.net www.example.net;
+    ...
+}
+
+server {
+    listen      192.168.1.2:80 default_server;
+    server_name example.com www.example.com;
+    ...
+}
+</code></pre><h1 id="一个简单PHP站点配置"><a href="#一个简单PHP站点配置" class="headerlink" title="一个简单PHP站点配置"></a>一个简单PHP站点配置</h1><p>现在我们来看在一个典型的，简单的PHP站点中，nginx怎样为一个请求选择location来处理：</p>
+<pre><code>server {
+    listen      80;
+    server_name example.org www.example.org;
+    root        /data/www;
+
+    location / {
+        index   index.html index.php;
+    }
+
+    location ~* \.(gif|jpg|png)$ {
+        expires 30d;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass  localhost:9000;
+        fastcgi_param SCRIPT_FILENAME
+                      $document_root$fastcgi_script_name;
+        include       fastcgi_params;
+    }
+}
+</code></pre><p>首先，nginx使用前缀匹配找出最准确的location，这一步nginx会忽略location在配置文件出现的顺序。上面的配置中，唯一的前缀匹配location是”/“，而且因为它可以匹配任意的请求，所以被作为最后一个选择。接着，nginx继续按照配置中的顺序依次匹配正则表达式的location，匹配到第一个正则表达式后停止搜索。匹配到的location将被使用。如果没有匹配到正则表达式的location，则使用刚刚找到的最准确的前缀匹配的location。</p>
+<p>请注意所有location匹配测试只使用请求的URI部分，而不使用参数部分。这是因为写参数的方法很多，比如：</p>
+<pre><code>/index.php?user=john&amp;page=1
+/index.php?page=1&amp;user=john
+</code></pre><p>除此以外，任何人在请求串中都可以随意添加字符串：</p>
+<pre><code>/index.php?page=1&amp;something+else&amp;user=john
+</code></pre><p>现在让我们来看使用上面的配置，请求是怎样被处理的：</p>
+<pre><code>请求&quot;/logo.gif&quot;首先匹配上location &quot;/&quot;，然后匹配上正则表达式&quot;\.(gif|jpg|png)$&quot;。因此，它将被后者处理。根据&quot;root /data/www&quot;指令，nginx将请求映射到文件/data/www/logo.gif&quot;，并发送这个文件到客户端。
+请求&quot;/index.php&quot;首先也匹配上location &quot;/&quot;，然后匹配上正则表达式&quot;\.(php)$&quot;。 因此，它将被后者处理，进而被发送到监听在localhost:9000的FastCGI服务器。fastcgi_param指令将FastCGI的参数SCRIPT_FILENAME的值设置为&quot;/data/www/index.php&quot;，接着FastCGI服务器执行这个文件。变量$document_root等于root指令设置的值，变量$fastcgi_script_name的值是请求的uri，&quot;/index.php&quot;。
+请求&quot;/about.html&quot;仅能匹配上location &quot;/&quot;，因此，它将使用此location进行处理。根据&quot;root /data/www&quot;指令，nginx将请求映射到文件&quot;/data/www/about.html&quot;，并发送这个文件到客户端。
+请求&quot;/&quot;的处理更为复杂。它仅能匹配上location &quot;/&quot;，因此，它将使用此location进行处理。然后，index指令使用它的参数和&quot;root /data/www&quot;指令所组成的文件路径来检测对应的文件是否存在。如果文件/data/www/index.html不存在，而/data/www/index.php存在，此指令将执行一次内部重定向到&quot;/index.php&quot;，接着nginx将重新寻找匹配&quot;/index.php&quot;的location，就好像这次请求是从客户端发过来一样。正如我们之前看到的那样，这个重定向的请求最终交给FastCGI服务器来处理。
+</code></pre><p><a href="http://tengine.taobao.org/nginx_docs/cn/docs/http/request_processing.html#how_to_prevent_undefined_server_names" target="_blank" rel="external">原文链接</a></p>
+
       
     </div>
 
@@ -382,7 +437,7 @@ def state(self):
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag">#python</a>
+            <a href="/tags/Nginx/" rel="tag">#Nginx</a>
           
         </div>
       
@@ -391,17 +446,13 @@ def state(self):
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/05/what-is-WSGI/" rel="next" title="what is WSGI">
-                <i class="fa fa-chevron-left"></i> what is WSGI
+              <a href="/2016/04/12/Python-property-decorator/" rel="next" title="Python property decorator">
+                <i class="fa fa-chevron-left"></i> Python property decorator
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/12/Nginx-服务器处理一次请求的流程/" rel="prev" title="Nginx 服务器处理一次请求的流程">
-                Nginx 服务器处理一次请求的流程 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -449,8 +500,8 @@ var jiathis_config={
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/12/Python-property-decorator/"
-           data-title="Python property decorator" data-url="narcissist1.github.io/2016/04/12/Python-property-decorator/">
+      <div class="ds-thread" data-thread-key="2016/04/12/Nginx-服务器处理一次请求的流程/"
+           data-title="Nginx 服务器处理一次请求的流程" data-url="narcissist1.github.io/2016/04/12/Nginx-服务器处理一次请求的流程/">
       </div>
     
   </div>
@@ -580,7 +631,7 @@ var jiathis_config={
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#property-方法"><span class="nav-number">1.</span> <span class="nav-text">property() 方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#property-decorator"><span class="nav-number">2.</span> <span class="nav-text">property decorator</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基于名字的虚拟主机"><span class="nav-number">1.</span> <span class="nav-text">基于名字的虚拟主机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何防止处理未定义主机名的请求"><span class="nav-number">2.</span> <span class="nav-text">如何防止处理未定义主机名的请求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个简单PHP站点配置"><span class="nav-number">3.</span> <span class="nav-text">一个简单PHP站点配置</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
