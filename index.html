@@ -296,7 +296,7 @@
         
           <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>前端请求非本地域名下的资源，会出现 not allow access 问题</p>
 <pre><code>XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &apos;Access-Control-Allow-Origin&apos; header is present on the requested resource. Origin &apos;http://127.0.0.1:8080&apos; is therefore not allowed access.
-</code></pre><p>解决方法：<br>后端在返回 response 时，在 response hear 增加 ‘Access-Control-Allow-Origin’: ‘*’:</p>
+</code></pre><h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>后端在返回 response 时，在 response hear 增加 ‘Access-Control-Allow-Origin’: ‘*’:</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/17/跨域问题解决方法/#more" rel="contents">
               阅读全文 &raquo;
