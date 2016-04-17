@@ -67,7 +67,7 @@
 <meta property="og:description" content="property() 方法property() 方法返回了一个特殊的 descriptor object， 它的目的就是创建一个类的属性，这个属性看起来用起来就像普通的属性一样，但是你可以提供自己的方法去控制它（设置它的值，获取它的值）。看起来就像一个操作定制化的属性。
 操作这个属性的方法有三种 read, write, delete。当你创建一个属性时，你可以提供任意个或者全部的方法。
 创建一个">
-<meta property="og:updated_time" content="2016-04-12T07:27:51.000Z">
+<meta property="og:updated_time" content="2016-04-17T09:46:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python property decorator">
 <meta name="twitter:description" content="property() 方法property() 方法返回了一个特殊的 descriptor object， 它的目的就是创建一个类的属性，这个属性看起来用起来就像普通的属性一样，但是你可以提供自己的方法去控制它（设置它的值，获取它的值）。看起来就像一个操作定制化的属性。
@@ -298,16 +298,8 @@
         <h1 id="property-方法"><a href="#property-方法" class="headerlink" title="property() 方法"></a>property() 方法</h1><p>property() 方法返回了一个特殊的 <a href="https://docs.python.org/2/howto/descriptor.html" target="_blank" rel="external">descriptor object</a>， 它的目的就是创建一个类的属性，这个属性看起来用起来就像普通的属性一样，但是你可以提供自己的方法去控制它（设置它的值，获取它的值）。看起来就像一个操作定制化的属性。</p>
 <p>操作这个属性的方法有三种 read, write, delete。当你创建一个属性时，你可以提供任意个或者全部的方法。</p>
 <p>创建一个新式类 C，以及一个 p 属性：</p>
-<pre><code>class C(...):
-    def R(self):
-        ...read method...
-    def W(self, value):
-        ...write method...
-    def D(self):
-        ...delete method...
-    p = property(R, W, D, doc)
-    ...
-</code></pre><a id="more"></a>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(...)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">R</span><span class="params">(self)</span>:</span></span><br><span class="line">        ...read method...</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">W</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        ...write method...</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">D</span><span class="params">(self)</span>:</span></span><br><span class="line">        ...delete method...</span><br><span class="line">    p = property(R, W, D, doc)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <ul>
 <li>R 是一个不带参数的 <code>getter</code> 方法，返回属性的值，如果不提供此方法，任何读操作都会引起<code>AttributeError</code></li>
 <li>W 是一个接受一个参数的 <code>setter</code> 方法，设置这个属性为这个参数的值，如果不提供此方法，任何写操作都会引起<code>AttributeError</code></li>
@@ -317,20 +309,8 @@
 </code></pre></li>
 </ul>
 <p>以下是一个小的类带有属性 x:</p>
-<pre><code>class C(object):
-    def __init__(self):
-        self.__x=None
-    def getx(self):
-        print &quot;+++ getx()&quot;
-        return self.__x
-    def setx(self, v):
-        print &quot;+++ setx({0})&quot;.format(v)
-        self.__x  =  v
-    def delx(self):
-        print &quot;+++ delx()&quot;
-        del self.__x
-    x=property(getx, setx, delx, &quot;Me property &apos;x&apos;.&quot;)
-</code></pre><p>在 python 解释器中执行：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.__x=<span class="keyword">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getx</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"+++ getx()"</span></span><br><span class="line">        <span class="keyword">return</span> self.__x</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setx</span><span class="params">(self, v)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"+++ setx(&#123;0&#125;)"</span>.format(v)</span><br><span class="line">        self.__x  =  v</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delx</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"+++ delx()"</span></span><br><span class="line">        <span class="keyword">del</span> self.__x</span><br><span class="line">    x=property(getx, setx, delx, <span class="string">"Me property 'x'."</span>)</span><br></pre></td></tr></table></figure>
+<p>在 python 解释器中执行：</p>
 <pre><code>&gt;&gt;&gt; c=C()
 &gt;&gt;&gt; print c.x
 +++ getx()
@@ -352,23 +332,11 @@ Traceback (most recent call last):
 AttributeError: &apos;C&apos; object has no attribute &apos;_C__x&apos;
 </code></pre><h1 id="property-decorator"><a href="#property-decorator" class="headerlink" title="property decorator"></a>property decorator</h1><p>从 Python 2.6 开始这个方法支持装饰器用法 <code>@property</code> ，使用这个装饰器装饰一个函数，和用 <code>getter</code> 装饰它效果是一样的。另外这个装饰器本身又带有 <code>deleter</code> 和 <code>setter</code> 两个装饰器。可以使用被 <code>@property</code> 装饰过的函数去定义自己的 <code>setter</code> 和 <code>deleter</code> 方法。</p>
 <p>比如你需要给你的类提供一个 state 属性，而你的 getter 方法返回一个私有的属性 ._state。你可以这样定义：</p>
-<pre><code>@property
-def state(self):
-    &apos;&apos;&apos;The internal state property.&apos;&apos;&apos;
-    return self._state
-</code></pre><p>这样 .state 将会是这个属性的 getter 方法，而且 文档字符串’’’The internal state property.’’’ 也会被存储在属性中。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@property</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">state</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">'''The internal state property.'''</span></span><br><span class="line">    <span class="keyword">return</span> self._state</span><br></pre></td></tr></table></figure>
+<p>这样 .state 将会是这个属性的 getter 方法，而且 文档字符串’’’The internal state property.’’’ 也会被存储在属性中。</p>
 <p>如果你需要 setter 和 deleter 方法：</p>
-<pre><code>@state.setter
-def state(self, k):
-    if not (0 &lt;= k &lt;= 2):
-        raise ValueError(&quot;Must be 0 through 2 inclusive!&quot;)
-    else:
-        self._state = k
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@state.setter</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">state</span><span class="params">(self, k)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> (<span class="number">0</span> &lt;= k &lt;= <span class="number">2</span>):</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">"Must be 0 through 2 inclusive!"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        self._state = k</span><br><span class="line">        </span><br><span class="line"><span class="meta">@state.deleter</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">state</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">del</span> self._state</span><br></pre></td></tr></table></figure>
 
-@state.deleter
-def state(self):
-    del self._state
-</code></pre>
       
     </div>
 
@@ -495,7 +463,7 @@ var jiathis_config={
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -512,7 +480,7 @@ var jiathis_config={
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
