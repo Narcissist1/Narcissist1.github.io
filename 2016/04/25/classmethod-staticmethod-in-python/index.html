@@ -63,7 +63,7 @@
 <meta property="og:url" content="narcissist1.github.io/2016/04/25/classmethod-staticmethod-in-python/index.html">
 <meta property="og:site_name" content="Zack's Notebook">
 <meta property="og:description" content="Difference between classmethod and staticmethod in python12345678910111213class A(object):    def foo(self,x):        print &quot;executing foo(%s,%s)&quot;%(self,x)    @classmethod    def class_foo(cls,x):">
-<meta property="og:updated_time" content="2016-04-25T08:35:16.000Z">
+<meta property="og:updated_time" content="2016-04-25T08:36:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="classmethod & staticmethod in python">
 <meta name="twitter:description" content="Difference between classmethod and staticmethod in python12345678910111213class A(object):    def foo(self,x):        print &quot;executing foo(%s,%s)&quot;%(self,x)    @classmethod    def class_foo(cls,x):">
@@ -323,7 +323,9 @@
 <p>下面是调用 foo 方法的语句，a 实例将自己作为第一个参数传给 foo 方法：</p>
 <pre><code>a.foo(1)
 # executing foo(&lt;__main__.A object at 0xb7dbef0c&gt;,1)
-</code></pre><h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p><strong>调用类方法</strong> 类将本身而不是创建的实例传给 class_foo 方法：</p>
+</code></pre><a id="more"></a>
+<hr>
+<p><strong>调用类方法</strong> 类将本身而不是创建的实例传给 class_foo 方法：</p>
 <pre><code>a.class_foo(1)
 # executing class_foo(&lt;class &apos;__main__.A&apos;&gt;,1)
 </code></pre><p>同样也可以通过类 A 直接调用 class_foo, 一般情况下，如果你定义了一个类方法，通常你会通过类而不是类创建的实例来调用它。</p>
@@ -544,7 +546,7 @@ var jiathis_config={
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Difference-between-classmethod-and-staticmethod-in-python"><span class="nav-number">1.</span> <span class="nav-text">Difference between classmethod and staticmethod in python</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.1.</span> <span class="nav-text"></span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Difference-between-classmethod-and-staticmethod-in-python"><span class="nav-number">1.</span> <span class="nav-text">Difference between classmethod and staticmethod in python</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
