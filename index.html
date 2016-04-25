@@ -324,27 +324,16 @@
 
       
         
-          
-            <h1 id="Difference-between-classmethod-and-staticmethod-in-python"><a href="#Difference-between-classmethod-and-staticmethod-in-python" class="headerlink" title="Difference between classmethod and staticmethod in python"></a>Difference between classmethod and staticmethod in python</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self,x)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"executing foo(%s,%s)"</span>%(self,x)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">class_foo</span><span class="params">(cls,x)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"executing class_foo(%s,%s)"</span>%(cls,x)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">static_foo</span><span class="params">(x)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"executing static_foo(%s)"</span>%x    </span><br><span class="line"></span><br><span class="line">a=A()</span><br></pre></td></tr></table></figure>
+          <h1 id="Difference-between-classmethod-and-staticmethod-in-python"><a href="#Difference-between-classmethod-and-staticmethod-in-python" class="headerlink" title="Difference between classmethod and staticmethod in python"></a>Difference between classmethod and staticmethod in python</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self,x)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"executing foo(%s,%s)"</span>%(self,x)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">class_foo</span><span class="params">(cls,x)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"executing class_foo(%s,%s)"</span>%(cls,x)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">static_foo</span><span class="params">(x)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"executing static_foo(%s)"</span>%x    </span><br><span class="line"></span><br><span class="line">a=A()</span><br></pre></td></tr></table></figure>
 <p>下面是调用 foo 方法的语句，a 实例将自己作为第一个参数传给 foo 方法：</p>
 <pre><code>a.foo(1)
 # executing foo(&lt;__main__.A object at 0xb7dbef0c&gt;,1)
-</code></pre><hr>
-<p><strong>调用类方法</strong> 类将本身而不是创建的实例传给 class_foo 方法：</p>
-<pre><code>a.class_foo(1)
-# executing class_foo(&lt;class &apos;__main__.A&apos;&gt;,1)
-</code></pre><p>同样也可以通过类 A 直接调用 class_foo, 一般情况下，如果你定义了一个类方法，通常你会通过类而不是类创建的实例来调用它。</p>
-<pre><code>A.class_foo(1)
-# executing class_foo(&lt;class &apos;__main__.A&apos;&gt;,1)
-</code></pre><hr>
-<p><strong>调用静态方法</strong> 类本身或者类创建的实例都不会传给静态方法，静态方法和其他方法使用行为完全相同，但是你可以通过类或者类的实例来调用它。</p>
-<pre><code>a.static_foo(1)
-# executing static_foo(1)
-
-A.static_foo(&apos;hi&apos;)
-# executing static_foo(hi)
-</code></pre>
-          
+</code></pre><h2 id=""><a href="#" class="headerlink" title=""></a>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/25/classmethod-staticmethod-in-python/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
