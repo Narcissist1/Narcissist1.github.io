@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="vim," />
 
 
 
@@ -57,16 +57,18 @@
 
 
 
-<meta name="description" content="Difference between classmethod and staticmethod in python12345678910111213class A(object):    def foo(self,x):        print &quot;executing foo(%s,%s)&quot;%(self,x)    @classmethod    def class_foo(cls,x):">
+<meta name="description" content="三种模式一般指令模式直接打开 vim 就是一般指令模式了，在一般指令模式下，可以上下左右移动光标，翻页，跳转到指定的行，以及删除复制等等操作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="classmethod & staticmethod in python">
-<meta property="og:url" content="narcissist1.github.io/2016/04/25/classmethod-staticmethod-in-python/index.html">
+<meta property="og:title" content="Vim 使用总结">
+<meta property="og:url" content="narcissist1.github.io/2016/10/17/Vim-使用总结/index.html">
 <meta property="og:site_name" content="Zack's Notebook">
-<meta property="og:description" content="Difference between classmethod and staticmethod in python12345678910111213class A(object):    def foo(self,x):        print &quot;executing foo(%s,%s)&quot;%(self,x)    @classmethod    def class_foo(cls,x):">
-<meta property="og:updated_time" content="2016-04-25T08:36:35.000Z">
+<meta property="og:description" content="三种模式一般指令模式直接打开 vim 就是一般指令模式了，在一般指令模式下，可以上下左右移动光标，翻页，跳转到指定的行，以及删除复制等等操作">
+<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/centos7_vi-mode.gif">
+<meta property="og:updated_time" content="2016-10-17T09:13:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="classmethod & staticmethod in python">
-<meta name="twitter:description" content="Difference between classmethod and staticmethod in python12345678910111213class A(object):    def foo(self,x):        print &quot;executing foo(%s,%s)&quot;%(self,x)    @classmethod    def class_foo(cls,x):">
+<meta name="twitter:title" content="Vim 使用总结">
+<meta name="twitter:description" content="三种模式一般指令模式直接打开 vim 就是一般指令模式了，在一般指令模式下，可以上下左右移动光标，翻页，跳转到指定的行，以及删除复制等等操作">
+<meta name="twitter:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/centos7_vi-mode.gif">
 
 
 
@@ -84,7 +86,7 @@
   };
 </script>
 
-  <title> classmethod & staticmethod in python | Zack's Notebook </title>
+  <title> Vim 使用总结 | Zack's Notebook </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -224,7 +226,7 @@
             
             
               
-                classmethod & staticmethod in python
+                Vim 使用总结
               
             
           </h1>
@@ -236,8 +238,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-25T15:55:26+08:00" content="2016-04-25">
-              2016-04-25
+            <time itemprop="dateCreated" datetime="2016-10-17T14:52:17+08:00" content="2016-10-17">
+              2016-10-17
             </time>
           </span>
 
@@ -266,8 +268,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/25/classmethod-staticmethod-in-python/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/25/classmethod-staticmethod-in-python/" itemprop="commentsCount"></span>
+                <a href="/2016/10/17/Vim-使用总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/17/Vim-使用总结/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -289,26 +291,301 @@
       
 
       
-        <h1 id="Difference-between-classmethod-and-staticmethod-in-python"><a href="#Difference-between-classmethod-and-staticmethod-in-python" class="headerlink" title="Difference between classmethod and staticmethod in python"></a>Difference between classmethod and staticmethod in python</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self,x)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"executing foo(%s,%s)"</span>%(self,x)</div><div class="line"></div><div class="line"><span class="meta">    @classmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">class_foo</span><span class="params">(cls,x)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"executing class_foo(%s,%s)"</span>%(cls,x)</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">static_foo</span><span class="params">(x)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"executing static_foo(%s)"</span>%x    </div><div class="line"></div><div class="line">a=A()</div></pre></td></tr></table></figure>
-<p>下面是调用 foo 方法的语句，a 实例将自己作为第一个参数传给 foo 方法：</p>
-<pre><code>a.foo(1)
-# executing foo(&lt;__main__.A object at 0xb7dbef0c&gt;,1)
-</code></pre><a id="more"></a>
-<hr>
-<p><strong>调用类方法</strong> 类将本身而不是创建的实例传给 class_foo 方法：</p>
-<pre><code>a.class_foo(1)
-# executing class_foo(&lt;class &apos;__main__.A&apos;&gt;,1)
-</code></pre><p>同样也可以通过类 A 直接调用 class_foo, 一般情况下，如果你定义了一个类方法，通常你会通过类而不是类创建的实例来调用它。</p>
-<pre><code>A.class_foo(1)
-# executing class_foo(&lt;class &apos;__main__.A&apos;&gt;,1)
-</code></pre><hr>
-<p><strong>调用静态方法</strong> 类本身或者类创建的实例都不会传给静态方法，静态方法和其他方法使用行为完全相同，但是你可以通过类或者类的实例来调用它。</p>
-<pre><code>a.static_foo(1)
-# executing static_foo(1)
+        <h1 id="三种模式"><a href="#三种模式" class="headerlink" title="三种模式"></a>三种模式</h1><h2 id="一般指令模式"><a href="#一般指令模式" class="headerlink" title="一般指令模式"></a>一般指令模式</h2><p>直接打开 vim 就是一般指令模式了，在一般指令模式下，可以上下左右移动光标，翻页，跳转到指定的行，以及删除复制等等操作</p>
+<a id="more"></a>
+<h2 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h2><p>通过在一般指令模式下键入<code>i,I,o,O,a,A,r,R</code>等字母进入编辑模式，编辑模式下可以进行文本的输入和修改，通过键入<code>Esc</code>推出编辑模式重新回到一般指令模式。</p>
+<h2 id="指令列命令模式"><a href="#指令列命令模式" class="headerlink" title="指令列命令模式"></a>指令列命令模式</h2><p>在一般指令模式中键入<code>:/?</code>三个中的任意一个进入指令列模式。进入指令列模式中可以搜索，大量字符替换等等操作。</p>
+<img title="vim 三种模式之间的关系" src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/centos7_vi-mode.gif">
+<h1 id="Cheatsheet"><a href="#Cheatsheet" class="headerlink" title="Cheatsheet"></a>Cheatsheet</h1><h2 id="一般指令模式-1"><a href="#一般指令模式-1" class="headerlink" title="一般指令模式"></a>一般指令模式</h2><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h 或 向左方向鍵(←)</td>
+<td>游標向左移動一個字元</td>
+</tr>
+<tr>
+<td>j 或 向下方向鍵(↓)</td>
+<td>游標向下移動一個字元</td>
+</tr>
+<tr>
+<td>k 或 向上方向鍵(↑)</td>
+<td>游標向上移動一個字元</td>
+</tr>
+<tr>
+<td>l 或 向右方向鍵(→)</td>
+<td>游標向右移動一個字元</td>
+</tr>
+<tr>
+<td>[Ctrl] + [f]</td>
+<td>螢幕『向下』移動一頁，相當於 [Page Down]按鍵 (常用)</td>
+</tr>
+<tr>
+<td>[Ctrl] + [b]</td>
+<td>螢幕『向上』移動一頁，相當於 [Page Up] 按鍵 (常用)</td>
+</tr>
+<tr>
+<td>[Ctrl] + [d]</td>
+<td>螢幕『向下』移動半頁</td>
+</tr>
+<tr>
+<td>[Ctrl] + [u]</td>
+<td>螢幕『向上』移動半頁</td>
+</tr>
+<tr>
+<td>+</td>
+<td>游標移動到非空白字元的下一列</td>
+</tr>
+<tr>
+<td>-</td>
+<td>游標移動到非空白字元的上一列</td>
+</tr>
+<tr>
+<td>n&lt;space&gt;</td>
+<td>那個 n 表示『數字』，例如 20 。按下數字後再按空白鍵，游標會向右移動這一列的 n 個字元。例如 20&lt;space&gt; 則游標會向後面移動 20 個字元距離。</td>
+</tr>
+<tr>
+<td>0 或功能鍵[Home]</td>
+<td>這是數字『 0 』：移動到這一列的最前面字元處 (常用)</td>
+</tr>
+<tr>
+<td>$ 或功能鍵[End]</td>
+<td>移動到這一列的最後面字元處(常用)</td>
+</tr>
+<tr>
+<td>H</td>
+<td>游標移動到這個螢幕的最上方那一列的第一個字元</td>
+</tr>
+<tr>
+<td>M</td>
+<td>游標移動到這個螢幕的中央那一列的第一個字元</td>
+</tr>
+<tr>
+<td>L</td>
+<td>游標移動到這個螢幕的最下方那一列的第一個字元</td>
+</tr>
+<tr>
+<td>G</td>
+<td>移動到這個檔案的最後一列(常用)</td>
+</tr>
+<tr>
+<td>nG</td>
+<td>n 為數字。移動到這個檔案的第 n 列。例如 20G 則會移動到這個檔案的第 20 列(可配合 :set nu)</td>
+</tr>
+<tr>
+<td>gg</td>
+<td>移動到這個檔案的第一列，相當於 1G 啊！ (常用)</td>
+</tr>
+<tr>
+<td>n<enter></enter></td>
+<td>n 為數字。游標向下移動 n 列(常用)</td>
+</tr>
+<tr>
+<td>/word</td>
+<td>向游標之下尋找一個名稱為 word 的字串。例如要在檔案內搜尋 vbird 這個字串，就輸入 /vbird 即可！ (常用)</td>
+</tr>
+<tr>
+<td>?word</td>
+<td>向游標之上尋找一個字串名稱為 word 的字串。例如要在檔案內搜尋</td>
+</tr>
+<tr>
+<td>n</td>
+<td>這個 n 是英文按鍵。代表『重複前一個搜尋的動作』。舉例來說， 如果剛剛我們執行 /vbird 去向下搜尋 vbird 這個字串，則按下 n 後，會向下繼續搜尋下一個名稱為 vbird 的字串。如果是執行 ?vbird 的話，那麼按下 n 則會向上繼續搜尋名稱為 vbird 的字串！</td>
+</tr>
+<tr>
+<td>N</td>
+<td>這個 N 是英文按鍵。與 n 剛好相反，為『反向』進行前一個搜尋動作。 例如 /vbird 後，按下 N 則表示『向上』搜尋 vbird。</td>
+</tr>
+<tr>
+<td>:n1,n2s/word1/word2/g</td>
+<td>n1 與 n2 為數字。在第 n1 與 n2 列之間尋找 word1 這個字串，並將該字串取代為 word2 ！舉例來說，在 100 到 200 列之間搜尋 vbird 並取代為 VBIRD 則：</td>
+</tr>
+<tr>
+<td>『:100,200s/vbird/VBIRD/g』。(常用)</td>
+</tr>
+<tr>
+<td>:1,$s/word1/word2/g</td>
+<td>從第一列到最後一列尋找 word1 字串，並將該字串取代為 word2 ！(常用)</td>
+</tr>
+<tr>
+<td>:1,$s/word1/word2/gc</td>
+<td>從第一列到最後一列尋找 word1 字串，並將該字串取代為 word2 ！且在取代前顯示提示字元給使用者確認 (confirm) 是否需要取代！(常用)</td>
+</tr>
+<tr>
+<td>x, X</td>
+<td>在一列字當中，x 為向後刪除一個字元 (相當於 [del] 按鍵)， X 為向前刪除一個字元(相當於 [backspace] 亦即是倒退鍵) (常用)</td>
+</tr>
+<tr>
+<td>nx</td>
+<td>n 為數字，連續向後刪除 n 個字元。舉例來說，我要連續刪除 10 個字元， 『10x』。</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>刪除游標所在的那一整列(常用)</td>
+</tr>
+<tr>
+<td>ndd</td>
+<td>n 為數字。刪除游標所在的向下 n 列，例如 20dd 則是刪除 20 列 (常用)</td>
+</tr>
+<tr>
+<td>d1G</td>
+<td>刪除游標所在到第一列的所有資料</td>
+</tr>
+<tr>
+<td>dG</td>
+<td>刪除游標所在到最後一列的所有資料</td>
+</tr>
+<tr>
+<td>d$</td>
+<td>刪除游標所在處，到該列的最後一個字元</td>
+</tr>
+<tr>
+<td>d0</td>
+<td>那個是數字的 0 ，刪除游標所在處，到該列的最前面一個字元</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>複製游標所在的那一列(常用)</td>
+</tr>
+<tr>
+<td>nyy</td>
+<td>n 為數字。複製游標所在的向下 n 列，例如 20yy 則是複製 20 列(常用)</td>
+</tr>
+<tr>
+<td>y1G</td>
+<td>複製游標所在列到第一列的所有資料</td>
+</tr>
+<tr>
+<td>yG</td>
+<td>複製游標所在列到最後一列的所有資料</td>
+</tr>
+<tr>
+<td>y0</td>
+<td>複製游標所在的那個字元到該列行首的所有資料</td>
+</tr>
+<tr>
+<td>y$</td>
+<td>複製游標所在的那個字元到該列行尾的所有資料</td>
+</tr>
+<tr>
+<td>p, P</td>
+<td>p 為將已複製的資料在游標下一列貼上，P 則為貼在游標上一列！ 舉例來說，我目前游標在第 20 列，且已經複製了 10 列資料。則按下 p 後， 那 10 列資料會貼在原本的 20 列之後，亦即由 21 列開始貼。但如果是按下 P 呢？ 那麼原本的第 20 列會被推到變成 30 列。 (常用)</td>
+</tr>
+<tr>
+<td>J</td>
+<td>將游標所在列與下一列的資料結合成同一列</td>
+</tr>
+<tr>
+<td>c</td>
+<td>重複刪除多個資料，例如向下刪除 10 列，[ 10cj ]</td>
+</tr>
+<tr>
+<td>u</td>
+<td>復原前一個動作。(常用)</td>
+</tr>
+<tr>
+<td>[Ctrl]+r</td>
+<td>重做上一個動作。(常用)</td>
+</tr>
+<tr>
+<td>.</td>
+<td>重复上一个指令</td>
+</tr>
+</tbody>
+</table>
+<h2 id="编辑模式-1"><a href="#编辑模式-1" class="headerlink" title="编辑模式"></a>编辑模式</h2><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i, I</td>
+<td>進入插入模式(Insert mode)：i 為『從目前游標所在處插入』， I 為『在目前所在列的第一個非空白字元處開始插入』。 (常用)</td>
+</tr>
+<tr>
+<td>a, A</td>
+<td>進入插入模式(Insert mode)：a 為『從目前游標所在的下一個字元處開始插入』， A 為『從游標所在列的最後一個字元處開始插入』。(常用)</td>
+</tr>
+<tr>
+<td>o, O</td>
+<td>進入插入模式(Insert mode)：這是英文字母 o 的大小寫。o 為『在目前游標所在的下一列處插入新的一列』； O 為在目前游標所在處的上一列插入新的一列！(常用)</td>
+</tr>
+<tr>
+<td>r, R</td>
+<td>進入取代模式(Replace mode)：r 只會取代游標所在的那一個字元一次；R會一直取代游標所在的文字，直到按下 ESC 為止；(常用)</td>
+</tr>
+<tr>
+<td>[Esc]</td>
+<td>退出編輯模式，回到一般指令模式中(常用)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="指令列模式"><a href="#指令列模式" class="headerlink" title="指令列模式"></a>指令列模式</h2><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:w</td>
+<td>將編輯的資料寫入硬碟檔案中(常用)</td>
+</tr>
+<tr>
+<td>:w!</td>
+<td>若檔案屬性為『唯讀』時，強制寫入該檔案。不過，到底能不能寫入， 還是跟你對該檔案的檔案權限有關啊！</td>
+</tr>
+<tr>
+<td>:q</td>
+<td>離開 vi (常用)</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>若曾修改過檔案，又不想儲存，使用 ! 為強制離開不儲存檔案。</td>
+</tr>
+<tr>
+<td>:wq</td>
+<td>儲存後離開，若為 :wq! 則為強制儲存後離開 (常用)</td>
+</tr>
+<tr>
+<td>ZZ</td>
+<td>這是大寫的 Z 喔！若檔案沒有更動，則不儲存離開，若檔案已經被更動過，則儲存後離開！</td>
+</tr>
+<tr>
+<td>:w [filename]</td>
+<td>將編輯的資料儲存成另一個檔案（類似另存新檔）</td>
+</tr>
+<tr>
+<td>:r [filename]</td>
+<td>在編輯的資料中，讀入另一個檔案的資料。亦即將 『filename』 這個檔案內容加到游標所在列後面</td>
+</tr>
+<tr>
+<td>:n1,n2 w [filename]</td>
+<td>將 n1 到 n2 的內容儲存成 filename 這個檔案。</td>
+</tr>
+<tr>
+<td>:! command</td>
+<td>暫時離開 vi 到指令列模式下執行 command 的顯示結果！例如『:! ls /home』即可在 vi 當中察看 /home 底下以 ls 輸出的檔案資訊！</td>
+</tr>
+<tr>
+<td>:set nu</td>
+<td>顯示行號，設定之後，會在每一列的字首顯示該列的行號</td>
+</tr>
+<tr>
+<td>:set nonu</td>
+<td>與 set nu 相反，為取消行號！</td>
+</tr>
+</tbody>
+</table>
 
-A.static_foo(&apos;hi&apos;)
-# executing static_foo(hi)
-</code></pre>
       
     </div>
 
@@ -322,7 +599,7 @@ A.static_foo(&apos;hi&apos;)
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag">#python</a>
+            <a href="/tags/vim/" rel="tag">#vim</a>
           
         </div>
       
@@ -331,17 +608,13 @@ A.static_foo(&apos;hi&apos;)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/20/增加-python-包搜索路径/" rel="next" title="增加 python 包搜索路径(Mac系统，或类Unix系统)">
-                <i class="fa fa-chevron-left"></i> 增加 python 包搜索路径(Mac系统，或类Unix系统)
+              <a href="/2016/08/25/将python-脚本制作成命令/" rel="next" title="将python 脚本制作成命令">
+                <i class="fa fa-chevron-left"></i> 将python 脚本制作成命令
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/06/Install-Nginx-uwsgi-on-CentOS7/" rel="prev" title="Install Nginx uwsgi on CentOS7">
-                Install Nginx uwsgi on CentOS7 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -389,8 +662,8 @@ var jiathis_config={
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/25/classmethod-staticmethod-in-python/"
-           data-title="classmethod & staticmethod in python" data-url="narcissist1.github.io/2016/04/25/classmethod-staticmethod-in-python/">
+      <div class="ds-thread" data-thread-key="2016/10/17/Vim-使用总结/"
+           data-title="Vim 使用总结" data-url="narcissist1.github.io/2016/10/17/Vim-使用总结/">
       </div>
     
   </div>
@@ -520,7 +793,7 @@ var jiathis_config={
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Difference-between-classmethod-and-staticmethod-in-python"><span class="nav-number">1.</span> <span class="nav-text">Difference between classmethod and staticmethod in python</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#三种模式"><span class="nav-number">1.</span> <span class="nav-text">三种模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一般指令模式"><span class="nav-number">1.1.</span> <span class="nav-text">一般指令模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑模式"><span class="nav-number">1.2.</span> <span class="nav-text">编辑模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指令列命令模式"><span class="nav-number">1.3.</span> <span class="nav-text">指令列命令模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cheatsheet"><span class="nav-number">2.</span> <span class="nav-text">Cheatsheet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一般指令模式-1"><span class="nav-number">2.1.</span> <span class="nav-text">一般指令模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑模式-1"><span class="nav-number">2.2.</span> <span class="nav-text">编辑模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指令列模式"><span class="nav-number">2.3.</span> <span class="nav-text">指令列模式</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
