@@ -57,19 +57,15 @@
 
 
 
-<meta name="description" content="初入江湖小码农一枚10-14 赛季 华东理工大学计算机科学与技术专业14-15 赛季 Chinese University of Hong Kong Computer Science master15 年下半年开始工作目前主要从事 web 后端开发（python 相关）
-爱旅行，爱音乐，热篮球，爱健身，爱妹子～">
+<meta name="description" content="长路漫漫，砥砺前行">
 <meta property="og:type" content="website">
-<meta property="og:title" content="关于我">
-<meta property="og:url" content="narcissist1.github.io/about/index.html">
+<meta property="og:title" content="Zack's Notebook">
+<meta property="og:url" content="narcissist1.github.io/page/4/index.html">
 <meta property="og:site_name" content="Zack's Notebook">
-<meta property="og:description" content="初入江湖小码农一枚10-14 赛季 华东理工大学计算机科学与技术专业14-15 赛季 Chinese University of Hong Kong Computer Science master15 年下半年开始工作目前主要从事 web 后端开发（python 相关）
-爱旅行，爱音乐，热篮球，爱健身，爱妹子～">
-<meta property="og:updated_time" content="2016-03-28T14:09:24.000Z">
+<meta property="og:description" content="长路漫漫，砥砺前行">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于我">
-<meta name="twitter:description" content="初入江湖小码农一枚10-14 赛季 华东理工大学计算机科学与技术专业14-15 赛季 Chinese University of Hong Kong Computer Science master15 年下半年开始工作目前主要从事 web 后端开发（python 相关）
-爱旅行，爱音乐，热篮球，爱健身，爱妹子～">
+<meta name="twitter:title" content="Zack's Notebook">
+<meta name="twitter:description" content="长路漫漫，砥砺前行">
 
 
 
@@ -87,13 +83,7 @@
   };
 </script>
 
-  <title>
-  
-
-  
-    关于我 | Zack's Notebook
-  
-</title>
+  <title> Zack's Notebook </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -114,7 +104,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -211,15 +203,139 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
+  <section id="posts" class="posts-expand">
+    
+      
 
-  <div id="posts" class="posts-expand">
-    
-    
-      <h2 id="初入江湖小码农一枚"><a href="#初入江湖小码农一枚" class="headerlink" title="初入江湖小码农一枚"></a>初入江湖小码农一枚</h2><p>10-14 赛季 华东理工大学计算机科学与技术专业<br>14-15 赛季 Chinese University of Hong Kong Computer Science master<br>15 年下半年开始工作<br>目前主要从事 web 后端开发（python 相关）</p>
-<p>爱旅行，爱音乐，热篮球，爱健身，爱妹子～</p>
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
-  </div>
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/28/Hexo-GitHub-搭建博客备忘/" itemprop="url">
+                  Hexo + GitHub 搭建博客备忘(Mac)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-28T22:11:00+08:00" content="2016-03-28">
+              2016-03-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术相关/" itemprop="url" rel="index">
+                    <span itemprop="name">技术相关</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/28/Hexo-GitHub-搭建博客备忘/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/28/Hexo-GitHub-搭建博客备忘/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Hexo-安装"><a href="#Hexo-安装" class="headerlink" title="Hexo 安装"></a>Hexo 安装</h2><hr>
+<p>hexo 依赖 <a href="https://nodejs.org/en/">node.js</a>, 首先下载安装node.js。然后运行以下命令：</p>
+<pre><code>npm install hexo-cli -g
+hexo init blog
+cd blog
+npm install
+hexo server
+</code></pre><p>之后就可以在<br><a href="http://localhost:4000/">http://localhost:4000/</a>查看效果了。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/28/Hexo-GitHub-搭建博客备忘/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
 
 
           </div>
