@@ -226,6 +226,131 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/06/Install-Nginx-uwsgi-on-CentOS7/" itemprop="url">
+                  Install Nginx uwsgi on CentOS7
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-06T12:04:07+08:00" content="2016-05-06">
+              2016-05-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术相关/" itemprop="url" rel="index">
+                    <span itemprop="name">技术相关</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/06/Install-Nginx-uwsgi-on-CentOS7/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/06/Install-Nginx-uwsgi-on-CentOS7/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>前些日子买了个 VPS，折腾着安装了 Nginx &amp; uWSGI server, 写个备忘吧</p>
+<h1 id="安装组件"><a href="#安装组件" class="headerlink" title="安装组件"></a>安装组件</h1><p>首先需要在 CentOS7 上安装必要的组件来运行程序，这里主要使用 yum 和 pip。</p>
+<p>首先安装 EPEL</p>
+<pre><code>sudo yum install epel-release
+</code></pre><p>接下来是 Nginx web server 和 python 相关的库</p>
+<pre><code>sudo yum install python-pip python-devel nginx gcc
+</code></pre><p>安装 uWSGI server</p>
+<pre><code>pip install uwsgi
+</code></pre>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/06/Install-Nginx-uwsgi-on-CentOS7/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/25/classmethod-staticmethod-in-python/" itemprop="url">
                   classmethod & staticmethod in python
                 </a>
@@ -686,141 +811,6 @@ python setup.py install
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/12/Nginx-服务器处理一次请求的流程/" itemprop="url">
-                  Nginx 服务器处理一次请求的流程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-12T17:51:04+08:00" content="2016-04-12">
-              2016-04-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术相关/" itemprop="url" rel="index">
-                    <span itemprop="name">技术相关</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/12/Nginx-服务器处理一次请求的流程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/Nginx-服务器处理一次请求的流程/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="基于名字的虚拟主机"><a href="#基于名字的虚拟主机" class="headerlink" title="基于名字的虚拟主机"></a>基于名字的虚拟主机</h1><p>Nginx首先选定由哪一个虚拟主机来处理请求。让我们从一个简单的配置（其中全部3个虚拟主机都在端口*：80上监听）开始：</p>
-<pre><code>server {
-    listen      80;
-    server_name example.org www.example.org;
-    ...
-}
-
-server {
-    listen      80;
-    server_name example.net www.example.net;
-    ...
-}
-
-server {
-    listen      80;
-    server_name example.com www.example.com;
-    ...
-}
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/12/Nginx-服务器处理一次请求的流程/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -866,7 +856,7 @@ server {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

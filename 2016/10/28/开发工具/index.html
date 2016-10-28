@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -57,22 +57,118 @@
 
 
 
-<meta name="description" content="property() 方法property() 方法返回了一个特殊的 descriptor object， 它的目的就是创建一个类的属性，这个属性看起来用起来就像普通的属性一样，但是你可以提供自己的方法去控制它（设置它的值，获取它的值）。看起来就像一个操作定制化的属性。
-操作这个属性的方法有三种 read, write, delete。当你创建一个属性时，你可以提供任意个或者全部的方法。
-创建一个">
+<meta name="description" content="开发工具
+
+
+类型
+推荐
+
+
+
+
+包管理器
+HomeBrew 和 HomeBrew-Cask
+
+
+终端
+iTerm2
+
+
+终端编辑器
+Vim、NeoVim 和 Emacs
+
+
+GUI 编辑器
+Sublime Text 和 Mac Vim
+
+
+IDE 编辑器
+PycharmCE
+
+
+Python REPL
+ptpython + IPython
+
+
+Shell
+zsh + oh-my-zsh + zs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python property decorator">
-<meta property="og:url" content="narcissist1.github.io/2016/04/12/Python-property-decorator/index.html">
+<meta property="og:title" content="开发工具">
+<meta property="og:url" content="narcissist1.github.io/2016/10/28/开发工具/index.html">
 <meta property="og:site_name" content="Zack's Notebook">
-<meta property="og:description" content="property() 方法property() 方法返回了一个特殊的 descriptor object， 它的目的就是创建一个类的属性，这个属性看起来用起来就像普通的属性一样，但是你可以提供自己的方法去控制它（设置它的值，获取它的值）。看起来就像一个操作定制化的属性。
-操作这个属性的方法有三种 read, write, delete。当你创建一个属性时，你可以提供任意个或者全部的方法。
-创建一个">
-<meta property="og:updated_time" content="2016-04-17T09:46:27.000Z">
+<meta property="og:description" content="开发工具
+
+
+类型
+推荐
+
+
+
+
+包管理器
+HomeBrew 和 HomeBrew-Cask
+
+
+终端
+iTerm2
+
+
+终端编辑器
+Vim、NeoVim 和 Emacs
+
+
+GUI 编辑器
+Sublime Text 和 Mac Vim
+
+
+IDE 编辑器
+PycharmCE
+
+
+Python REPL
+ptpython + IPython
+
+
+Shell
+zsh + oh-my-zsh + zs">
+<meta property="og:updated_time" content="2016-10-28T03:50:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python property decorator">
-<meta name="twitter:description" content="property() 方法property() 方法返回了一个特殊的 descriptor object， 它的目的就是创建一个类的属性，这个属性看起来用起来就像普通的属性一样，但是你可以提供自己的方法去控制它（设置它的值，获取它的值）。看起来就像一个操作定制化的属性。
-操作这个属性的方法有三种 read, write, delete。当你创建一个属性时，你可以提供任意个或者全部的方法。
-创建一个">
+<meta name="twitter:title" content="开发工具">
+<meta name="twitter:description" content="开发工具
+
+
+类型
+推荐
+
+
+
+
+包管理器
+HomeBrew 和 HomeBrew-Cask
+
+
+终端
+iTerm2
+
+
+终端编辑器
+Vim、NeoVim 和 Emacs
+
+
+GUI 编辑器
+Sublime Text 和 Mac Vim
+
+
+IDE 编辑器
+PycharmCE
+
+
+Python REPL
+ptpython + IPython
+
+
+Shell
+zsh + oh-my-zsh + zs">
 
 
 
@@ -90,7 +186,7 @@
   };
 </script>
 
-  <title> Python property decorator | Zack's Notebook </title>
+  <title> 开发工具 | Zack's Notebook </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -230,7 +326,7 @@
             
             
               
-                Python property decorator
+                开发工具
               
             
           </h1>
@@ -242,8 +338,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-12T14:12:23+08:00" content="2016-04-12">
-              2016-04-12
+            <time itemprop="dateCreated" datetime="2016-10-28T11:42:05+08:00" content="2016-10-28">
+              2016-10-28
             </time>
           </span>
 
@@ -272,8 +368,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/12/Python-property-decorator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/Python-property-decorator/" itemprop="commentsCount"></span>
+                <a href="/2016/10/28/开发工具/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/28/开发工具/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -295,47 +391,62 @@
       
 
       
-        <h1 id="property-方法"><a href="#property-方法" class="headerlink" title="property() 方法"></a>property() 方法</h1><p>property() 方法返回了一个特殊的 <a href="https://docs.python.org/2/howto/descriptor.html" target="_blank" rel="external">descriptor object</a>， 它的目的就是创建一个类的属性，这个属性看起来用起来就像普通的属性一样，但是你可以提供自己的方法去控制它（设置它的值，获取它的值）。看起来就像一个操作定制化的属性。</p>
-<p>操作这个属性的方法有三种 read, write, delete。当你创建一个属性时，你可以提供任意个或者全部的方法。</p>
-<p>创建一个新式类 C，以及一个 p 属性：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(...)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">R</span><span class="params">(self)</span>:</span></div><div class="line">        ...read method...</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">W</span><span class="params">(self, value)</span>:</span></div><div class="line">        ...write method...</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">D</span><span class="params">(self)</span>:</span></div><div class="line">        ...delete method...</div><div class="line">    p = property(R, W, D, doc)</div><div class="line">    ...</div></pre></td></tr></table></figure>
+        <h1 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h1><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>推荐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>包管理器</td>
+<td><a href="https://github.com/Homebrew/homebrew" target="_blank" rel="external">HomeBrew</a> 和 <a href="https://github.com/caskroom/homebrew-cask" target="_blank" rel="external">HomeBrew-Cask</a></td>
+</tr>
+<tr>
+<td>终端</td>
+<td><a href="https://www.iterm2.com" target="_blank" rel="external">iTerm2</a></td>
+</tr>
+<tr>
+<td>终端编辑器</td>
+<td>Vim、NeoVim 和 Emacs</td>
+</tr>
+<tr>
+<td>GUI 编辑器</td>
+<td>Sublime Text 和 Mac Vim</td>
+</tr>
+<tr>
+<td>IDE 编辑器</td>
+<td>PycharmCE</td>
+</tr>
+<tr>
+<td>Python REPL</td>
+<td>ptpython + IPython</td>
+</tr>
+<tr>
+<td>Shell</td>
+<td>zsh + <a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">oh-my-zsh</a> + <a href="https://github.com/zsh-users/zsh-completions" target="_blank" rel="external">zsh-completions</a> + <a href="https://tmux.github.io/" target="_blank" rel="external">tmux</a></td>
+</tr>
+</tbody>
+</table>
 <a id="more"></a>
+<h1 id="部署及运维相关技术"><a href="#部署及运维相关技术" class="headerlink" title="部署及运维相关技术"></a>部署及运维相关技术</h1><h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a><a href="https://www.docker.com/" target="_blank" rel="external">Docker</a></h2><h3 id="Docker-Hub"><a href="#Docker-Hub" class="headerlink" title="Docker Hub"></a>Docker Hub</h3><p>支持 Docker 镜像服务，用来存储管理你的 Docker 镜像，有点像 GitHub。</p>
+<h3 id="Docker-Toolbox"><a href="#Docker-Toolbox" class="headerlink" title="Docker Toolbox"></a>Docker Toolbox</h3><p>将多个 Docker 工具如，Engine，Machine，Compose，Kitematic 安装在你的笔记本上，Mac 平台或者 Windows 平台。</p>
+<p>更多信息参见 <a href="https://docs.docker.com/engine/quickstart/" target="_blank" rel="external">Docker Quickstart</a></p>
+<h3 id="Docker-加速服务"><a href="#Docker-加速服务" class="headerlink" title="Docker 加速服务"></a>Docker 加速服务</h3><pre><code>echo &quot;DOCKER_OPTS=\&quot;--registry-mirror=https://3ebtlmp4.mirror.aliyuncs.com\&quot;&quot; | sudo tee -a /etc/default/docker
+sudo service docker restart
+</code></pre><h2 id="运维工具-Fabric"><a href="#运维工具-Fabric" class="headerlink" title="运维工具 Fabric"></a>运维工具 Fabric</h2><p>中文文档：<a href="http://fabric-chs.readthedocs.org/zh_CN/chs/" target="_blank" rel="external">Fabric</a></p>
+<p>Fabric 是什么？<br>如 README 所说：</p>
+<p>Fabric 是一个 Python (2.5-2.7) 的库和命令行工具，用来提高基于 SSH 的应用部署和系统管理效率。</p>
+<p>更具体地说，Fabric 是：</p>
 <ul>
-<li>R 是一个不带参数的 <code>getter</code> 方法，返回属性的值，如果不提供此方法，任何读操作都会引起<code>AttributeError</code></li>
-<li>W 是一个接受一个参数的 <code>setter</code> 方法，设置这个属性为这个参数的值，如果不提供此方法，任何写操作都会引起<code>AttributeError</code></li>
-<li>D 是一个 <code>deleter</code> 方法，会删除这个属性，如果不提供此方法，删除操作会引起<code>AttributeError</code></li>
-<li><p>doc 是一个文档字符串用来描述这个属性，调用方法</p>
-<pre><code>C.p.__doc__
-</code></pre></li>
+<li><p>一个让你通过 命令行 执行 无参数 Python 函数 的工具；</p>
+</li>
+<li><p>一个让通过 SSH 执行 Shell 命令更加 容易 、 更符合 Python 风格 的命令库（建立于一个更低层次的库）。</p>
+</li>
 </ul>
-<p>以下是一个小的类带有属性 x:</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.__x=<span class="keyword">None</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getx</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"+++ getx()"</span></div><div class="line">        <span class="keyword">return</span> self.__x</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setx</span><span class="params">(self, v)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"+++ setx(&#123;0&#125;)"</span>.format(v)</div><div class="line">        self.__x  =  v</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delx</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"+++ delx()"</span></div><div class="line">        <span class="keyword">del</span> self.__x</div><div class="line">    x=property(getx, setx, delx, <span class="string">"Me property 'x'."</span>)</div></pre></td></tr></table></figure>
-<p>在 python 解释器中执行：</p>
-<pre><code>&gt;&gt;&gt; c=C()
-&gt;&gt;&gt; print c.x
-+++ getx()
-None
-&gt;&gt;&gt; print C.x.__doc__
-Me property &apos;x&apos;.
-&gt;&gt;&gt; c.x=15
-+++ setx(15)
-&gt;&gt;&gt; c.x
-+++ getx()
-15
-&gt;&gt;&gt; del c.x
-+++ delx()
-&gt;&gt;&gt; c.x
-+++ getx()
-Traceback (most recent call last):
-  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-  File &quot;&lt;stdin&gt;&quot;, line 6, in getx
-AttributeError: &apos;C&apos; object has no attribute &apos;_C__x&apos;
-</code></pre><h1 id="property-decorator"><a href="#property-decorator" class="headerlink" title="property decorator"></a>property decorator</h1><p>从 Python 2.6 开始这个方法支持装饰器用法 <code>@property</code> ，使用这个装饰器装饰一个函数，和用 <code>getter</code> 装饰它效果是一样的。另外这个装饰器本身又带有 <code>deleter</code> 和 <code>setter</code> 两个装饰器。可以使用被 <code>@property</code> 装饰过的函数去定义自己的 <code>setter</code> 和 <code>deleter</code> 方法。</p>
-<p>比如你需要给你的类提供一个 state 属性，而你的 getter 方法返回一个私有的属性 ._state。你可以这样定义：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@property</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">state</span><span class="params">(self)</span>:</span></div><div class="line">    <span class="string">'''The internal state property.'''</span></div><div class="line">    <span class="keyword">return</span> self._state</div></pre></td></tr></table></figure>
-<p>这样 .state 将会是这个属性的 getter 方法，而且 文档字符串’’’The internal state property.’’’ 也会被存储在属性中。</p>
-<p>如果你需要 setter 和 deleter 方法：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@state.setter</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">state</span><span class="params">(self, k)</span>:</span></div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> (<span class="number">0</span> &lt;= k &lt;= <span class="number">2</span>):</div><div class="line">        <span class="keyword">raise</span> ValueError(<span class="string">"Must be 0 through 2 inclusive!"</span>)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        self._state = k</div><div class="line">        </div><div class="line"><span class="meta">@state.deleter</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">state</span><span class="params">(self)</span>:</span></div><div class="line">    <span class="keyword">del</span> self._state</div></pre></td></tr></table></figure>
+<p>自然而然地，大部分用户把这两件事结合着用，使用 Fabric 来写和执行 Python 函数或 task ，以实现与远程服务器的自动化交互。</p>
+<h2 id="错误收集工具-Sentry"><a href="#错误收集工具-Sentry" class="headerlink" title="错误收集工具 Sentry"></a>错误收集工具 <a href="https://getsentry.com/welcome/" target="_blank" rel="external">Sentry</a></h2><p><a href="https://getsentry.com/welcome/" target="_blank" rel="external">Sentry</a> 作为错误收集工具。debug 利器</p>
 
       
     </div>
@@ -348,28 +459,18 @@ AttributeError: &apos;C&apos; object has no attribute &apos;_C__x&apos;
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/python/" rel="tag">#python</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/05/what-is-WSGI/" rel="next" title="what is WSGI">
-                <i class="fa fa-chevron-left"></i> what is WSGI
+              <a href="/2016/10/25/数据库连接占满504-error/" rel="next" title="数据库连接占满504 error">
+                <i class="fa fa-chevron-left"></i> 数据库连接占满504 error
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/12/Nginx-服务器处理一次请求的流程/" rel="prev" title="Nginx 服务器处理一次请求的流程">
-                Nginx 服务器处理一次请求的流程 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -417,8 +518,8 @@ var jiathis_config={
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/12/Python-property-decorator/"
-           data-title="Python property decorator" data-url="narcissist1.github.io/2016/04/12/Python-property-decorator/">
+      <div class="ds-thread" data-thread-key="2016/10/28/开发工具/"
+           data-title="开发工具" data-url="narcissist1.github.io/2016/10/28/开发工具/">
       </div>
     
   </div>
@@ -548,7 +649,7 @@ var jiathis_config={
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#property-方法"><span class="nav-number">1.</span> <span class="nav-text">property() 方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#property-decorator"><span class="nav-number">2.</span> <span class="nav-text">property decorator</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开发工具"><span class="nav-number">1.</span> <span class="nav-text">开发工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部署及运维相关技术"><span class="nav-number">2.</span> <span class="nav-text">部署及运维相关技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker"><span class="nav-number">2.1.</span> <span class="nav-text">Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-Hub"><span class="nav-number">2.1.1.</span> <span class="nav-text">Docker Hub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-Toolbox"><span class="nav-number">2.1.2.</span> <span class="nav-text">Docker Toolbox</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-加速服务"><span class="nav-number">2.1.3.</span> <span class="nav-text">Docker 加速服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运维工具-Fabric"><span class="nav-number">2.2.</span> <span class="nav-text">运维工具 Fabric</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误收集工具-Sentry"><span class="nav-number">2.3.</span> <span class="nav-text">错误收集工具 Sentry</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
