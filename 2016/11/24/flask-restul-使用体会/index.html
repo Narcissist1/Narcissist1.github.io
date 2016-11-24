@@ -1,0 +1,850 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="flask restful," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="最近开发的项目里使用 flask restful 作为接口框架，统一的编写格式方便于代码的可读性，和可维护性提高。
+请求参数解析基本参数解析这里有个关于请求解析的简单例子，看起来像flask.Request.values字典里的两个参数：一个 integer 和 一个 string
+123456from flask_restful import reqparseparser = reqparse.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flask restul 使用体会">
+<meta property="og:url" content="narcissist1.github.io/2016/11/24/flask-restul-使用体会/index.html">
+<meta property="og:site_name" content="Zack's Notebook">
+<meta property="og:description" content="最近开发的项目里使用 flask restful 作为接口框架，统一的编写格式方便于代码的可读性，和可维护性提高。
+请求参数解析基本参数解析这里有个关于请求解析的简单例子，看起来像flask.Request.values字典里的两个参数：一个 integer 和 一个 string
+123456from flask_restful import reqparseparser = reqparse.">
+<meta property="og:updated_time" content="2016-11-24T06:22:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flask restul 使用体会">
+<meta name="twitter:description" content="最近开发的项目里使用 flask restful 作为接口框架，统一的编写格式方便于代码的可读性，和可维护性提高。
+请求参数解析基本参数解析这里有个关于请求解析的简单例子，看起来像flask.Request.values字典里的两个参数：一个 integer 和 一个 string
+123456from flask_restful import reqparseparser = reqparse.">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6237686403589735000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> flask restul 使用体会 | Zack's Notebook </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zack's Notebook</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                flask restul 使用体会
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-24T10:41:08+08:00" content="2016-11-24">
+              2016-11-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术相关/" itemprop="url" rel="index">
+                    <span itemprop="name">技术相关</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/24/flask-restul-使用体会/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/24/flask-restul-使用体会/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近开发的项目里使用 flask restful 作为接口框架，统一的编写格式方便于代码的可读性，和可维护性提高。</p>
+<h1 id="请求参数解析"><a href="#请求参数解析" class="headerlink" title="请求参数解析"></a>请求参数解析</h1><h2 id="基本参数解析"><a href="#基本参数解析" class="headerlink" title="基本参数解析"></a>基本参数解析</h2><p>这里有个关于请求解析的简单例子，看起来像<a href="http://flask.pocoo.org/docs/0.11/api/#flask.Request.values" target="_blank" rel="external">flask.Request.values</a>字典里的两个参数：一个 integer 和 一个 string</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> flask_restful <span class="keyword">import</span> reqparse</div><div class="line"></div><div class="line">parser = reqparse.RequestParser()</div><div class="line">parser.add_argument(<span class="string">'rate'</span>, type=int, help=<span class="string">'Rate cannot be converted'</span>)</div><div class="line">parser.add_argument(<span class="string">'name'</span>)</div><div class="line">args = parser.parse_args()</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<blockquote>
+<p>注意：<br>默认的参数类型(type)是一个 unicode string，在 python2 里面是 unicode，在 python3 里面是 str</p>
+</blockquote>
+<p>如果指定 help 值，当解析出现错误的时候，将会返回 help 内容。如果你不指定 help 信息，默认行为将会返回 type error 本身的错误信息。</p>
+<p>默认的，参数(arguments)是非必需的(required)。同样的请求中出现的没有在 RequestParser 中指定的参数将会被忽略掉。</p>
+<p>同样的，参数(arguments) 在你的 request parser 中声明，但是并未出现在实际的请求中的会被设置为 None。</p>
+<h2 id="必需参数-Required-Arguments"><a href="#必需参数-Required-Arguments" class="headerlink" title="必需参数(Required Arguments)"></a>必需参数(Required Arguments)</h2><p>声明必需参数，只需将 <code>required=True</code> 加入到 <a href="http://flask-restful.readthedocs.io/en/0.3.5/api.html#reqparse.RequestParser.add_argument" target="_blank" rel="external">add_argument()</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'name'</span>, required=<span class="keyword">True</span>,</div><div class="line">help=<span class="string">"Name cannot be blank!"</span>)</div></pre></td></tr></table></figure>
+<h2 id="多值和列表（Multiple-Values-amp-Lists）"><a href="#多值和列表（Multiple-Values-amp-Lists）" class="headerlink" title="多值和列表（Multiple Values &amp; Lists）"></a>多值和列表（Multiple Values &amp; Lists）</h2><p>如果你希望接受多个值作为一个列表关联到一个 key 上，你可以传入 <code>action=&#39;append&#39;</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'name'</span>, action=<span class="string">'append'</span>)</div></pre></td></tr></table></figure>
+<p>像这样请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl http://api.example.com -d &quot;name=bob&quot; -d &quot;name=sue&quot; -d &quot;name=joe&quot;</div></pre></td></tr></table></figure></p>
+<p>将会返回如下参数<br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">args = parser.parse_args()</div><div class="line">args[<span class="string">'name'</span>]    <span class="comment"># ['bob', 'sue', 'joe']</span></div></pre></td></tr></table></figure></p>
+<h2 id="Other-Destinations"><a href="#Other-Destinations" class="headerlink" title="Other Destinations"></a>Other Destinations</h2><p>如果你希望你的参数经过解析后存储在一个不同的名字下，你可以传入<code>dest</code>参数。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'name'</span>, dest=<span class="string">'public_name'</span>)</div><div class="line"></div><div class="line">args = parser.parse_args()</div><div class="line">args[<span class="string">'public_name'</span>]</div></pre></td></tr></table></figure>
+<h2 id="参数位置-Argument-Locations"><a href="#参数位置-Argument-Locations" class="headerlink" title="参数位置(Argument Locations)"></a>参数位置(Argument Locations)</h2><p>默认的，<a href="http://flask-restful.readthedocs.io/en/0.3.5/api.html#reqparse.RequestParser" target="_blank" rel="external">RequestParser</a> 会试着从<a href="http://flask.pocoo.org/docs/0.11/api/#flask.Request.values" target="_blank" rel="external">flask.Request.values</a>和<a href="http://flask.pocoo.org/docs/0.11/api/#flask.Request.json" target="_blank" rel="external">flask.Request.json</a>解析参数。<br>在<a href="http://flask-restful.readthedocs.io/en/0.3.5/api.html#reqparse.RequestParser.add_argument" target="_blank" rel="external">add_argument()</a>中使用<code>location</code>参数可以指定从其他位置拉取数据。任何<a href="http://flask.pocoo.org/docs/0.11/api/#flask.Request" target="_blank" rel="external">flask.Request</a>中的变量都可以使用，例如：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Look only in the POST body</span></div><div class="line">parser.add_argument(<span class="string">'name'</span>, type=int, location=<span class="string">'form'</span>)</div><div class="line"></div><div class="line"><span class="comment"># Look only in the querystring</span></div><div class="line">parser.add_argument(<span class="string">'PageSize'</span>, type=int, location=<span class="string">'args'</span>)</div><div class="line"></div><div class="line"><span class="comment"># From the request headers</span></div><div class="line">parser.add_argument(<span class="string">'User-Agent'</span>, location=<span class="string">'headers'</span>)</div><div class="line"></div><div class="line"><span class="comment"># From http cookies</span></div><div class="line">parser.add_argument(<span class="string">'session_id'</span>, location=<span class="string">'cookies'</span>)</div><div class="line"></div><div class="line"><span class="comment"># From file uploads</span></div><div class="line">parser.add_argument(<span class="string">'picture'</span>, type=werkzeug.datastructures.FileStorage, location=<span class="string">'files'</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意<br>只有 location=’json’ 时使用， type=list。<a href="https://github.com/flask-restful/flask-restful/issues/380" target="_blank" rel="external">See this issue for more details</a></p>
+</blockquote>
+<h2 id="Multiple-Locations"><a href="#Multiple-Locations" class="headerlink" title="Multiple Locations"></a>Multiple Locations</h2><p>可以通过传入一个 list 制定多个 location:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">parser.add_argument(<span class="string">'text'</span>, location=[<span class="string">'headers'</span>, <span class="string">'values'</span>])</div></pre></td></tr></table></figure></p>
+<p>当指定了多个 location 时，从所有 locations 里面取出的参数将会合并到一个<a href="http://werkzeug.pocoo.org/docs/0.11/datastructures/#werkzeug.datastructures.MultiDict" target="_blank" rel="external">MultiDict</a>里，location 列出了最终结果集里面的取值顺序。</p>
+<p>如果参数 location 列表里面包括了 <a href="http://flask.pocoo.org/docs/0.11/api/#flask.Request.headers" target="_blank" rel="external">headers</a> location, 则参数名字将不再大小写敏感，将必需和它们的 title case 名字相匹配（<a href="https://docs.python.org/3/library/stdtypes.html#str.title" target="_blank" rel="external">str.title()</a>), 指定 <code>location=&#39;headers&#39;</code>(非 list)将会保持大小写敏感。</p>
+<h2 id="解析继承-Parser-Inheritance"><a href="#解析继承-Parser-Inheritance" class="headerlink" title="解析继承(Parser Inheritance)"></a>解析继承(Parser Inheritance)</h2><p>你经常会对每一个资源使用不同的解析器。问题在于很多的解析器需要解析相同的参数。相比于每次重新写相同的参数，你可以写一个父解析器包含所有的共享参数，通过 <a href="http://flask-restful.readthedocs.io/en/0.3.5/api.html#reqparse.RequestParser.copy" target="_blank" rel="external">copy()</a> 方法来扩展它。你可以通过 <a href="http://flask-restful.readthedocs.io/en/0.3.5/api.html#reqparse.RequestParser.replace_argument" target="_blank" rel="external">replace_argument()</a> 来替换任意参数。或者通过 <a href="http://flask-restful.readthedocs.io/en/0.3.5/api.html#reqparse.RequestParser.remove_argument" target="_blank" rel="external">remove_argument()</a> 来删除参数， 例如：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> flask_restful <span class="keyword">import</span> reqparse</div><div class="line"></div><div class="line">parser = reqparse.RequestParser()</div><div class="line">parser.add_argument(<span class="string">'foo'</span>, type=int)</div><div class="line"></div><div class="line">parser_copy = parser.copy()</div><div class="line">parser_copy.add_argument(<span class="string">'bar'</span>, type=int)</div><div class="line"></div><div class="line"><span class="comment"># parser_copy has both 'foo' and 'bar'</span></div><div class="line"></div><div class="line">parser_copy.replace_argument(<span class="string">'foo'</span>, required=<span class="keyword">True</span>, location=<span class="string">'json'</span>)</div><div class="line"><span class="comment"># 'foo' is now a required str located in json, not an int as defined</span></div><div class="line"><span class="comment">#  by original parser</span></div><div class="line"></div><div class="line">parser_copy.remove_argument(<span class="string">'foo'</span>)</div><div class="line"><span class="comment"># parser_copy no longer has 'foo' argument</span></div></pre></td></tr></table></figure>
+<h2 id="错误处理-Error-Handling"><a href="#错误处理-Error-Handling" class="headerlink" title="错误处理(Error Handling)"></a>错误处理(Error Handling)</h2><p>RequestParser 提供的默认处理错误的方式是在第一次错误发生的地方终止程序，这在你需要处理很多参数比较耗时的情况下是有益处的。然而，将错误捆绑在一起返回给客户端总是好的。这个行为可以在 Flask 层面或者在 RequestParser 实例上指定。在 RequestParser 上绑定错误信息，需要传入 bundle_errors，例如：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> flask_restful <span class="keyword">import</span> reqparse</div><div class="line"></div><div class="line">parser = reqparse.RequestParser(bundle_errors=<span class="keyword">True</span>)</div><div class="line">parser.add_argument(<span class="string">'foo'</span>, type=int, required=<span class="keyword">True</span>)</div><div class="line">parser.add_argument(<span class="string">'bar'</span>, type=int, required=<span class="keyword">True</span>)</div><div class="line"></div><div class="line"><span class="comment"># If a request comes in not containing both 'foo' and 'bar', the error that</span></div><div class="line"><span class="comment"># will come back will look something like this.</span></div><div class="line"></div><div class="line">&#123;</div><div class="line">    <span class="string">"message"</span>:  &#123;</div><div class="line">        <span class="string">"foo"</span>: <span class="string">"foo error message"</span>,</div><div class="line">        <span class="string">"bar"</span>: <span class="string">"bar error message"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># The default behavior would only return the first error</span></div><div class="line"></div><div class="line">parser = RequestParser()</div><div class="line">parser.add_argument(<span class="string">'foo'</span>, type=int, required=<span class="keyword">True</span>)</div><div class="line">parser.add_argument(<span class="string">'bar'</span>, type=int, required=<span class="keyword">True</span>)</div><div class="line"></div><div class="line">&#123;</div><div class="line">    <span class="string">"message"</span>:  &#123;</div><div class="line">        <span class="string">"foo"</span>: <span class="string">"foo error message"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 Flask 层面配置入下：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</div><div class="line"></div><div class="line">app = Flask(__name__)</div><div class="line">app.config[<span class="string">'BUNDLE_ERRORS'</span>] = <span class="keyword">True</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>警告<br>BUNDLE_ERRORS 是 global 设置，会覆盖 <a href="http://flask-restful.readthedocs.io/en/0.3.5/api.html#reqparse.RequestParser" target="_blank" rel="external">RequestParser</a> 的 bundle_errors 设置。</p>
+</blockquote>
+<h2 id="错误信息-Error-Messages"><a href="#错误信息-Error-Messages" class="headerlink" title="错误信息(Error Messages)"></a>错误信息(Error Messages)</h2><p>每个参数对应的错误信息可以通过 help 参数指定。</p>
+<p>如果没有指定 help 参数，则这个参数对应的错误信息将会是它本身的 type error 的字符串表示。如果指定 help，则错误信息就是 help 的值。</p>
+<p>help 可以包含一个插入的 token，{error_msg}，它会被替换为 type error 的字符串。这种方式允许了自定义化的显示原始错误信息：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> flask_restful <span class="keyword">import</span> reqparse</div><div class="line"></div><div class="line">parser = reqparse.RequestParser() parser.add_argument(</div><div class="line"></div><div class="line">‘foo’, choices=(‘one’, ‘two’), help=’Bad choice: &#123;error_msg&#125;’</div><div class="line">)</div><div class="line"></div><div class="line"><span class="comment"># If a request comes in with a value of “three” for foo:</span></div><div class="line"></div><div class="line">&#123;</div><div class="line">“message”: &#123;</div><div class="line">“foo”: “Bad choice: three <span class="keyword">is</span> <span class="keyword">not</span> a valid choice”,</div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/flask-restful/" rel="tag">#flask restful</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/21/pip-install-psycopg2-error-fix/" rel="next" title="pip install psycopg2 error fix(Mac)">
+                <i class="fa fa-chevron-left"></i> pip install psycopg2 error fix(Mac)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+
+
+<div class="jiathis_style"><span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_tsina">新浪微博</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_googleplus">Google+</a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  summary:"",
+  shortUrl:true,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/24/flask-restul-使用体会/"
+           data-title="flask restul 使用体会" data-url="narcissist1.github.io/2016/11/24/flask-restul-使用体会/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/media/profile_photo.jpg"
+               alt="Zack Ren" />
+          <p class="site-author-name" itemprop="name">Zack Ren</p>
+          <p class="site-description motion-element" itemprop="description">长路漫漫，砥砺前行</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Narcissist1" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1922588195/" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/78800890/" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> douban
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/ren-yu-cheng-38" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> zhihu
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#请求参数解析"><span class="nav-number">1.</span> <span class="nav-text">请求参数解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本参数解析"><span class="nav-number">1.1.</span> <span class="nav-text">基本参数解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#必需参数-Required-Arguments"><span class="nav-number">1.2.</span> <span class="nav-text">必需参数(Required Arguments)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多值和列表（Multiple-Values-amp-Lists）"><span class="nav-number">1.3.</span> <span class="nav-text">多值和列表（Multiple Values & Lists）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Destinations"><span class="nav-number">1.4.</span> <span class="nav-text">Other Destinations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数位置-Argument-Locations"><span class="nav-number">1.5.</span> <span class="nav-text">参数位置(Argument Locations)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiple-Locations"><span class="nav-number">1.6.</span> <span class="nav-text">Multiple Locations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析继承-Parser-Inheritance"><span class="nav-number">1.7.</span> <span class="nav-text">解析继承(Parser Inheritance)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误处理-Error-Handling"><span class="nav-number">1.8.</span> <span class="nav-text">错误处理(Error Handling)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误信息-Error-Messages"><span class="nav-number">1.9.</span> <span class="nav-text">错误信息(Error Messages)</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zack Ren</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"narcissit1"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
