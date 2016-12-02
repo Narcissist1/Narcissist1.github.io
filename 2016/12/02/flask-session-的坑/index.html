@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="致优团建," />
+  <meta name="keywords" content="python,flask,session," />
 
 
 
@@ -57,43 +57,16 @@
 
 
 
-<meta name="description" content="今天公司成立一周年啦，香山团建～ 非常有趣的一次经历，大家都彼此更加了解了对方，嗯，上图:)
-几张美美的景色图">
+<meta name="description" content="最近将 token 授权改为 session-cookie 方式，后期搭建 https 配合，提高网站安全级别。移动端的 API 请求采用 Authorization 中加入时限 token 的方式。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="致优一周年，香山团建">
-<meta property="og:url" content="narcissist1.github.io/2016/04/01/致优一周年，香山团建/index.html">
+<meta property="og:title" content="flask session 的坑">
+<meta property="og:url" content="narcissist1.github.io/2016/12/02/flask-session-的坑/index.html">
 <meta property="og:site_name" content="Zack's Notebook">
-<meta property="og:description" content="今天公司成立一周年啦，香山团建～ 非常有趣的一次经历，大家都彼此更加了解了对方，嗯，上图:)
-几张美美的景色图">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0037.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0039.JPG-basic">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0041.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0043.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0044.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0045.JPG-basic">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0046.JPG-basic">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0049.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0052.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0053.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0056.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0057.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0061.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0062.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0063.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0064.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0067.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0068.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0070.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0071.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0072.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0073.JPG">
-<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0074.JPG">
-<meta property="og:updated_time" content="2016-04-01T15:25:24.000Z">
+<meta property="og:description" content="最近将 token 授权改为 session-cookie 方式，后期搭建 https 配合，提高网站安全级别。移动端的 API 请求采用 Authorization 中加入时限 token 的方式。">
+<meta property="og:updated_time" content="2016-12-02T11:33:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="致优一周年，香山团建">
-<meta name="twitter:description" content="今天公司成立一周年啦，香山团建～ 非常有趣的一次经历，大家都彼此更加了解了对方，嗯，上图:)
-几张美美的景色图">
-<meta name="twitter:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0037.JPG">
+<meta name="twitter:title" content="flask session 的坑">
+<meta name="twitter:description" content="最近将 token 授权改为 session-cookie 方式，后期搭建 https 配合，提高网站安全级别。移动端的 API 请求采用 Authorization 中加入时限 token 的方式。">
 
 
 
@@ -111,7 +84,7 @@
   };
 </script>
 
-  <title> 致优一周年，香山团建 | Zack's Notebook </title>
+  <title> flask session 的坑 | Zack's Notebook </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -251,7 +224,7 @@
             
             
               
-                致优一周年，香山团建
+                flask session 的坑
               
             
           </h1>
@@ -263,8 +236,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-01T21:41:51+08:00" content="2016-04-01">
-              2016-04-01
+            <time itemprop="dateCreated" datetime="2016-12-02T18:33:45+08:00" content="2016-12-02">
+              2016-12-02
             </time>
           </span>
 
@@ -277,8 +250,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/旅行/" itemprop="url" rel="index">
-                    <span itemprop="name">旅行</span>
+                  <a href="/categories/技术相关/" itemprop="url" rel="index">
+                    <span itemprop="name">技术相关</span>
                   </a>
                 </span>
 
@@ -293,8 +266,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/01/致优一周年，香山团建/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/01/致优一周年，香山团建/" itemprop="commentsCount"></span>
+                <a href="/2016/12/02/flask-session-的坑/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/02/flask-session-的坑/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -316,23 +289,16 @@
       
 
       
-        <p>今天公司成立一周年啦，香山团建～ 非常有趣的一次经历，大家都彼此更加了解了对方，嗯，上图:)</p>
-<p>几张美美的景色图<br><img title="山道" src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0037.JPG"><br><img title="花" src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0039.JPG-basic"><br><a id="more"></a><br><img src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0041.JPG"><br><img title="俯瞰北京城" src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0043.JPG"><br><img title="技术部合影～" src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0044.JPG"><br><img title="路边的花" src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0045.JPG-basic"><br><img src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0046.JPG-basic"><br><img title="小组合影" src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0049.JPG"></p>
-<img title="我们是第一组登顶哒！" src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0052.JPG">
-<img src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0053.JPG">
-<img title="登山途中" src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0056.JPG">
-<img src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0057.JPG">
-<img title="我和玉琪" src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0061.JPG">
-<img title="刚刚上山" src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0062.JPG">
-<img title="小亭子里简单装个逼" src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0063.JPG">
-<img src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0064.JPG">
-<img title="小游戏" src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0067.JPG">
-<img title="虚心听讲" src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0068.JPG">
-<img title="都是知识" src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0070.JPG">
-<img src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0071.JPG">
-<img title="都是景点" src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0072.JPG">
-<img src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0073.JPG">
-<img src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/IMG_0074.JPG">
+        <p>最近将 token 授权改为 session-cookie 方式，后期搭建 https 配合，提高网站安全级别。<br>移动端的 API 请求采用 Authorization 中加入时限 token 的方式。</p>
+<a id="more"></a>
+<h1 id="session-cookie-简介"><a href="#session-cookie-简介" class="headerlink" title="session cookie 简介"></a>session cookie 简介</h1><p>cookie 是浏览器存储在本地用于和服务器进行交互的凭证，由于 http 是无状态的，当我们需要持续与用户交互时，就有必要采用一种方式来产生一种持续的“会话”。而 cookie 就是实现这种会话的必备要素</p>
+<p>当用户第一次向服务器发送（需要交互）的请求时，比如登陆操作，服务器的返回 response header 中会加入 set-cookie 字段，对应的值即为具有时效性的经过哈希的长文本。浏览器将这个值保存在本地，以后每次请求都将这个值加入 request header 中，key 名称即为 cookie。之后服务器程序会从 request header 中提取这个值，并判断是否过期或者无效。如果值有效且在有效期内，表明当前用户登录权限仍然有效，则继续进行其他逻辑处理。否则返回需要重新授权。</p>
+<p>session 是服务器端用来保存用户信息的一种数据结构，session 可以借助很多方式来存储数据，比如文件系统，数据库等。flask 使用 python 字典来实现 session，数据存储在内存当中，核心功能就是判断session 是否有效，轻量简单。如果使用文件系统或者数据库实现 session 则还可以存储其他相关数据。</p>
+<h1 id="flask-session"><a href="#flask-session" class="headerlink" title="flask session"></a>flask session</h1><p>flask 默认每次请求，都会在 response header 中，加入 set-cookie 字段，这样在设定的实效期内，只要用户向服务器发送请求，实效期就会向后推，导致授权一直有效。<br>而我们希望，当第一次授权后，用户正常使用，过了时效期用户需要重新授权。</p>
+<p>通过设定 <code>SESSION_REFRESH_EACH_REQUEST = False</code> 来将这种行为取消。同时需要将 session 变量的 permanent 属性设置为 True。 使用 <code>PERMANENT_SESSION_LIFETIME</code> 来设定时效期，默认为31天。</p>
+<p>基本上通过设定这些变量就可以控制 seesion 行为。</p>
+<p>遇到的坑就是在本地运行都是符合预期的，但上传到服务器就会出现错误，服务器返回 response 一直有 set-cookie header。折腾了半天，源码看了好几遍就是没发现原因，最后发现是 flask 版本不一致出的问题。心碎。。。</p>
+
       
     </div>
 
@@ -346,7 +312,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/致优团建/" rel="tag">#致优团建</a>
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+            <a href="/tags/flask/" rel="tag">#flask</a>
+          
+            <a href="/tags/session/" rel="tag">#session</a>
           
         </div>
       
@@ -355,17 +325,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/31/Scrapy-框架简介/" rel="next" title="Scrapy 框架简介">
-                <i class="fa fa-chevron-left"></i> Scrapy 框架简介
+              <a href="/2016/11/24/flask-restul-使用体会/" rel="next" title="flask restul 使用体会">
+                <i class="fa fa-chevron-left"></i> flask restul 使用体会
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/05/what-is-WSGI/" rel="prev" title="what is WSGI">
-                what is WSGI <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -413,8 +379,8 @@ var jiathis_config={
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/01/致优一周年，香山团建/"
-           data-title="致优一周年，香山团建" data-url="narcissist1.github.io/2016/04/01/致优一周年，香山团建/">
+      <div class="ds-thread" data-thread-key="2016/12/02/flask-session-的坑/"
+           data-title="flask session 的坑" data-url="narcissist1.github.io/2016/12/02/flask-session-的坑/">
       </div>
     
   </div>
@@ -544,7 +510,7 @@ var jiathis_config={
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#session-cookie-简介"><span class="nav-number">1.</span> <span class="nav-text">session cookie 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#flask-session"><span class="nav-number">2.</span> <span class="nav-text">flask session</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
