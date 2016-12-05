@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="https,nginx," />
 
 
 
@@ -57,118 +57,22 @@
 
 
 
-<meta name="description" content="开发工具
-
-
-类型
-推荐
-
-
-
-
-包管理器
-HomeBrew 和 HomeBrew-Cask
-
-
-终端
-iTerm2
-
-
-终端编辑器
-Vim、NeoVim 和 Emacs
-
-
-GUI 编辑器
-Sublime Text 和 Mac Vim
-
-
-IDE 编辑器
-PycharmCE
-
-
-Python REPL
-ptpython + IPython
-
-
-Shell
-zsh + oh-my-zsh + zs">
+<meta name="description" content="为了提高网站安全性，最近将 http 的站点转换部署为了 https。 使用了Let’s encrypt CA认证证书，certbot自动部署证书工具。
+RequirementNginx server (编译时需要加 –with-http_ssl_module 模块)。 Ubuntu 14.04 操作系统。
+Deploy HTTPSInstall Certbot运行以下命令，安装 certbot-">
 <meta property="og:type" content="article">
-<meta property="og:title" content="开发工具">
-<meta property="og:url" content="narcissist1.github.io/2016/10/28/开发工具/index.html">
+<meta property="og:title" content="Deploy https website on nginx server">
+<meta property="og:url" content="narcissist1.github.io/2016/12/05/Deploy-https-website-on-nginx-server/index.html">
 <meta property="og:site_name" content="Zack's Notebook">
-<meta property="og:description" content="开发工具
-
-
-类型
-推荐
-
-
-
-
-包管理器
-HomeBrew 和 HomeBrew-Cask
-
-
-终端
-iTerm2
-
-
-终端编辑器
-Vim、NeoVim 和 Emacs
-
-
-GUI 编辑器
-Sublime Text 和 Mac Vim
-
-
-IDE 编辑器
-PycharmCE
-
-
-Python REPL
-ptpython + IPython
-
-
-Shell
-zsh + oh-my-zsh + zs">
-<meta property="og:updated_time" content="2016-10-28T03:50:38.000Z">
+<meta property="og:description" content="为了提高网站安全性，最近将 http 的站点转换部署为了 https。 使用了Let’s encrypt CA认证证书，certbot自动部署证书工具。
+RequirementNginx server (编译时需要加 –with-http_ssl_module 模块)。 Ubuntu 14.04 操作系统。
+Deploy HTTPSInstall Certbot运行以下命令，安装 certbot-">
+<meta property="og:updated_time" content="2016-12-05T05:06:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="开发工具">
-<meta name="twitter:description" content="开发工具
-
-
-类型
-推荐
-
-
-
-
-包管理器
-HomeBrew 和 HomeBrew-Cask
-
-
-终端
-iTerm2
-
-
-终端编辑器
-Vim、NeoVim 和 Emacs
-
-
-GUI 编辑器
-Sublime Text 和 Mac Vim
-
-
-IDE 编辑器
-PycharmCE
-
-
-Python REPL
-ptpython + IPython
-
-
-Shell
-zsh + oh-my-zsh + zs">
+<meta name="twitter:title" content="Deploy https website on nginx server">
+<meta name="twitter:description" content="为了提高网站安全性，最近将 http 的站点转换部署为了 https。 使用了Let’s encrypt CA认证证书，certbot自动部署证书工具。
+RequirementNginx server (编译时需要加 –with-http_ssl_module 模块)。 Ubuntu 14.04 操作系统。
+Deploy HTTPSInstall Certbot运行以下命令，安装 certbot-">
 
 
 
@@ -186,7 +90,7 @@ zsh + oh-my-zsh + zs">
   };
 </script>
 
-  <title> 开发工具 | Zack's Notebook </title>
+  <title> Deploy https website on nginx server | Zack's Notebook </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -326,7 +230,7 @@ zsh + oh-my-zsh + zs">
             
             
               
-                开发工具
+                Deploy https website on nginx server
               
             
           </h1>
@@ -338,8 +242,8 @@ zsh + oh-my-zsh + zs">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-28T11:42:05+08:00" content="2016-10-28">
-              2016-10-28
+            <time itemprop="dateCreated" datetime="2016-12-05T10:16:22+08:00" content="2016-12-05">
+              2016-12-05
             </time>
           </span>
 
@@ -368,8 +272,8 @@ zsh + oh-my-zsh + zs">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/28/开发工具/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/28/开发工具/" itemprop="commentsCount"></span>
+                <a href="/2016/12/05/Deploy-https-website-on-nginx-server/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/05/Deploy-https-website-on-nginx-server/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -391,62 +295,54 @@ zsh + oh-my-zsh + zs">
       
 
       
-        <h1 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h1><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>推荐</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>包管理器</td>
-<td><a href="https://github.com/Homebrew/homebrew" target="_blank" rel="external">HomeBrew</a> 和 <a href="https://github.com/caskroom/homebrew-cask" target="_blank" rel="external">HomeBrew-Cask</a></td>
-</tr>
-<tr>
-<td>终端</td>
-<td><a href="https://www.iterm2.com" target="_blank" rel="external">iTerm2</a></td>
-</tr>
-<tr>
-<td>终端编辑器</td>
-<td>Vim、NeoVim 和 Emacs</td>
-</tr>
-<tr>
-<td>GUI 编辑器</td>
-<td>Sublime Text 和 Mac Vim</td>
-</tr>
-<tr>
-<td>IDE 编辑器</td>
-<td>PycharmCE</td>
-</tr>
-<tr>
-<td>Python REPL</td>
-<td>ptpython + IPython</td>
-</tr>
-<tr>
-<td>Shell</td>
-<td>zsh + <a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">oh-my-zsh</a> + <a href="https://github.com/zsh-users/zsh-completions" target="_blank" rel="external">zsh-completions</a> + <a href="https://tmux.github.io/" target="_blank" rel="external">tmux</a></td>
-</tr>
-</tbody>
-</table>
+        <p>为了提高网站安全性，最近将 http 的站点转换部署为了 https。 使用了<a href="https://letsencrypt.org/" target="_blank" rel="external">Let’s encrypt</a> CA认证证书，<a href="https://certbot.eff.org/#ubuntutrusty-nginx" target="_blank" rel="external">certbot</a>自动部署证书工具。</p>
+<h1 id="Requirement"><a href="#Requirement" class="headerlink" title="Requirement"></a>Requirement</h1><p>Nginx server (编译时需要加 –with-http_ssl_module 模块)。 Ubuntu 14.04 操作系统。</p>
+<h1 id="Deploy-HTTPS"><a href="#Deploy-HTTPS" class="headerlink" title="Deploy HTTPS"></a>Deploy HTTPS</h1><h2 id="Install-Certbot"><a href="#Install-Certbot" class="headerlink" title="Install Certbot"></a>Install Certbot</h2><p>运行以下命令，安装 certbot-auto 脚本</p>
 <a id="more"></a>
-<h1 id="部署及运维相关技术"><a href="#部署及运维相关技术" class="headerlink" title="部署及运维相关技术"></a>部署及运维相关技术</h1><h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a><a href="https://www.docker.com/" target="_blank" rel="external">Docker</a></h2><h3 id="Docker-Hub"><a href="#Docker-Hub" class="headerlink" title="Docker Hub"></a>Docker Hub</h3><p>支持 Docker 镜像服务，用来存储管理你的 Docker 镜像，有点像 GitHub。</p>
-<h3 id="Docker-Toolbox"><a href="#Docker-Toolbox" class="headerlink" title="Docker Toolbox"></a>Docker Toolbox</h3><p>将多个 Docker 工具如，Engine，Machine，Compose，Kitematic 安装在你的笔记本上，Mac 平台或者 Windows 平台。</p>
-<p>更多信息参见 <a href="https://docs.docker.com/engine/quickstart/" target="_blank" rel="external">Docker Quickstart</a></p>
-<h3 id="Docker-加速服务"><a href="#Docker-加速服务" class="headerlink" title="Docker 加速服务"></a>Docker 加速服务</h3><pre><code>echo &quot;DOCKER_OPTS=\&quot;--registry-mirror=https://3ebtlmp4.mirror.aliyuncs.com\&quot;&quot; | sudo tee -a /etc/default/docker
-sudo service docker restart
-</code></pre><h2 id="运维工具-Fabric"><a href="#运维工具-Fabric" class="headerlink" title="运维工具 Fabric"></a>运维工具 Fabric</h2><p>中文文档：<a href="http://fabric-chs.readthedocs.org/zh_CN/chs/" target="_blank" rel="external">Fabric</a></p>
-<p>Fabric 是什么？<br>如 README 所说：</p>
-<p>Fabric 是一个 Python (2.5-2.7) 的库和命令行工具，用来提高基于 SSH 的应用部署和系统管理效率。</p>
-<p>更具体地说，Fabric 是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://dl.eff.org/certbot-auto</div><div class="line">chmod a+x certbot-auto</div></pre></td></tr></table></figure>
+<p>它会自动安装自身需要的依赖，并且自动更新，只需要运行以下</p>
+<pre><code>$ ./certbot-auto
+</code></pre><p>为了确保 certbot 有权限访问并验证目录，需要在 nginx 配置一下目录。(以默认目录为例)</p>
+<pre><code>sudo vim /etc/nginx/sites-available/default
+</code></pre><p>添加一下 block</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        . . .</div><div class="line"></div><div class="line">        location ~ /.well-known &#123;</div><div class="line">                allow all;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        . . .</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>检查 nginx 配置并重启：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo nginx -t</div><div class="line">sudo nbgix <span class="_">-s</span> reload</div></pre></td></tr></table></figure>
+<h2 id="获取证书"><a href="#获取证书" class="headerlink" title="获取证书"></a>获取证书</h2><p>首先要知道 web 根目录，也就是网站的根目录。我们使用 webroot 插件请求 ssl 认证，-d 参数指出绑定到哪个域名下面。可以指定多个域名，但是要确保最高域名在最前面。</p>
+<pre><code>certbot-auto certonly -a webroot --webroot-path=/usr/share/nginx/html -d example.com -d www.example.com
+</code></pre><blockquote>
+<p>certbot-auto 需要管理员权限，非管理员用户需要加 sudo 运行</p>
+</blockquote>
+<p>如果一切顺利，会有如下输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Output:</div><div class="line">IMPORTANT NOTES:</div><div class="line"> - If you lose your account credentials, you can recover through</div><div class="line">   e-mails sent to sammy@digitalocean.com</div><div class="line"> - Congratulations! Your certificate and chain have been saved at</div><div class="line">   /etc/letsencrypt/live/example.com/fullchain.pem. Your</div><div class="line">   cert will expire on 2016-03-15. To obtain a new version of the</div><div class="line">   certificate in the future, simply run Let&apos;s Encrypt again.</div><div class="line"> - Your account credentials have been saved in your Let&apos;s Encrypt</div><div class="line">   configuration directory at /etc/letsencrypt. You should make a</div><div class="line">   secure backup of this folder now. This configuration directory will</div><div class="line">   also contain certificates and private keys obtained by Let&apos;s</div><div class="line">   Encrypt so making regular backups of this folder is ideal.</div><div class="line"> - If like Let&apos;s Encrypt, please consider supporting our work by:</div><div class="line"></div><div class="line">   Donating to ISRG / Let&apos;s Encrypt:   https://letsencrypt.org/donate</div><div class="line">   Donating to EFF:                    https://eff.org/donate-le</div></pre></td></tr></table></figure>
+<p>/etc/letsencrypt/live/ 就是保存证书的目录， 2016-03-15 是有效期截止日。</p>
+<h2 id="证书文件"><a href="#证书文件" class="headerlink" title="证书文件"></a>证书文件</h2><p>经过授权之后，你会得到如下文件：</p>
 <ul>
-<li><p>一个让你通过 命令行 执行 无参数 Python 函数 的工具；</p>
-</li>
-<li><p>一个让通过 SSH 执行 Shell 命令更加 容易 、 更符合 Python 风格 的命令库（建立于一个更低层次的库）。</p>
-</li>
+<li>cert.pem: 你的域名的授权证书</li>
+<li>chain.pem: The Let’s Encrypt 链证书</li>
+<li>fullchain.pem: 结合了 cert.pem 和 chain.pem 的文件</li>
+<li>privkey.pem: 你的私钥文件</li>
 </ul>
-<p>自然而然地，大部分用户把这两件事结合着用，使用 Fabric 来写和执行 Python 函数或 task ，以实现与远程服务器的自动化交互。</p>
-<h2 id="错误收集工具-Sentry"><a href="#错误收集工具-Sentry" class="headerlink" title="错误收集工具 Sentry"></a>错误收集工具 <a href="https://getsentry.com/welcome/" target="_blank" rel="external">Sentry</a></h2><p><a href="https://getsentry.com/welcome/" target="_blank" rel="external">Sentry</a> 作为错误收集工具。debug 利器</p>
+<p>牢记这些文件的位置非常重要，因为你要定期做备份，以防万一。<br><code>/etc/letsencrypt/live/</code> 目录实际上是链接到<code>/etc/letsencrypt/archive</code> 目录上的。而且它会每次都链接到最新的授权文件。<br>可以通过如下命令查看：</p>
+<pre><code>sudo ls -l /etc/letsencrypt/live/your_domain_name
+</code></pre><h2 id="生成强霍夫曼组"><a href="#生成强霍夫曼组" class="headerlink" title="生成强霍夫曼组"></a>生成强霍夫曼组</h2><p>为了进一步加强安全性，我们需要生成一个 2048 位的霍夫曼组</p>
+<pre><code>sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+</code></pre><p>生成后的文件存储在 /etc/ssl/certs/dhparam.pem</p>
+<h1 id="Config-TLS-SSL-On-Nginx-Server"><a href="#Config-TLS-SSL-On-Nginx-Server" class="headerlink" title="Config TLS/SSL On Nginx Server"></a>Config TLS/SSL On Nginx Server</h1><p>现在你有了一个 ssl 的证书，现在需要将它部署在 Nginx 上。打开 server 配置文件，注释掉，原来的 listen 80, listen servername 等行。</p>
+<p>添加一下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">listen 443 ssl;</div><div class="line"> server_name example.com www.example.com;</div><div class="line"> ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;</div><div class="line"> ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;</div></pre></td></tr></table></figure>
+<p>仅允许强 ssl 链接，并使用刚刚生成的霍夫曼组：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</div><div class="line">   ssl_prefer_server_ciphers on;</div><div class="line">   ssl_dhparam /etc/ssl/certs/dhparam.pem;</div><div class="line">   ssl_ciphers &apos;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA&apos;;</div><div class="line">   ssl_session_timeout 1d;</div><div class="line">   ssl_session_cache shared:SSL:50m;</div><div class="line">   ssl_stapling on;</div><div class="line">   ssl_stapling_verify on;</div><div class="line">   add_header Strict-Transport-Security max-age=15768000;</div></pre></td></tr></table></figure>
+<p>最后将 80 端口的请求全部转发到 443 ssl 端口，添加一个新的 server block：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line">    server_name example.com www.example.com;</div><div class="line">    return 301 https://$host$request_uri;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>检查 nginx 配置并重启：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo nginx -t</div><div class="line">sudo nbgix <span class="_">-s</span> reload</div></pre></td></tr></table></figure>
+<h1 id="Renew-证书"><a href="#Renew-证书" class="headerlink" title="Renew 证书"></a>Renew 证书</h1><p><a href="https://letsencrypt.org/" target="_blank" rel="external">Let’s encrypt</a>的证书有效期为90天，但是推荐每60天更新一次，留出 30 天的缓冲期。运行以下命令更新证书：</p>
+<pre><code>certbot-auto renew
+</code></pre><p>以上任务可以设置为一个 crontab 的定期任务。<code>sudo crontab -e</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">30 2 * * 1 /usr/local/sbin/certbot-auto renew &gt;&gt; /var/log/le-renew.log</div><div class="line">35 2 * * 1 /etc/init.d/nginx reload</div></pre></td></tr></table></figure>
+<p>每周一的，凌晨2:30，renew。 2:35 重启 nginx server。</p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>这样你就配置好了一个使用<a href="https://letsencrypt.org/" target="_blank" rel="external">Let’s encrypt</a>证书的，基于 Nginx 的站点。</p>
 
       
     </div>
@@ -459,22 +355,26 @@ sudo service docker restart
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/https/" rel="tag">#https</a>
+          
+            <a href="/tags/nginx/" rel="tag">#nginx</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/25/数据库连接占满504-error/" rel="next" title="数据库连接占满504 error">
-                <i class="fa fa-chevron-left"></i> 数据库连接占满504 error
+              <a href="/2016/12/02/flask-session-的坑/" rel="next" title="flask session 的坑">
+                <i class="fa fa-chevron-left"></i> flask session 的坑
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/21/pip-install-psycopg2-error-fix/" rel="prev" title="pip install psycopg2 error fix(Mac)">
-                pip install psycopg2 error fix(Mac) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -522,8 +422,8 @@ var jiathis_config={
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/28/开发工具/"
-           data-title="开发工具" data-url="narcissist1.github.io/2016/10/28/开发工具/">
+      <div class="ds-thread" data-thread-key="2016/12/05/Deploy-https-website-on-nginx-server/"
+           data-title="Deploy https website on nginx server" data-url="narcissist1.github.io/2016/12/05/Deploy-https-website-on-nginx-server/">
       </div>
     
   </div>
@@ -653,7 +553,7 @@ var jiathis_config={
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开发工具"><span class="nav-number">1.</span> <span class="nav-text">开发工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部署及运维相关技术"><span class="nav-number">2.</span> <span class="nav-text">部署及运维相关技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker"><span class="nav-number">2.1.</span> <span class="nav-text">Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-Hub"><span class="nav-number">2.1.1.</span> <span class="nav-text">Docker Hub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-Toolbox"><span class="nav-number">2.1.2.</span> <span class="nav-text">Docker Toolbox</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-加速服务"><span class="nav-number">2.1.3.</span> <span class="nav-text">Docker 加速服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运维工具-Fabric"><span class="nav-number">2.2.</span> <span class="nav-text">运维工具 Fabric</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误收集工具-Sentry"><span class="nav-number">2.3.</span> <span class="nav-text">错误收集工具 Sentry</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Requirement"><span class="nav-number">1.</span> <span class="nav-text">Requirement</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Deploy-HTTPS"><span class="nav-number">2.</span> <span class="nav-text">Deploy HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Certbot"><span class="nav-number">2.1.</span> <span class="nav-text">Install Certbot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取证书"><span class="nav-number">2.2.</span> <span class="nav-text">获取证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#证书文件"><span class="nav-number">2.3.</span> <span class="nav-text">证书文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成强霍夫曼组"><span class="nav-number">2.4.</span> <span class="nav-text">生成强霍夫曼组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Config-TLS-SSL-On-Nginx-Server"><span class="nav-number">3.</span> <span class="nav-text">Config TLS/SSL On Nginx Server</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Renew-证书"><span class="nav-number">4.</span> <span class="nav-text">Renew 证书</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Conclusion"><span class="nav-number">5.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
