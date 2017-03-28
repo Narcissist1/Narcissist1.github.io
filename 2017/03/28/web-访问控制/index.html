@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="访问控制," />
 
 
 
@@ -57,16 +57,22 @@
 
 
 
-<meta name="description" content="Difference between classmethod and staticmethod in python12345678910111213class A(object):    def foo(self,x):        print &quot;executing foo(%s,%s)&quot;%(self,x)    @classmethod    def class_foo(cls,x):">
+<meta name="description" content="控制恶意访问和数据抓取当网站有了一定的访问量以后，就需要考虑防范恶意刷请求，以及数据抓取等行为。
+工具使用Redis 或其他持久化存储技术，存储用户访问行为和 Block 列表。Redis 自带的数据过期时间可以很好的适应时间段判断的逻辑。
+实现规定一个时间段 threshold, 以及这个时间段内规定合法的访问次数 times。将判断逻辑置于所有请求之前。使用一个适当前缀类似 ‘block’ +">
 <meta property="og:type" content="article">
-<meta property="og:title" content="classmethod & staticmethod in python">
-<meta property="og:url" content="narcissist1.github.io/2016/04/25/classmethod-staticmethod-in-python/index.html">
+<meta property="og:title" content="web 访问控制">
+<meta property="og:url" content="narcissist1.github.io/2017/03/28/web-访问控制/index.html">
 <meta property="og:site_name" content="Zack's Notebook">
-<meta property="og:description" content="Difference between classmethod and staticmethod in python12345678910111213class A(object):    def foo(self,x):        print &quot;executing foo(%s,%s)&quot;%(self,x)    @classmethod    def class_foo(cls,x):">
-<meta property="og:updated_time" content="2016-04-25T08:36:35.000Z">
+<meta property="og:description" content="控制恶意访问和数据抓取当网站有了一定的访问量以后，就需要考虑防范恶意刷请求，以及数据抓取等行为。
+工具使用Redis 或其他持久化存储技术，存储用户访问行为和 Block 列表。Redis 自带的数据过期时间可以很好的适应时间段判断的逻辑。
+实现规定一个时间段 threshold, 以及这个时间段内规定合法的访问次数 times。将判断逻辑置于所有请求之前。使用一个适当前缀类似 ‘block’ +">
+<meta property="og:updated_time" content="2017-03-28T10:34:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="classmethod & staticmethod in python">
-<meta name="twitter:description" content="Difference between classmethod and staticmethod in python12345678910111213class A(object):    def foo(self,x):        print &quot;executing foo(%s,%s)&quot;%(self,x)    @classmethod    def class_foo(cls,x):">
+<meta name="twitter:title" content="web 访问控制">
+<meta name="twitter:description" content="控制恶意访问和数据抓取当网站有了一定的访问量以后，就需要考虑防范恶意刷请求，以及数据抓取等行为。
+工具使用Redis 或其他持久化存储技术，存储用户访问行为和 Block 列表。Redis 自带的数据过期时间可以很好的适应时间段判断的逻辑。
+实现规定一个时间段 threshold, 以及这个时间段内规定合法的访问次数 times。将判断逻辑置于所有请求之前。使用一个适当前缀类似 ‘block’ +">
 
 
 
@@ -84,7 +90,7 @@
   };
 </script>
 
-  <title> classmethod & staticmethod in python | Zack's Notebook </title>
+  <title> web 访问控制 | Zack's Notebook </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -224,7 +230,7 @@
             
             
               
-                classmethod & staticmethod in python
+                web 访问控制
               
             
           </h1>
@@ -236,8 +242,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-25T15:55:26+08:00" content="2016-04-25">
-              2016-04-25
+            <time itemprop="dateCreated" datetime="2017-03-28T18:06:54+08:00" content="2017-03-28">
+              2017-03-28
             </time>
           </span>
 
@@ -266,8 +272,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/25/classmethod-staticmethod-in-python/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/25/classmethod-staticmethod-in-python/" itemprop="commentsCount"></span>
+                <a href="/2017/03/28/web-访问控制/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/28/web-访问控制/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -289,26 +295,10 @@
       
 
       
-        <h1 id="Difference-between-classmethod-and-staticmethod-in-python"><a href="#Difference-between-classmethod-and-staticmethod-in-python" class="headerlink" title="Difference between classmethod and staticmethod in python"></a>Difference between classmethod and staticmethod in python</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self,x)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"executing foo(%s,%s)"</span>%(self,x)</div><div class="line"></div><div class="line"><span class="meta">    @classmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">class_foo</span><span class="params">(cls,x)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"executing class_foo(%s,%s)"</span>%(cls,x)</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">static_foo</span><span class="params">(x)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"executing static_foo(%s)"</span>%x    </div><div class="line"></div><div class="line">a=A()</div></pre></td></tr></table></figure>
-<p>下面是调用 foo 方法的语句，a 实例将自己作为第一个参数传给 foo 方法：</p>
-<pre><code>a.foo(1)
-# executing foo(&lt;__main__.A object at 0xb7dbef0c&gt;,1)
-</code></pre><a id="more"></a>
-<hr>
-<p><strong>调用类方法</strong> 类将本身而不是创建的实例传给 class_foo 方法：</p>
-<pre><code>a.class_foo(1)
-# executing class_foo(&lt;class &apos;__main__.A&apos;&gt;,1)
-</code></pre><p>同样也可以通过类 A 直接调用 class_foo, 一般情况下，如果你定义了一个类方法，通常你会通过类而不是类创建的实例来调用它。</p>
-<pre><code>A.class_foo(1)
-# executing class_foo(&lt;class &apos;__main__.A&apos;&gt;,1)
-</code></pre><hr>
-<p><strong>调用静态方法</strong> 类本身或者类创建的实例都不会传给静态方法，静态方法和其他方法使用行为完全相同，但是你可以通过类或者类的实例来调用它。</p>
-<pre><code>a.static_foo(1)
-# executing static_foo(1)
+        <h1 id="控制恶意访问和数据抓取"><a href="#控制恶意访问和数据抓取" class="headerlink" title="控制恶意访问和数据抓取"></a>控制恶意访问和数据抓取</h1><p>当网站有了一定的访问量以后，就需要考虑防范恶意刷请求，以及数据抓取等行为。</p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><p>使用<a href="https://redis.io" target="_blank" rel="external">Redis</a> 或其他持久化存储技术，存储用户访问行为和 Block 列表。<a href="https://redis.io" target="_blank" rel="external">Redis</a> 自带的数据过期时间可以很好的适应时间段判断的逻辑。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>规定一个时间段 threshold, 以及这个时间段内规定合法的访问次数 times。将判断逻辑置于所有请求之前。<br>使用一个适当前缀类似 ‘block’ + user_id 作为 block 表的 key 值，这条数据的过期时间即为阻止该用户访问的时间，首先判断访问用户是否在 block 表中，如果在，阻止继续访问，否则获取一个表示当前用户在当前 threshold 时间段内的访问次数的值，该条数据的 key 值可以设定为适当前缀加用户id，类似 ‘request_rate’ + user_id, 该条数据的过期时间即为 threshold 值，value 对应当前用户在该 threshold 时间段内的访问次数。<br>如果获取不到该条数据，说明用户长时间未访问，则新建一条数据。如果可以获取到则判断  value 值是否小于 times，如果小于则将该条数据的 value 值加一（注意更新过期时间）。如果大于说明存在恶意访问，则将该用户加入 block 列表，阻止访问。</p>
 
-A.static_foo(&apos;hi&apos;)
-# executing static_foo(hi)
-</code></pre>
       
     </div>
 
@@ -322,7 +312,7 @@ A.static_foo(&apos;hi&apos;)
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag">#python</a>
+            <a href="/tags/访问控制/" rel="tag">#访问控制</a>
           
         </div>
       
@@ -331,17 +321,13 @@ A.static_foo(&apos;hi&apos;)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/20/增加-python-包搜索路径/" rel="next" title="增加 python 包搜索路径(Mac系统，或类Unix系统)">
-                <i class="fa fa-chevron-left"></i> 增加 python 包搜索路径(Mac系统，或类Unix系统)
+              <a href="/2017/02/17/Flask-socketio-multiserver-实现/" rel="next" title="Flask-socketio multiserver 实现">
+                <i class="fa fa-chevron-left"></i> Flask-socketio multiserver 实现
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/06/Install-Nginx-uwsgi-on-CentOS7/" rel="prev" title="Install Nginx uwsgi on CentOS7">
-                Install Nginx uwsgi on CentOS7 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -389,8 +375,8 @@ var jiathis_config={
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/25/classmethod-staticmethod-in-python/"
-           data-title="classmethod & staticmethod in python" data-url="narcissist1.github.io/2016/04/25/classmethod-staticmethod-in-python/">
+      <div class="ds-thread" data-thread-key="2017/03/28/web-访问控制/"
+           data-title="web 访问控制" data-url="narcissist1.github.io/2017/03/28/web-访问控制/">
       </div>
     
   </div>
@@ -520,7 +506,7 @@ var jiathis_config={
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Difference-between-classmethod-and-staticmethod-in-python"><span class="nav-number">1.</span> <span class="nav-text">Difference between classmethod and staticmethod in python</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#控制恶意访问和数据抓取"><span class="nav-number">1.</span> <span class="nav-text">控制恶意访问和数据抓取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工具"><span class="nav-number">2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现"><span class="nav-number">3.</span> <span class="nav-text">实现</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
