@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="小问题,跨域问题," />
+  <meta name="keywords" content="docker,部署," />
 
 
 
@@ -57,19 +57,22 @@
 
 
 
-<meta name="description" content="介绍前端请求非本地域名下的资源，会出现 not allow access 问题
-XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &amp;apos;Access-Control-Allow-Origin&amp;apos; header is present on the requested resource.">
+<meta name="description" content="简介Docker 是一个包含多种工具的集合，它可以将你的项目或者服务进行打包分发，在任何地方运行你的代码而不依赖于系统环境。在系统和上层代码之间 docker container 为它们提供桥梁的作用，它提供本地文件系统，以及网络接口的访问。
+由于最近有将整套代码服务进行打包分发的需求，我开始着手研究 docker 及其工具集。
+dockerize project通过在项目根目录编写 Docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="跨域问题解决方法">
-<meta property="og:url" content="narcissist1.github.io/2016/04/17/跨域问题解决方法/index.html">
+<meta property="og:title" content="docker 学习浅谈">
+<meta property="og:url" content="narcissist1.github.io/2017/11/28/docker-学习浅谈/index.html">
 <meta property="og:site_name" content="Zack's Notebook">
-<meta property="og:description" content="介绍前端请求非本地域名下的资源，会出现 not allow access 问题
-XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &amp;apos;Access-Control-Allow-Origin&amp;apos; header is present on the requested resource.">
-<meta property="og:updated_time" content="2016-04-20T09:28:37.000Z">
+<meta property="og:description" content="简介Docker 是一个包含多种工具的集合，它可以将你的项目或者服务进行打包分发，在任何地方运行你的代码而不依赖于系统环境。在系统和上层代码之间 docker container 为它们提供桥梁的作用，它提供本地文件系统，以及网络接口的访问。
+由于最近有将整套代码服务进行打包分发的需求，我开始着手研究 docker 及其工具集。
+dockerize project通过在项目根目录编写 Docker">
+<meta property="og:updated_time" content="2017-11-28T06:03:22.031Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="跨域问题解决方法">
-<meta name="twitter:description" content="介绍前端请求非本地域名下的资源，会出现 not allow access 问题
-XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &amp;apos;Access-Control-Allow-Origin&amp;apos; header is present on the requested resource.">
+<meta name="twitter:title" content="docker 学习浅谈">
+<meta name="twitter:description" content="简介Docker 是一个包含多种工具的集合，它可以将你的项目或者服务进行打包分发，在任何地方运行你的代码而不依赖于系统环境。在系统和上层代码之间 docker container 为它们提供桥梁的作用，它提供本地文件系统，以及网络接口的访问。
+由于最近有将整套代码服务进行打包分发的需求，我开始着手研究 docker 及其工具集。
+dockerize project通过在项目根目录编写 Docker">
 
 
 
@@ -87,7 +90,7 @@ XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &amp;
   };
 </script>
 
-  <title> 跨域问题解决方法 | Zack's Notebook </title>
+  <title> docker 学习浅谈 | Zack's Notebook </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -227,7 +230,7 @@ XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &amp;
             
             
               
-                跨域问题解决方法
+                docker 学习浅谈
               
             
           </h1>
@@ -239,8 +242,8 @@ XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &amp;
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-17T17:33:25+08:00" content="2016-04-17">
-              2016-04-17
+            <time itemprop="dateCreated" datetime="2017-11-28T12:09:29+08:00" content="2017-11-28">
+              2017-11-28
             </time>
           </span>
 
@@ -269,8 +272,8 @@ XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &amp;
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/17/跨域问题解决方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/跨域问题解决方法/" itemprop="commentsCount"></span>
+                <a href="/2017/11/28/docker-学习浅谈/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/11/28/docker-学习浅谈/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -292,12 +295,16 @@ XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &amp;
       
 
       
-        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>前端请求非本地域名下的资源，会出现 not allow access 问题</p>
-<pre><code>XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &apos;Access-Control-Allow-Origin&apos; header is present on the requested resource. Origin &apos;http://127.0.0.1:8080&apos; is therefore not allowed access.
-</code></pre><h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>后端在返回 response 时，在 response hear 增加 ‘Access-Control-Allow-Origin’: ‘*’:</p>
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Docker 是一个包含多种工具的集合，它可以将你的项目或者服务进行打包分发，在任何地方运行你的代码而不依赖于系统环境。在系统和上层代码之间 docker container 为它们提供桥梁的作用，它提供本地文件系统，以及网络接口的访问。</p>
+<p>由于最近有将整套代码服务进行打包分发的需求，我开始着手研究 docker 及其工具集。</p>
+<h1 id="dockerize-project"><a href="#dockerize-project" class="headerlink" title="dockerize project"></a>dockerize project</h1><p>通过在项目根目录编写 Dockerfile 文件，将项目 “docker 化”。一般会通过 FROM 命令首先引入一个 base image, 然后在此基础上构建自己的 image。比如，我的项目使用 Python 写的，那么我可以使用 python:2.7 作为 base image。</p>
+<p>在 Dockerfile 里面同样可以指定服务暴露的端口，即外部访问端口，以及环境变量等等。</p>
 <a id="more"></a>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JSONResponse</span><span class="params">(HttpResponse)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    An HttpResponse that renders its content into JSON.</div><div class="line">    """</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data, **kwargs)</span>:</span></div><div class="line">        content = json.dumps(data)</div><div class="line">        kwargs[<span class="string">'content_type'</span>] = <span class="string">'application/json'</span></div><div class="line">        super(JSONResponse, self).__init__(content, **kwargs)</div><div class="line">        self[<span class="string">'Access-Control-Allow-Origin'</span>] = <span class="string">'*'</span></div><div class="line">        self[<span class="string">'Cache-Control'</span>] = <span class="string">'no-cache'</span></div></pre></td></tr></table></figure>
-<p>在初始化父类之后，再在实例上增加如上 header 值。</p>
+<h1 id="docker-compose-整合多种服务"><a href="#docker-compose-整合多种服务" class="headerlink" title="docker compose 整合多种服务"></a>docker compose 整合多种服务</h1><p>在多数情况下，项目代码一般会依赖很多外部服务。比如，数据库，缓存服务，消息队列等等。docker 提供了 docker compose 工具将他们整合在一起。类似编写 Dockerfile 将项目 “docker 化”，通过编写 docker-compose.yml 文件进行服务整合。在 docker-compose.yml 中可以指定项目 app 是通过本地代码 build 还是来自 docker image。由于 docker 目前支持主流数据库及其他服务的 image，所以构建起来只需要指定相应 image，再配置好对应的文件系统路径即可，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">services:</div><div class="line">   postgres:</div><div class="line">     image: postgres:9.6</div><div class="line">     ports:</div><div class="line">      - &apos;5432:5432&apos;</div><div class="line">     environment:</div><div class="line">       - POSTGRES_USER=postgres</div><div class="line">       - POSTGRES_PASSWORD=</div><div class="line">       - POSTGRES_DB=magic</div><div class="line">     volumes:</div><div class="line">      - $PWD/docker/data/postgre_data</div><div class="line">   redis:</div><div class="line">     image: redis</div><div class="line">     ports:</div><div class="line">      - &quot;6379:6379&quot;</div><div class="line">     volumes:</div><div class="line">      - $PWD/docker/data/redis_data</div></pre></td></tr></table></figure>
+<p>完成 docker-compose.yml 后，只需要在当前目录运行 docker-compose up 即可将所以服务运行起来。</p>
+<p>docker compose 还提供了其他命令便于开发者管理服务，例如 ps, logs 等等。</p>
+<p><a href="https://docs.docker.com/compose/overview/" target="_blank" rel="external">docker compose 文档</a></p>
 
       
     </div>
@@ -312,9 +319,9 @@ XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &amp;
       
         <div class="post-tags">
           
-            <a href="/tags/小问题/" rel="tag">#小问题</a>
+            <a href="/tags/docker/" rel="tag">#docker</a>
           
-            <a href="/tags/跨域问题/" rel="tag">#跨域问题</a>
+            <a href="/tags/部署/" rel="tag">#部署</a>
           
         </div>
       
@@ -323,17 +330,13 @@ XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &amp;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/13/MySqldb-安装/" rel="next" title="MySqldb 安装">
-                <i class="fa fa-chevron-left"></i> MySqldb 安装
+              <a href="/2017/04/10/微信公众号开发的坑/" rel="next" title="微信公众号开发的坑">
+                <i class="fa fa-chevron-left"></i> 微信公众号开发的坑
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/20/增加-python-包搜索路径/" rel="prev" title="增加 python 包搜索路径(Mac系统，或类Unix系统)">
-                增加 python 包搜索路径(Mac系统，或类Unix系统) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -381,8 +384,8 @@ var jiathis_config={
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/17/跨域问题解决方法/"
-           data-title="跨域问题解决方法" data-url="narcissist1.github.io/2016/04/17/跨域问题解决方法/">
+      <div class="ds-thread" data-thread-key="2017/11/28/docker-学习浅谈/"
+           data-title="docker 学习浅谈" data-url="narcissist1.github.io/2017/11/28/docker-学习浅谈/">
       </div>
     
   </div>
@@ -512,7 +515,7 @@ var jiathis_config={
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方法"><span class="nav-number">2.</span> <span class="nav-text">解决方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dockerize-project"><span class="nav-number">2.</span> <span class="nav-text">dockerize project</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#docker-compose-整合多种服务"><span class="nav-number">3.</span> <span class="nav-text">docker compose 整合多种服务</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
