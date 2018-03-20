@@ -1,0 +1,827 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="docker,集群," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="由于最近用户量不断增多，以及出了几次事故。稳定性的保证要求对后端结构进行优化和升级。由于之前调研过阿里云集群，底层采用 docker 部署服务，可以自动伸缩容器和节点（后面发现里面还是有坑的😓）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里云集群部署总结（docker）">
+<meta property="og:url" content="narcissist1.github.io/2018/03/20/阿里云集群部署总结（docker）/index.html">
+<meta property="og:site_name" content="Zack's Notebook">
+<meta property="og:description" content="由于最近用户量不断增多，以及出了几次事故。稳定性的保证要求对后端结构进行优化和升级。由于之前调研过阿里云集群，底层采用 docker 部署服务，可以自动伸缩容器和节点（后面发现里面还是有坑的😓）。">
+<meta property="og:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/Image6.png">
+<meta property="og:updated_time" content="2018-03-20T06:14:20.484Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="阿里云集群部署总结（docker）">
+<meta name="twitter:description" content="由于最近用户量不断增多，以及出了几次事故。稳定性的保证要求对后端结构进行优化和升级。由于之前调研过阿里云集群，底层采用 docker 部署服务，可以自动伸缩容器和节点（后面发现里面还是有坑的😓）。">
+<meta name="twitter:image" content="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/Image6.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6237686403589735000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 阿里云集群部署总结（docker） | Zack's Notebook </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zack's Notebook</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                阿里云集群部署总结（docker）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-20T11:06:00+08:00" content="2018-03-20">
+              2018-03-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术相关/" itemprop="url" rel="index">
+                    <span itemprop="name">技术相关</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/20/阿里云集群部署总结（docker）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/03/20/阿里云集群部署总结（docker）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>由于最近用户量不断增多，以及出了几次事故。稳定性的保证要求对后端结构进行优化和升级。由于之前调研过阿里云集群，底层采用 docker 部署服务，可以自动伸缩容器和节点（后面发现里面还是有坑的😓）。</p>
+<a id="more"></a>
+<h1 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h1><p>后端API全部部署在集群之上，集群通过一个负载均衡和外部或者其他内网ECS通讯。通过指定相应的CPU和内存检测指标自动增减容器个数和节点（主机）个数。</p>
+<p>同时由于阿里云提供的外部<a href="https://www.aliyun.com/product/slb?spm=5176.8142029.388261.259.12db6d3eeqxQmL" target="_blank" rel="external">负载均衡</a>不支持绑定到一个节点内的多个容器上，所以实际上当容器自动伸缩的时候，新产生的容器并不能投入使用，因为会和旧容器的端口产生冲突。</p>
+<p>例如，有一个提供 web 服务的容器，对外暴露8000端口，那么当采用这种直接绑定外部负载均衡的方法时，该节点（主机）内部只能有一个这样的容器，这就使得容器自动扩容失去了意义。所以需要在节点内部再搭建一个负载均衡，并通过该负载均衡将流量分发到所有提供相同服务的容器上，而内部负载均衡和外部负载均衡绑定到一个特定端口上。<br><a href="https://help.aliyun.com/document_detail/50309.html?spm=a2c4g.11186623.6.693.d08dJa" target="_blank" rel="external">文档</a><br>阿里云提供的这个负载均衡镜像是基于<a href="http://cbonte.github.io/haproxy-dconv/configuration-1.5.html?spm=a2c4g.11186623.2.13.cdfzPy" target="_blank" rel="external">HAProxy</a></p>
+<p>结构如下：</p>
+<img title="拓扑结构图" src="http://7xsgwt.com1.z0.glb.clouddn.com/static/images/Image6.png">
+<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><p>阿里云使用 docker 部署相应的服务到集群当中。同时阿里云还提供了一个叫模板的工具（定制化的 docker compose）来将你的一系列服务整合成一个应用进行管理。</p>
+<p>模板管理相应的容器启动属性，以及网络设置，容器伸缩策略等等。<br>下面是一个 websocket 和 celery 应用的模板示例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">websocket:</div><div class="line">  image: &apos;your_image_url&apos;</div><div class="line">  restart: always</div><div class="line">  environment:</div><div class="line">    - EXAMPLE_ENV=1</div><div class="line">  ports:</div><div class="line">    - &apos;5000:5000/tcp&apos;</div><div class="line">  labels:</div><div class="line">    aliyun.scale: &apos;1&apos;</div><div class="line">    aliyun.global: &apos;true&apos;</div><div class="line">    aliyun.rolling_updates: &apos;true&apos;</div><div class="line">    aliyun.lb.port_5000: &apos;tcp://lb-2ze0e2wlvf9l1hfv9m1lv:5000&apos;</div><div class="line">  volumes:</div><div class="line">    - /etc/localtime:/etc/localtime:ro</div><div class="line">celery:</div><div class="line">  image: &apos;your_image_url&apos;</div><div class="line">  command:</div><div class="line">    - celery</div><div class="line">    - &apos;-A&apos;</div><div class="line">    - app</div><div class="line">    - worker</div><div class="line">    - &apos;--loglevel=info&apos;</div><div class="line">  restart: always</div><div class="line">  environment:</div><div class="line">    - LANG=C.UTF-8</div><div class="line">  cpu_shares: 100</div><div class="line">  labels:</div><div class="line">    aliyun.scale: &apos;1&apos;</div><div class="line">    aliyun.rolling_updates: &apos;true&apos;</div><div class="line">    aliyun.auto_scaling.max_cpu: &apos;70&apos;</div><div class="line">    aliyun.auto_scaling.min_cpu: &apos;30&apos;</div><div class="line">    aliyun.auto_scaling.step: &apos;1&apos;</div><div class="line">    aliyun.auto_scaling.max_instances: &apos;10&apos;</div><div class="line">    aliyun.auto_scaling.min_instances: &apos;2&apos;</div></pre></td></tr></table></figure>
+<p>由于模板基于 docker compose, 所以很多 docker compose 的配置写法是可以直接使用的，不过有一些版本上的限制。</p>
+<h1 id="代码更新以及应用部署"><a href="#代码更新以及应用部署" class="headerlink" title="代码更新以及应用部署"></a>代码更新以及应用部署</h1><h2 id="镜像管理"><a href="#镜像管理" class="headerlink" title="镜像管理"></a>镜像管理</h2><p>阿里云提供了镜像托管服务，支持绑定各种代码托管网站，用户可以设置 webhook，当某一分支的代码更新时，自动构建镜像。当然也可以手动构建，然后本地推送。新建一个镜像仓库，阿里云会分配出镜像地址，和正常的 docker 的构建和 push 没有差别。</p>
+<h2 id="代码部署"><a href="#代码部署" class="headerlink" title="代码部署"></a>代码部署</h2><p>对于更新应用代码，阿里云提供了两种方式，分别是蓝绿发布和标准发布。</p>
+<h3 id="蓝绿发布"><a href="#蓝绿发布" class="headerlink" title="蓝绿发布"></a>蓝绿发布</h3><p>蓝绿发布是一种零宕机的应用更新策略。进行蓝绿发布时，应用的旧版本服务与新版本服务会同时并存，同一个应用不同版本的服务之间共享路由，通过调节路由权重的方式，可以实现不同版本服务之间的流量切换。验证无误后，可以通过发布确认的方式将应用的旧版本的服务删除；如果验证不通过，则进行发布回滚，应用的新版本会进行删除。</p>
+<h3 id="标准发布"><a href="#标准发布" class="headerlink" title="标准发布"></a>标准发布</h3><p>标准发布会在发布时删除旧版本并上线新版本，服务会有短暂中断。</p>
+<h1 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h1><p>对于需要使用阿里云其他服务（Redis or MongoDB）的应用来说，自动伸缩节点其实完全无法使用。虽然将集群和这些数据库服务都放置在了同一个VPC（虚拟专有网络）之内，自动扩容出来的节点（在VPC之内）仍然需要手动更新数据库的安全组才能够进行访问。而且每一种数据库都有自己的访问安全控制，必须要一个一个手动修改。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>之前也有调研使用过 docker，这次结构升级将它应用在生产环境还是有不少挑战。总体来说，使用 docker 部署应用，让流程更加标准化，服务更加稳定。当有节点出现问题的时候，可以快速反应，将应用一键部署到其他节点。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag">#docker</a>
+          
+            <a href="/tags/集群/" rel="tag">#集群</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/27/2017-年度总结/" rel="next" title="2017 年度总结">
+                <i class="fa fa-chevron-left"></i> 2017 年度总结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+
+
+<div class="jiathis_style"><span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_tsina">新浪微博</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_googleplus">Google+</a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  summary:"",
+  shortUrl:true,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/03/20/阿里云集群部署总结（docker）/"
+           data-title="阿里云集群部署总结（docker）" data-url="narcissist1.github.io/2018/03/20/阿里云集群部署总结（docker）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/media/profile_photo.jpg"
+               alt="Zack Ren" />
+          <p class="site-author-name" itemprop="name">Zack Ren</p>
+          <p class="site-description motion-element" itemprop="description">长路漫漫，砥砺前行</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Narcissist1" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1922588195/" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/78800890/" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> douban
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/ren-yu-cheng-38" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> zhihu
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#结构"><span class="nav-number">1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模板"><span class="nav-number">2.</span> <span class="nav-text">模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码更新以及应用部署"><span class="nav-number">3.</span> <span class="nav-text">代码更新以及应用部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#镜像管理"><span class="nav-number">3.1.</span> <span class="nav-text">镜像管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码部署"><span class="nav-number">3.2.</span> <span class="nav-text">代码部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#蓝绿发布"><span class="nav-number">3.2.1.</span> <span class="nav-text">蓝绿发布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标准发布"><span class="nav-number">3.2.2.</span> <span class="nav-text">标准发布</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#坑"><span class="nav-number">4.</span> <span class="nav-text">坑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zack Ren</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"narcissit1"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -226,6 +226,123 @@
             
               
                 
+                <a class="post-title-link" href="/2018/03/20/阿里云集群部署总结（docker）/" itemprop="url">
+                  阿里云集群部署总结（docker）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-20T11:06:00+08:00" content="2018-03-20">
+              2018-03-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术相关/" itemprop="url" rel="index">
+                    <span itemprop="name">技术相关</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/20/阿里云集群部署总结（docker）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/03/20/阿里云集群部署总结（docker）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>由于最近用户量不断增多，以及出了几次事故。稳定性的保证要求对后端结构进行优化和升级。由于之前调研过阿里云集群，底层采用 docker 部署服务，可以自动伸缩容器和节点（后面发现里面还是有坑的😓）。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/03/20/阿里云集群部署总结（docker）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/01/27/2017-年度总结/" itemprop="url">
                   2017 年度总结
                 </a>
@@ -677,123 +794,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/28/web-访问控制/" itemprop="url">
-                  web 访问控制
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-28T18:06:54+08:00" content="2017-03-28">
-              2017-03-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术相关/" itemprop="url" rel="index">
-                    <span itemprop="name">技术相关</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/28/web-访问控制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/28/web-访问控制/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="控制恶意访问和数据抓取"><a href="#控制恶意访问和数据抓取" class="headerlink" title="控制恶意访问和数据抓取"></a>控制恶意访问和数据抓取</h1><p>当网站有了一定的访问量以后，就需要考虑防范恶意刷请求，以及数据抓取等行为。</p>
-<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><p>使用<a href="https://redis.io" target="_blank" rel="external">Redis</a> 或其他持久化存储技术，存储用户访问行为和 Block 列表。<a href="https://redis.io" target="_blank" rel="external">Redis</a> 自带的数据过期时间可以很好的适应时间段判断的逻辑。</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>规定一个时间段 threshold, 以及这个时间段内规定合法的访问次数 times。将判断逻辑置于所有请求之前。<br>使用一个适当前缀类似 ‘block’ + user_id 作为 block 表的 key 值，这条数据的过期时间即为阻止该用户访问的时间，首先判断访问用户是否在 block 表中，如果在，阻止继续访问，否则获取一个表示当前用户在当前 threshold 时间段内的访问次数的值，该条数据的 key 值可以设定为适当前缀加用户id，类似 ‘request_rate’ + user_id, 该条数据的过期时间即为 threshold 值，value 对应当前用户在该 threshold 时间段内的访问次数。<br>如果获取不到该条数据，说明用户长时间未访问，则新建一条数据。如果可以获取到则判断  value 值是否小于 times，如果小于则将该条数据的 value 值加一（注意更新过期时间）。如果大于说明存在恶意访问，则将该用户加入 block 列表，阻止访问。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -839,7 +839,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -856,7 +856,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
