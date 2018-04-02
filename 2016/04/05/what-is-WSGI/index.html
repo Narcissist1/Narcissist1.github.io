@@ -58,11 +58,13 @@
 
 
 <meta name="description" content="Web Server Gateway InterfaceWeb Server Gateway Interface(WSGI) 是一个简单通用的接口规范，介于 web 服务器和 Python web 应用或者框架之间。最初由 Phillip J. Eby 在2003.12.7 提出，编于 PEP 333。之后被接受作为 Pythonweb 应用开发的标准。最近一个版本是 v1.0.1，也就是 PEP">
+<meta name="keywords" content="WSGI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="what is WSGI">
 <meta property="og:url" content="narcissist1.github.io/2016/04/05/what-is-WSGI/index.html">
-<meta property="og:site_name" content="Zack's Notebook">
+<meta property="og:site_name" content="Zack&#39;s Notebook">
 <meta property="og:description" content="Web Server Gateway InterfaceWeb Server Gateway Interface(WSGI) 是一个简单通用的接口规范，介于 web 服务器和 Python web 应用或者框架之间。最初由 Phillip J. Eby 在2003.12.7 提出，编于 PEP 333。之后被接受作为 Pythonweb 应用开发的标准。最近一个版本是 v1.0.1，也就是 PEP">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-04-17T09:48:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="what is WSGI">
@@ -302,14 +304,14 @@
 <li>进行内容后处理，例如应用XSLT样式表。</li>
 </ul>
 <h2 id="示例程序"><a href="#示例程序" class="headerlink" title="示例程序"></a>示例程序</h2><p>用Python语言写的一个符合WSGI的“Hello World”应用程序如下所示：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">app</span><span class="params">(environ, start_response)</span>:</span></div><div class="line">	start_response(<span class="string">'200 OK'</span>, [(<span class="string">'Content-Type'</span>, <span class="string">'text/plain'</span>)])</div><div class="line">	<span class="keyword">yield</span> <span class="string">"Hello world!\n"</span></div></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">app</span><span class="params">(environ, start_response)</span>:</span></span><br><span class="line">	start_response(<span class="string">'200 OK'</span>, [(<span class="string">'Content-Type'</span>, <span class="string">'text/plain'</span>)])</span><br><span class="line">	<span class="keyword">yield</span> <span class="string">"Hello world!\n"</span></span><br></pre></td></tr></table></figure>
 <p>其中</p>
 <ul>
 <li>第一行定义了一个名为app的callable[2]，接受两个参数，environ和start_response，environ是一个字典包含了CGI中的环境变量，start_response也是一个callable，接受两个必须的参数，status（HTTP状态）和response_headers（响应消息的头）。</li>
 <li>第二行调用了start_response，状态指定为“200 OK”，消息头指定为内容类型是“text/plain”</li>
 <li>第三行将响应消息的消息体返回。</li>
 </ul>
-<p><a href="https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface" target="_blank" rel="external">原文链接</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface" target="_blank" rel="noopener">原文链接</a></p>
 
       
     </div>
@@ -437,7 +439,7 @@ var jiathis_config={
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -454,7 +456,7 @@ var jiathis_config={
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

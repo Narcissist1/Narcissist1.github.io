@@ -57,22 +57,18 @@
 
 
 
-<meta name="description" content="为了提高网站安全性，最近将 http 的站点转换部署为了 https。 使用了Let’s encrypt CA认证证书，certbot自动部署证书工具。
-RequirementNginx server (编译时需要加 –with-http_ssl_module 模块)。 Ubuntu 14.04 操作系统。
-Deploy HTTPSInstall Certbot运行以下命令，安装 certbot-">
+<meta name="description" content="为了提高网站安全性，最近将 http 的站点转换部署为了 https。 使用了Let’s encrypt CA认证证书，certbot自动部署证书工具。 RequirementNginx server (编译时需要加 –with-http_ssl_module 模块)。 Ubuntu 14.04 操作系统。 Deploy HTTPSInstall Certbot运行以下命令，安装 certbot-">
+<meta name="keywords" content="https,nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Deploy https website on nginx server">
 <meta property="og:url" content="narcissist1.github.io/2016/12/05/Deploy-https-website-on-nginx-server/index.html">
-<meta property="og:site_name" content="Zack's Notebook">
-<meta property="og:description" content="为了提高网站安全性，最近将 http 的站点转换部署为了 https。 使用了Let’s encrypt CA认证证书，certbot自动部署证书工具。
-RequirementNginx server (编译时需要加 –with-http_ssl_module 模块)。 Ubuntu 14.04 操作系统。
-Deploy HTTPSInstall Certbot运行以下命令，安装 certbot-">
+<meta property="og:site_name" content="Zack&#39;s Notebook">
+<meta property="og:description" content="为了提高网站安全性，最近将 http 的站点转换部署为了 https。 使用了Let’s encrypt CA认证证书，certbot自动部署证书工具。 RequirementNginx server (编译时需要加 –with-http_ssl_module 模块)。 Ubuntu 14.04 操作系统。 Deploy HTTPSInstall Certbot运行以下命令，安装 certbot-">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-12-05T05:06:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deploy https website on nginx server">
-<meta name="twitter:description" content="为了提高网站安全性，最近将 http 的站点转换部署为了 https。 使用了Let’s encrypt CA认证证书，certbot自动部署证书工具。
-RequirementNginx server (编译时需要加 –with-http_ssl_module 模块)。 Ubuntu 14.04 操作系统。
-Deploy HTTPSInstall Certbot运行以下命令，安装 certbot-">
+<meta name="twitter:description" content="为了提高网站安全性，最近将 http 的站点转换部署为了 https。 使用了Let’s encrypt CA认证证书，certbot自动部署证书工具。 RequirementNginx server (编译时需要加 –with-http_ssl_module 模块)。 Ubuntu 14.04 操作系统。 Deploy HTTPSInstall Certbot运行以下命令，安装 certbot-">
 
 
 
@@ -295,26 +291,26 @@ Deploy HTTPSInstall Certbot运行以下命令，安装 certbot-">
       
 
       
-        <p>为了提高网站安全性，最近将 http 的站点转换部署为了 https。 使用了<a href="https://letsencrypt.org/" target="_blank" rel="external">Let’s encrypt</a> CA认证证书，<a href="https://certbot.eff.org/#ubuntutrusty-nginx" target="_blank" rel="external">certbot</a>自动部署证书工具。</p>
+        <p>为了提高网站安全性，最近将 http 的站点转换部署为了 https。 使用了<a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s encrypt</a> CA认证证书，<a href="https://certbot.eff.org/#ubuntutrusty-nginx" target="_blank" rel="noopener">certbot</a>自动部署证书工具。</p>
 <h1 id="Requirement"><a href="#Requirement" class="headerlink" title="Requirement"></a>Requirement</h1><p>Nginx server (编译时需要加 –with-http_ssl_module 模块)。 Ubuntu 14.04 操作系统。</p>
 <h1 id="Deploy-HTTPS"><a href="#Deploy-HTTPS" class="headerlink" title="Deploy HTTPS"></a>Deploy HTTPS</h1><h2 id="Install-Certbot"><a href="#Install-Certbot" class="headerlink" title="Install Certbot"></a>Install Certbot</h2><p>运行以下命令，安装 certbot-auto 脚本</p>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://dl.eff.org/certbot-auto</div><div class="line">chmod a+x certbot-auto</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.eff.org/certbot-auto</span><br><span class="line">chmod a+x certbot-auto</span><br></pre></td></tr></table></figure>
 <p>它会自动安装自身需要的依赖，并且自动更新，只需要运行以下</p>
 <pre><code>$ ./certbot-auto
 </code></pre><p>为了确保 certbot 有权限访问并验证目录，需要在 nginx 配置一下目录。(以默认目录为例)</p>
 <pre><code>sudo vim /etc/nginx/sites-available/default
 </code></pre><p>添加一下 block</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        . . .</div><div class="line"></div><div class="line">        location ~ /.well-known &#123;</div><div class="line">                allow all;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        . . .</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        . . .</span><br><span class="line"></span><br><span class="line">        location ~ /.well-known &#123;</span><br><span class="line">                allow all;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        . . .</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>检查 nginx 配置并重启：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo nginx -t</div><div class="line">sudo nbgix <span class="_">-s</span> reload</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br><span class="line">sudo nbgix -s reload</span><br></pre></td></tr></table></figure>
 <h2 id="获取证书"><a href="#获取证书" class="headerlink" title="获取证书"></a>获取证书</h2><p>首先要知道 web 根目录，也就是网站的根目录。我们使用 webroot 插件请求 ssl 认证，-d 参数指出绑定到哪个域名下面。可以指定多个域名，但是要确保最高域名在最前面。</p>
 <pre><code>certbot-auto certonly -a webroot --webroot-path=/usr/share/nginx/html -d example.com -d www.example.com
 </code></pre><blockquote>
 <p>certbot-auto 需要管理员权限，非管理员用户需要加 sudo 运行</p>
 </blockquote>
 <p>如果一切顺利，会有如下输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Output:</div><div class="line">IMPORTANT NOTES:</div><div class="line"> - If you lose your account credentials, you can recover through</div><div class="line">   e-mails sent to sammy@digitalocean.com</div><div class="line"> - Congratulations! Your certificate and chain have been saved at</div><div class="line">   /etc/letsencrypt/live/example.com/fullchain.pem. Your</div><div class="line">   cert will expire on 2016-03-15. To obtain a new version of the</div><div class="line">   certificate in the future, simply run Let&apos;s Encrypt again.</div><div class="line"> - Your account credentials have been saved in your Let&apos;s Encrypt</div><div class="line">   configuration directory at /etc/letsencrypt. You should make a</div><div class="line">   secure backup of this folder now. This configuration directory will</div><div class="line">   also contain certificates and private keys obtained by Let&apos;s</div><div class="line">   Encrypt so making regular backups of this folder is ideal.</div><div class="line"> - If like Let&apos;s Encrypt, please consider supporting our work by:</div><div class="line"></div><div class="line">   Donating to ISRG / Let&apos;s Encrypt:   https://letsencrypt.org/donate</div><div class="line">   Donating to EFF:                    https://eff.org/donate-le</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Output:</span><br><span class="line">IMPORTANT NOTES:</span><br><span class="line"> - If you lose your account credentials, you can recover through</span><br><span class="line">   e-mails sent to sammy@digitalocean.com</span><br><span class="line"> - Congratulations! Your certificate and chain have been saved at</span><br><span class="line">   /etc/letsencrypt/live/example.com/fullchain.pem. Your</span><br><span class="line">   cert will expire on 2016-03-15. To obtain a new version of the</span><br><span class="line">   certificate in the future, simply run Let&apos;s Encrypt again.</span><br><span class="line"> - Your account credentials have been saved in your Let&apos;s Encrypt</span><br><span class="line">   configuration directory at /etc/letsencrypt. You should make a</span><br><span class="line">   secure backup of this folder now. This configuration directory will</span><br><span class="line">   also contain certificates and private keys obtained by Let&apos;s</span><br><span class="line">   Encrypt so making regular backups of this folder is ideal.</span><br><span class="line"> - If like Let&apos;s Encrypt, please consider supporting our work by:</span><br><span class="line"></span><br><span class="line">   Donating to ISRG / Let&apos;s Encrypt:   https://letsencrypt.org/donate</span><br><span class="line">   Donating to EFF:                    https://eff.org/donate-le</span><br></pre></td></tr></table></figure>
 <p>/etc/letsencrypt/live/ 就是保存证书的目录， 2016-03-15 是有效期截止日。</p>
 <h2 id="证书文件"><a href="#证书文件" class="headerlink" title="证书文件"></a>证书文件</h2><p>经过授权之后，你会得到如下文件：</p>
 <ul>
@@ -330,19 +326,19 @@ Deploy HTTPSInstall Certbot运行以下命令，安装 certbot-">
 </code></pre><p>生成后的文件存储在 /etc/ssl/certs/dhparam.pem</p>
 <h1 id="Config-TLS-SSL-On-Nginx-Server"><a href="#Config-TLS-SSL-On-Nginx-Server" class="headerlink" title="Config TLS/SSL On Nginx Server"></a>Config TLS/SSL On Nginx Server</h1><p>现在你有了一个 ssl 的证书，现在需要将它部署在 Nginx 上。打开 server 配置文件，注释掉，原来的 listen 80, listen servername 等行。</p>
 <p>添加一下配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">listen 443 ssl;</div><div class="line"> server_name example.com www.example.com;</div><div class="line"> ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;</div><div class="line"> ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">listen 443 ssl;</span><br><span class="line"> server_name example.com www.example.com;</span><br><span class="line"> ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;</span><br><span class="line"> ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;</span><br></pre></td></tr></table></figure>
 <p>仅允许强 ssl 链接，并使用刚刚生成的霍夫曼组：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</div><div class="line">   ssl_prefer_server_ciphers on;</div><div class="line">   ssl_dhparam /etc/ssl/certs/dhparam.pem;</div><div class="line">   ssl_ciphers &apos;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA&apos;;</div><div class="line">   ssl_session_timeout 1d;</div><div class="line">   ssl_session_cache shared:SSL:50m;</div><div class="line">   ssl_stapling on;</div><div class="line">   ssl_stapling_verify on;</div><div class="line">   add_header Strict-Transport-Security max-age=15768000;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">   ssl_prefer_server_ciphers on;</span><br><span class="line">   ssl_dhparam /etc/ssl/certs/dhparam.pem;</span><br><span class="line">   ssl_ciphers &apos;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA&apos;;</span><br><span class="line">   ssl_session_timeout 1d;</span><br><span class="line">   ssl_session_cache shared:SSL:50m;</span><br><span class="line">   ssl_stapling on;</span><br><span class="line">   ssl_stapling_verify on;</span><br><span class="line">   add_header Strict-Transport-Security max-age=15768000;</span><br></pre></td></tr></table></figure>
 <p>最后将 80 端口的请求全部转发到 443 ssl 端口，添加一个新的 server block：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line">    server_name example.com www.example.com;</div><div class="line">    return 301 https://$host$request_uri;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name example.com www.example.com;</span><br><span class="line">    return 301 https://$host$request_uri;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>检查 nginx 配置并重启：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo nginx -t</div><div class="line">sudo nbgix <span class="_">-s</span> reload</div></pre></td></tr></table></figure>
-<h1 id="Renew-证书"><a href="#Renew-证书" class="headerlink" title="Renew 证书"></a>Renew 证书</h1><p><a href="https://letsencrypt.org/" target="_blank" rel="external">Let’s encrypt</a>的证书有效期为90天，但是推荐每60天更新一次，留出 30 天的缓冲期。运行以下命令更新证书：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br><span class="line">sudo nbgix -s reload</span><br></pre></td></tr></table></figure>
+<h1 id="Renew-证书"><a href="#Renew-证书" class="headerlink" title="Renew 证书"></a>Renew 证书</h1><p><a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s encrypt</a>的证书有效期为90天，但是推荐每60天更新一次，留出 30 天的缓冲期。运行以下命令更新证书：</p>
 <pre><code>certbot-auto renew
 </code></pre><p>以上任务可以设置为一个 crontab 的定期任务。<code>sudo crontab -e</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">30 2 * * 1 /usr/local/sbin/certbot-auto renew &gt;&gt; /var/log/le-renew.log</div><div class="line">35 2 * * 1 /etc/init.d/nginx reload</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">30 2 * * 1 /usr/local/sbin/certbot-auto renew &gt;&gt; /var/log/le-renew.log</span><br><span class="line">35 2 * * 1 /etc/init.d/nginx reload</span><br></pre></td></tr></table></figure>
 <p>每周一的，凌晨2:30，renew。 2:35 重启 nginx server。</p>
-<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>这样你就配置好了一个使用<a href="https://letsencrypt.org/" target="_blank" rel="external">Let’s encrypt</a>证书的，基于 Nginx 的站点。</p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>这样你就配置好了一个使用<a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s encrypt</a>证书的，基于 Nginx 的站点。</p>
 
       
     </div>
@@ -472,7 +468,7 @@ var jiathis_config={
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -489,7 +485,7 @@ var jiathis_config={
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

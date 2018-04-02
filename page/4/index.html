@@ -59,12 +59,13 @@
 
 <meta name="description" content="长路漫漫，砥砺前行">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Zack's Notebook">
+<meta property="og:title" content="Zack&#39;s Notebook">
 <meta property="og:url" content="narcissist1.github.io/page/4/index.html">
-<meta property="og:site_name" content="Zack's Notebook">
+<meta property="og:site_name" content="Zack&#39;s Notebook">
 <meta property="og:description" content="长路漫漫，砥砺前行">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zack's Notebook">
+<meta name="twitter:title" content="Zack&#39;s Notebook">
 <meta name="twitter:description" content="长路漫漫，砥砺前行">
 
 
@@ -204,6 +205,124 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/25/数据库连接占满504-error/" itemprop="url">
+                  数据库连接占满504 error
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-25T10:12:02+08:00" content="2016-10-25">
+              2016-10-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术相关/" itemprop="url" rel="index">
+                    <span itemprop="name">技术相关</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/25/数据库连接占满504-error/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/25/数据库连接占满504-error/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>一般情况下数据库的插入，删除，更新操作会做 exception handle, 很少想到查询也需要这种操作。我在后台使用 UUID 作为数据库 ID 主键，当前端使用非规范的 uuid 进行查询的时候会触发 StatementError: (exceptions.ValueError) 这时候数据库链接并不会自己断开，导致多次非规范查询后数据库连接池被占满，返回 504 timeout 错误码。</p>
+<p>所以不论什么时候都要保证一次请求过后相应的数据库 session 连接关闭。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/25/数据库连接占满504-error/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -691,132 +810,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/25/classmethod-staticmethod-in-python/" itemprop="url">
-                  classmethod & staticmethod in python
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-25T15:55:26+08:00" content="2016-04-25">
-              2016-04-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术相关/" itemprop="url" rel="index">
-                    <span itemprop="name">技术相关</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/25/classmethod-staticmethod-in-python/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/25/classmethod-staticmethod-in-python/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Difference-between-classmethod-and-staticmethod-in-python"><a href="#Difference-between-classmethod-and-staticmethod-in-python" class="headerlink" title="Difference between classmethod and staticmethod in python"></a>Difference between classmethod and staticmethod in python</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self,x)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"executing foo(%s,%s)"</span>%(self,x)</div><div class="line"></div><div class="line"><span class="meta">    @classmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">class_foo</span><span class="params">(cls,x)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"executing class_foo(%s,%s)"</span>%(cls,x)</div><div class="line"></div><div class="line"><span class="meta">    @staticmethod</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">static_foo</span><span class="params">(x)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"executing static_foo(%s)"</span>%x    </div><div class="line"></div><div class="line">a=A()</div></pre></td></tr></table></figure>
-<p>下面是调用 foo 方法的语句，a 实例将自己作为第一个参数传给 foo 方法：</p>
-<pre><code>a.foo(1)
-# executing foo(&lt;__main__.A object at 0xb7dbef0c&gt;,1)
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/25/classmethod-staticmethod-in-python/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -857,7 +855,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -874,7 +872,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

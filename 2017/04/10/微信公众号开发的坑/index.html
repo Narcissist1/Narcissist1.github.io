@@ -57,19 +57,18 @@
 
 
 
-<meta name="description" content="微信公众号开发需要用户有自己的服务器资源，微信服务器会把响应的请求转发到你的服务器，在开始开发之前微信会确认服务器的可用性，因此需要发一个带有时间戳，token，echostr，等参数的 GET 请求。要求验证身份后原样返回 echostr。
-这么一个简单的需求被卡了一个下午。。。原来是我的后端服务器默认返回 application/json 的数据格式，微信要求的是 text/plain 的，哭">
+<meta name="description" content="微信公众号开发需要用户有自己的服务器资源，微信服务器会把响应的请求转发到你的服务器，在开始开发之前微信会确认服务器的可用性，因此需要发一个带有时间戳，token，echostr，等参数的 GET 请求。要求验证身份后原样返回 echostr。 这么一个简单的需求被卡了一个下午。。。原来是我的后端服务器默认返回 application/json 的数据格式，微信要求的是 text/plain 的，哭">
+<meta name="keywords" content="微信">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信公众号开发的坑">
 <meta property="og:url" content="narcissist1.github.io/2017/04/10/微信公众号开发的坑/index.html">
-<meta property="og:site_name" content="Zack's Notebook">
-<meta property="og:description" content="微信公众号开发需要用户有自己的服务器资源，微信服务器会把响应的请求转发到你的服务器，在开始开发之前微信会确认服务器的可用性，因此需要发一个带有时间戳，token，echostr，等参数的 GET 请求。要求验证身份后原样返回 echostr。
-这么一个简单的需求被卡了一个下午。。。原来是我的后端服务器默认返回 application/json 的数据格式，微信要求的是 text/plain 的，哭">
+<meta property="og:site_name" content="Zack&#39;s Notebook">
+<meta property="og:description" content="微信公众号开发需要用户有自己的服务器资源，微信服务器会把响应的请求转发到你的服务器，在开始开发之前微信会确认服务器的可用性，因此需要发一个带有时间戳，token，echostr，等参数的 GET 请求。要求验证身份后原样返回 echostr。 这么一个简单的需求被卡了一个下午。。。原来是我的后端服务器默认返回 application/json 的数据格式，微信要求的是 text/plain 的，哭">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-04-10T01:45:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信公众号开发的坑">
-<meta name="twitter:description" content="微信公众号开发需要用户有自己的服务器资源，微信服务器会把响应的请求转发到你的服务器，在开始开发之前微信会确认服务器的可用性，因此需要发一个带有时间戳，token，echostr，等参数的 GET 请求。要求验证身份后原样返回 echostr。
-这么一个简单的需求被卡了一个下午。。。原来是我的后端服务器默认返回 application/json 的数据格式，微信要求的是 text/plain 的，哭">
+<meta name="twitter:description" content="微信公众号开发需要用户有自己的服务器资源，微信服务器会把响应的请求转发到你的服务器，在开始开发之前微信会确认服务器的可用性，因此需要发一个带有时间戳，token，echostr，等参数的 GET 请求。要求验证身份后原样返回 echostr。 这么一个简单的需求被卡了一个下午。。。原来是我的后端服务器默认返回 application/json 的数据格式，微信要求的是 text/plain 的，哭">
 
 
 
@@ -421,7 +420,7 @@ var jiathis_config={
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -438,7 +437,7 @@ var jiathis_config={
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

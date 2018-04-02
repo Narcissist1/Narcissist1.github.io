@@ -57,19 +57,18 @@
 
 
 
-<meta name="description" content="介绍前端请求非本地域名下的资源，会出现 not allow access 问题
-XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &amp;apos;Access-Control-Allow-Origin&amp;apos; header is present on the requested resource.">
+<meta name="description" content="介绍前端请求非本地域名下的资源，会出现 not allow access 问题 XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &amp;apos;Access-Control-Allow-Origin&amp;apos; header is present on the requested resource.">
+<meta name="keywords" content="小问题,跨域问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="跨域问题解决方法">
 <meta property="og:url" content="narcissist1.github.io/2016/04/17/跨域问题解决方法/index.html">
-<meta property="og:site_name" content="Zack's Notebook">
-<meta property="og:description" content="介绍前端请求非本地域名下的资源，会出现 not allow access 问题
-XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &amp;apos;Access-Control-Allow-Origin&amp;apos; header is present on the requested resource.">
+<meta property="og:site_name" content="Zack&#39;s Notebook">
+<meta property="og:description" content="介绍前端请求非本地域名下的资源，会出现 not allow access 问题 XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &amp;apos;Access-Control-Allow-Origin&amp;apos; header is present on the requested resource.">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-04-20T09:28:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跨域问题解决方法">
-<meta name="twitter:description" content="介绍前端请求非本地域名下的资源，会出现 not allow access 问题
-XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &amp;apos;Access-Control-Allow-Origin&amp;apos; header is present on the requested resource.">
+<meta name="twitter:description" content="介绍前端请求非本地域名下的资源，会出现 not allow access 问题 XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &amp;apos;Access-Control-Allow-Origin&amp;apos; header is present on the requested resource.">
 
 
 
@@ -296,7 +295,7 @@ XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &amp;
 <pre><code>XMLHttpRequest cannot load http://127.0.0.1:9100/cc/myprojects/?mobile. No &apos;Access-Control-Allow-Origin&apos; header is present on the requested resource. Origin &apos;http://127.0.0.1:8080&apos; is therefore not allowed access.
 </code></pre><h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>后端在返回 response 时，在 response hear 增加 ‘Access-Control-Allow-Origin’: ‘*’:</p>
 <a id="more"></a>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JSONResponse</span><span class="params">(HttpResponse)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    An HttpResponse that renders its content into JSON.</div><div class="line">    """</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data, **kwargs)</span>:</span></div><div class="line">        content = json.dumps(data)</div><div class="line">        kwargs[<span class="string">'content_type'</span>] = <span class="string">'application/json'</span></div><div class="line">        super(JSONResponse, self).__init__(content, **kwargs)</div><div class="line">        self[<span class="string">'Access-Control-Allow-Origin'</span>] = <span class="string">'*'</span></div><div class="line">        self[<span class="string">'Cache-Control'</span>] = <span class="string">'no-cache'</span></div></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">JSONResponse</span><span class="params">(HttpResponse)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    An HttpResponse that renders its content into JSON.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data, **kwargs)</span>:</span></span><br><span class="line">        content = json.dumps(data)</span><br><span class="line">        kwargs[<span class="string">'content_type'</span>] = <span class="string">'application/json'</span></span><br><span class="line">        super(JSONResponse, self).__init__(content, **kwargs)</span><br><span class="line">        self[<span class="string">'Access-Control-Allow-Origin'</span>] = <span class="string">'*'</span></span><br><span class="line">        self[<span class="string">'Cache-Control'</span>] = <span class="string">'no-cache'</span></span><br></pre></td></tr></table></figure>
 <p>在初始化父类之后，再在实例上增加如上 header 值。</p>
 
       
@@ -427,7 +426,7 @@ var jiathis_config={
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -444,7 +443,7 @@ var jiathis_config={
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

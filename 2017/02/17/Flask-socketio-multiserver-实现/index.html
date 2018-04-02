@@ -58,11 +58,13 @@
 
 
 <meta name="description" content="Websocket由于某些地方需要实时更新前端数据，想到使用 websocket, websocket 是基于 HTTP 协议的更高级通讯协议，可以实现客户端到服务器的实时交互会话。从而实现事件驱动交互而不需要客户端反复请求服务器。">
+<meta name="keywords" content="websocket">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flask-socketio multiserver 实现">
 <meta property="og:url" content="narcissist1.github.io/2017/02/17/Flask-socketio-multiserver-实现/index.html">
-<meta property="og:site_name" content="Zack's Notebook">
+<meta property="og:site_name" content="Zack&#39;s Notebook">
 <meta property="og:description" content="Websocket由于某些地方需要实时更新前端数据，想到使用 websocket, websocket 是基于 HTTP 协议的更高级通讯协议，可以实现客户端到服务器的实时交互会话。从而实现事件驱动交互而不需要客户端反复请求服务器。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-02-17T08:57:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flask-socketio multiserver 实现">
@@ -291,12 +293,12 @@
       
         <h1 id="Websocket"><a href="#Websocket" class="headerlink" title="Websocket"></a>Websocket</h1><p>由于某些地方需要实时更新前端数据，想到使用 websocket, websocket 是基于 HTTP 协议的更高级通讯协议，可以实现客户端到服务器的实时交互会话。从而实现事件驱动交互而不需要客户端反复请求服务器。</p>
 <a id="more"></a>
-<h1 id="Flask-socketio"><a href="#Flask-socketio" class="headerlink" title="Flask-socketio"></a>Flask-socketio</h1><p>主站使用了 Flask 框架，所以选择了 <a href="https://flask-socketio.readthedocs.io/en/latest/" target="_blank" rel="external">Flask-socketio</a> 库，除了提供 socket 通信还可以获取系统 app 配置，适合嵌入现有系统。客户端可以使用任何 <a href="http://socket.io/" target="_blank" rel="external">SocketIO</a> 提供的官方客户端，支持 Javascript, C++, Java 和 Swift 等语言。</p>
+<h1 id="Flask-socketio"><a href="#Flask-socketio" class="headerlink" title="Flask-socketio"></a>Flask-socketio</h1><p>主站使用了 Flask 框架，所以选择了 <a href="https://flask-socketio.readthedocs.io/en/latest/" target="_blank" rel="noopener">Flask-socketio</a> 库，除了提供 socket 通信还可以获取系统 app 配置，适合嵌入现有系统。客户端可以使用任何 <a href="http://socket.io/" target="_blank" rel="noopener">SocketIO</a> 提供的官方客户端，支持 Javascript, C++, Java 和 Swift 等语言。</p>
 <h1 id="Multiserver"><a href="#Multiserver" class="headerlink" title="Multiserver"></a>Multiserver</h1><p>单 Server 的 websocket 比较简单，通过官方文档即可实现，这里只说一下多 server。多 server 文档上没有详细介绍。要实现多 server 需要使用消息队列，因为客户端会连接在各个 server 上，像消息广播或者分组消息发送就会受到影响，因为某个 server 收到的消息只会广播到连接在这个 server 上所有的客户端。使用消息队列后所有 server 都从确定的这个队列取消息发送，就可以避免有的客户端收不到消息的情况。</p>
-<p>文档介绍 <a href="https://flask-socketio.readthedocs.io/en/latest/" target="_blank" rel="external">Flask-socketio</a> 实现多 server 可以使用 <a href="https://redis.io/" target="_blank" rel="external">redis</a> 或者 <a href="https://www.rabbitmq.com/" target="_blank" rel="external">rabbitmq</a> 消息队列。</p>
-<p>我这里使用的是 <a href="https://www.rabbitmq.com/" target="_blank" rel="external">rabbitmq</a>。 </p>
+<p>文档介绍 <a href="https://flask-socketio.readthedocs.io/en/latest/" target="_blank" rel="noopener">Flask-socketio</a> 实现多 server 可以使用 <a href="https://redis.io/" target="_blank" rel="noopener">redis</a> 或者 <a href="https://www.rabbitmq.com/" target="_blank" rel="noopener">rabbitmq</a> 消息队列。</p>
+<p>我这里使用的是 <a href="https://www.rabbitmq.com/" target="_blank" rel="noopener">rabbitmq</a>。 </p>
 <p>搭建好消息队列并启动服务后，新建 socketio 实例。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app = Flask(__name__)</div><div class="line">socket_io = SocketIO(app, async_mode=async_mode, engineio_logger=<span class="keyword">True</span>, message_queue=<span class="string">'amqp://username:password@localhost//'</span>,</div><div class="line">                     channel=<span class="string">'socket'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app = Flask(__name__)</span><br><span class="line">socket_io = SocketIO(app, async_mode=async_mode, engineio_logger=<span class="keyword">True</span>, message_queue=<span class="string">'amqp://username:password@localhost//'</span>,</span><br><span class="line">                     channel=<span class="string">'socket'</span>)</span><br></pre></td></tr></table></figure>
 <p>这里有个小问题，使用消息队列时，<strong>app 必须要和 socket_io 在同一个文件里面新建</strong>，如果分开创建之后通过 init_app() 方法初始化 soketio 实例，在多 server 时会报错。</p>
 <p>这里 async_mode 我使用的是 gevent，虽然官方文档上说使用 eventlet 会效率更高一点，但我这里测试刚好相反，所以就使用了 gevent。</p>
 
@@ -426,7 +428,7 @@ var jiathis_config={
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -443,7 +445,7 @@ var jiathis_config={
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

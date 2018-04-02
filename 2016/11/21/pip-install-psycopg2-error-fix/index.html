@@ -57,19 +57,18 @@
 
 
 
-<meta name="description" content="最近将开发环境迁移到 virtualenvwrapper 上，需要重新安装项目依赖。由于后台数据库使用的是 Postgresql，需要安装响应的 python 驱动模块 psycopg2，安装时系统反馈了如下错误
-123ld: library not found for -lsslclang: error: linker command failed with exit code 1 (use -">
+<meta name="description" content="最近将开发环境迁移到 virtualenvwrapper 上，需要重新安装项目依赖。由于后台数据库使用的是 Postgresql，需要安装响应的 python 驱动模块 psycopg2，安装时系统反馈了如下错误 123ld: library not found for -lsslclang: error: linker command failed with exit code 1 (use -">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pip install psycopg2 error fix(Mac)">
 <meta property="og:url" content="narcissist1.github.io/2016/11/21/pip-install-psycopg2-error-fix/index.html">
-<meta property="og:site_name" content="Zack's Notebook">
-<meta property="og:description" content="最近将开发环境迁移到 virtualenvwrapper 上，需要重新安装项目依赖。由于后台数据库使用的是 Postgresql，需要安装响应的 python 驱动模块 psycopg2，安装时系统反馈了如下错误
-123ld: library not found for -lsslclang: error: linker command failed with exit code 1 (use -">
+<meta property="og:site_name" content="Zack&#39;s Notebook">
+<meta property="og:description" content="最近将开发环境迁移到 virtualenvwrapper 上，需要重新安装项目依赖。由于后台数据库使用的是 Postgresql，需要安装响应的 python 驱动模块 psycopg2，安装时系统反馈了如下错误 123ld: library not found for -lsslclang: error: linker command failed with exit code 1 (use -">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-11-21T14:44:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pip install psycopg2 error fix(Mac)">
-<meta name="twitter:description" content="最近将开发环境迁移到 virtualenvwrapper 上，需要重新安装项目依赖。由于后台数据库使用的是 Postgresql，需要安装响应的 python 驱动模块 psycopg2，安装时系统反馈了如下错误
-123ld: library not found for -lsslclang: error: linker command failed with exit code 1 (use -">
+<meta name="twitter:description" content="最近将开发环境迁移到 virtualenvwrapper 上，需要重新安装项目依赖。由于后台数据库使用的是 Postgresql，需要安装响应的 python 驱动模块 psycopg2，安装时系统反馈了如下错误 123ld: library not found for -lsslclang: error: linker command failed with exit code 1 (use -">
 
 
 
@@ -293,7 +292,7 @@
 
       
         <p>最近将开发环境迁移到 virtualenvwrapper 上，需要重新安装项目依赖。由于后台数据库使用的是 Postgresql，需要安装响应的 python 驱动模块 psycopg2，安装时系统反馈了如下错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ld: library not found for -lssl</div><div class="line">clang: error: linker command failed with exit code 1 (use -v to see invocation)</div><div class="line">&apos;cc&apos; failed with exit status 1</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ld: library not found for -lssl</span><br><span class="line">clang: error: linker command failed with exit code 1 (use -v to see invocation)</span><br><span class="line">&apos;cc&apos; failed with exit status 1</span><br></pre></td></tr></table></figure>
 <p>Google 了好久发现是升级 Xcode 的时候系统自动删除了 command line tools。</p>
 <p><strong>解决办法</strong></p>
 <p><code>xcode-select --install</code></p>
@@ -426,7 +425,7 @@ var jiathis_config={
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -443,7 +442,7 @@ var jiathis_config={
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

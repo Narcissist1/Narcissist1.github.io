@@ -59,12 +59,13 @@
 
 <meta name="description" content="长路漫漫，砥砺前行">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Zack's Notebook">
+<meta property="og:title" content="Zack&#39;s Notebook">
 <meta property="og:url" content="narcissist1.github.io/page/3/index.html">
-<meta property="og:site_name" content="Zack's Notebook">
+<meta property="og:site_name" content="Zack&#39;s Notebook">
 <meta property="og:description" content="长路漫漫，砥砺前行">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zack's Notebook">
+<meta name="twitter:title" content="Zack&#39;s Notebook">
 <meta name="twitter:description" content="长路漫漫，砥砺前行">
 
 
@@ -204,6 +205,125 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/05/Deploy-https-website-on-nginx-server/" itemprop="url">
+                  Deploy https website on nginx server
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-05T10:16:22+08:00" content="2016-12-05">
+              2016-12-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术相关/" itemprop="url" rel="index">
+                    <span itemprop="name">技术相关</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/05/Deploy-https-website-on-nginx-server/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/05/Deploy-https-website-on-nginx-server/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>为了提高网站安全性，最近将 http 的站点转换部署为了 https。 使用了<a href="https://letsencrypt.org/" target="_blank" rel="noopener">Let’s encrypt</a> CA认证证书，<a href="https://certbot.eff.org/#ubuntutrusty-nginx" target="_blank" rel="noopener">certbot</a>自动部署证书工具。</p>
+<h1 id="Requirement"><a href="#Requirement" class="headerlink" title="Requirement"></a>Requirement</h1><p>Nginx server (编译时需要加 –with-http_ssl_module 模块)。 Ubuntu 14.04 操作系统。</p>
+<h1 id="Deploy-HTTPS"><a href="#Deploy-HTTPS" class="headerlink" title="Deploy HTTPS"></a>Deploy HTTPS</h1><h2 id="Install-Certbot"><a href="#Install-Certbot" class="headerlink" title="Install Certbot"></a>Install Certbot</h2><p>运行以下命令，安装 certbot-auto 脚本</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/05/Deploy-https-website-on-nginx-server/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -412,8 +532,8 @@
       
         
           <p>最近开发的项目里使用 flask restful 作为接口框架，统一的编写格式方便于代码的可读性，和可维护性提高。</p>
-<h1 id="请求参数解析"><a href="#请求参数解析" class="headerlink" title="请求参数解析"></a>请求参数解析</h1><h2 id="基本参数解析"><a href="#基本参数解析" class="headerlink" title="基本参数解析"></a>基本参数解析</h2><p>这里有个关于请求解析的简单例子，看起来像<a href="http://flask.pocoo.org/docs/0.11/api/#flask.Request.values">flask.Request.values</a>字典里的两个参数：一个 integer 和 一个 string</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> flask_restful <span class="keyword">import</span> reqparse</div><div class="line"></div><div class="line">parser = reqparse.RequestParser()</div><div class="line">parser.add_argument(<span class="string">'rate'</span>, type=int, help=<span class="string">'Rate cannot be converted'</span>)</div><div class="line">parser.add_argument(<span class="string">'name'</span>)</div><div class="line">args = parser.parse_args()</div></pre></td></tr></table></figure>
+<h1 id="请求参数解析"><a href="#请求参数解析" class="headerlink" title="请求参数解析"></a>请求参数解析</h1><h2 id="基本参数解析"><a href="#基本参数解析" class="headerlink" title="基本参数解析"></a>基本参数解析</h2><p>这里有个关于请求解析的简单例子，看起来像<a href="http://flask.pocoo.org/docs/0.11/api/#flask.Request.values" target="_blank" rel="noopener">flask.Request.values</a>字典里的两个参数：一个 integer 和 一个 string</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask_restful <span class="keyword">import</span> reqparse</span><br><span class="line"></span><br><span class="line">parser = reqparse.RequestParser()</span><br><span class="line">parser.add_argument(<span class="string">'rate'</span>, type=int, help=<span class="string">'Rate cannot be converted'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'name'</span>)</span><br><span class="line">args = parser.parse_args()</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/11/24/flask-restul-使用体会/#more" rel="contents">
               阅读全文 &raquo;
@@ -532,7 +652,7 @@
         
           
             <p>最近将开发环境迁移到 virtualenvwrapper 上，需要重新安装项目依赖。由于后台数据库使用的是 Postgresql，需要安装响应的 python 驱动模块 psycopg2，安装时系统反馈了如下错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ld: library not found for -lssl</div><div class="line">clang: error: linker command failed with exit code 1 (use -v to see invocation)</div><div class="line">&apos;cc&apos; failed with exit status 1</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ld: library not found for -lssl</span><br><span class="line">clang: error: linker command failed with exit code 1 (use -v to see invocation)</span><br><span class="line">&apos;cc&apos; failed with exit status 1</span><br></pre></td></tr></table></figure>
 <p>Google 了好久发现是升级 Xcode 的时候系统自动删除了 command line tools。</p>
 <p><strong>解决办法</strong></p>
 <p><code>xcode-select --install</code></p>
@@ -661,11 +781,11 @@
 <tbody>
 <tr>
 <td>包管理器</td>
-<td><a href="https://github.com/Homebrew/homebrew">HomeBrew</a> 和 <a href="https://github.com/caskroom/homebrew-cask">HomeBrew-Cask</a></td>
+<td><a href="https://github.com/Homebrew/homebrew" target="_blank" rel="noopener">HomeBrew</a> 和 <a href="https://github.com/caskroom/homebrew-cask" target="_blank" rel="noopener">HomeBrew-Cask</a></td>
 </tr>
 <tr>
 <td>终端</td>
-<td><a href="https://www.iterm2.com">iTerm2</a></td>
+<td><a href="https://www.iterm2.com" target="_blank" rel="noopener">iTerm2</a></td>
 </tr>
 <tr>
 <td>终端编辑器</td>
@@ -685,7 +805,7 @@
 </tr>
 <tr>
 <td>Shell</td>
-<td>zsh + <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a> + <a href="https://github.com/zsh-users/zsh-completions">zsh-completions</a> + <a href="https://tmux.github.io/">tmux</a></td>
+<td>zsh + <a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="noopener">oh-my-zsh</a> + <a href="https://github.com/zsh-users/zsh-completions" target="_blank" rel="noopener">zsh-completions</a> + <a href="https://tmux.github.io/" target="_blank" rel="noopener">tmux</a></td>
 </tr>
 </tbody>
 </table>
@@ -716,129 +836,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/25/数据库连接占满504-error/" itemprop="url">
-                  数据库连接占满504 error
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-25T10:12:02+08:00" content="2016-10-25">
-              2016-10-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术相关/" itemprop="url" rel="index">
-                    <span itemprop="name">技术相关</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/25/数据库连接占满504-error/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/25/数据库连接占满504-error/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>一般情况下数据库的插入，删除，更新操作会做 exception handle, 很少想到查询也需要这种操作。我在后台使用 UUID 作为数据库 ID 主键，当前端使用非规范的 uuid 进行查询的时候会触发 StatementError: (exceptions.ValueError) 这时候数据库链接并不会自己断开，导致多次非规范查询后数据库连接池被占满，返回 504 timeout 错误码。</p>
-<p>所以不论什么时候都要保证一次请求过后相应的数据库 session 连接关闭。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/25/数据库连接占满504-error/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -879,7 +881,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -896,7 +898,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
