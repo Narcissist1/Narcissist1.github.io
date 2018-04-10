@@ -227,6 +227,124 @@
             
               
                 
+                <a class="post-title-link" href="/2018/04/10/Flask-源码备忘/" itemprop="url">
+                  Flask 源码备忘
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-04-10T18:25:11+08:00" content="2018-04-10">
+              2018-04-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术相关/" itemprop="url" rel="index">
+                    <span itemprop="name">技术相关</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/04/10/Flask-源码备忘/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/04/10/Flask-源码备忘/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>重读 Flask 源码，感觉比以前又学到了新的东西</p>
+<h1 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h1><p>Flask 有一个设计的巧妙之处，就是对于全局变量的实现，比如 request, g, current_app, session 等等，用户在自己实现的代码的任何地方都可以通过<br><code>from flask import ...</code> 来使用变量，而且保证了数据一致性和线程安全。flask 在底层使用了<code>werkzeug.local</code> 包的 <code>Local, LocalStack</code>，来保证线程安全。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/04/10/Flask-源码备忘/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/04/02/pyinstaller-备忘/" itemprop="url">
                   pyinstaller 备忘
                 </a>
@@ -680,126 +798,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/11/28/docker-学习浅谈/" itemprop="url">
-                  docker 学习浅谈
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-11-28T12:09:29+08:00" content="2017-11-28">
-              2017-11-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术相关/" itemprop="url" rel="index">
-                    <span itemprop="name">技术相关</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/11/28/docker-学习浅谈/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/11/28/docker-学习浅谈/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Docker 是一个包含多种工具的集合，它可以将你的项目或者服务进行打包分发，在任何地方运行你的代码而不依赖于系统环境。在系统和上层代码之间 docker container 为它们提供桥梁的作用，它提供本地文件系统，以及网络接口的访问。</p>
-<p>由于最近有将整套代码服务进行打包分发的需求，我开始着手研究 docker 及其工具集。</p>
-<h1 id="dockerize-project"><a href="#dockerize-project" class="headerlink" title="dockerize project"></a>dockerize project</h1><p>通过在项目根目录编写 Dockerfile 文件，将项目 “docker 化”。一般会通过 FROM 命令首先引入一个 base image, 然后在此基础上构建自己的 image。比如，我的项目使用 Python 写的，那么我可以使用 python:2.7 作为 base image。</p>
-<p>在 Dockerfile 里面同样可以指定服务暴露的端口，即外部访问端口，以及环境变量等等。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/11/28/docker-学习浅谈/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -845,7 +843,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -862,7 +860,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
